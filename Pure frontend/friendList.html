@@ -12,9 +12,9 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-<!--     <link rel="icon" href="../../favicon.ico"> -->
+    <link rel="icon" href="../../favicon.ico">
 
-    <title>Welcome to UDrawIGuess</title>
+    <title>Who are your friends?</title>
 
     <!-- Bootstrap core CSS -->
     <link href="/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -24,20 +24,15 @@
 
     <!-- Custom styles for this template -->
     <link href="css/grumblr.css" rel="stylesheet">
-    <link href="css/login.css" rel="stylesheet">
+    <link href="css/friendList.css" rel="stylesheet">
 
     <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
     <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
     <script src="/assets/js/ie-emulation-modes-warning.js"></script>
 
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
   </head>
 
-  <body>
+  <body class="globalstream-container">
 
     <nav class="navbar navbar-inverse navbar-fixed-top">
       <div class="container-fluid">
@@ -48,13 +43,30 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a href="login.html" class="navbar-brand" href="#">U Draw I Guess</a>
+          <a class="navbar-brand" href="login.html" href="#">U Draw I Guess</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
-          <ul class="nav navbar-nav navbar-right">
-            <li class="nav-click"><a href="globalStream.html" class="nav-href">Log in</a></li>
-            <li class="nav-click"><a href="register.html" class="nav-href">Sign up</a></li>
-          </ul>
+          <div class="nav navbar-right">
+              <ul class="nav navbar-nav navbar-right">
+                <li>
+                  <div>
+                    <img src="images/person2.jpeg" class="img-circle" alt="personal icon" width="44" height="44">
+                  </div>
+                </li>
+                <li>
+                    <button type="button" class="btn btn-default btn-md btn-icon-left" onclick="location.href='globalstream.html';"><span class="glyphicon glyphicon-home nav-glyphicon" aria-hidden="true"></span>
+                    </button>
+                </li>
+                <li>
+                    <button type="button" class="btn btn-default btn-md btn-icon-mid"><span class="glyphicon glyphicon-bell nav-glyphicon" aria-hidden="true"></span>
+                    </button>
+                </li>
+                <li>
+                    <button type="button" class="btn btn-default btn-md btn-icon-right" onclick="location.href='login.html';"><span class="glyphicon glyphicon-log-out nav-glyphicon" aria-hidden="true"></span>
+                    </button>
+                </li>
+              </ul>
+          </div>
           <form class="navbar-form navbar-left">
             
             <input type="text" class="form-control" placeholder="Search...">
@@ -66,30 +78,38 @@
       </div>
     </nav>
 
-    <div class="container-fluid">
-
-    <div class="login-container">
-        <form class="form-signin">
-          <h2 class="form-signin-heading">Hi.</h2>
-          <label for="inputEmail" class="sr-only">Email address</label>
-          <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
-          <label for="inputPassword" class="sr-only">Password</label>
-          <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
-          <div class="checkbox">
-            <label>
-              <input type="checkbox" value="remember-me"> Remember me
-            </label>
+    <div>
+        <div class="col-lg-6">
+          <div class="div-follow-list">
+            <h4>Follow List: </h4>
+            <br>
+            <ul class="follow-list">
+              <li>
+                <div class="follow-entry">
+                  <img id="img-follow-entry" src="images/person1.jpg">
+                  <a id="name-follow-entry" href=#>Name</a>
+                </div>
+              </li>
+            </ul>
           </div>
-          <ul>
-            <button class="btn btn-login btn-primary" type="submit" onclick="location.href='globalStream.html'">Log in</button>
-            <button class="btn btn-signup btn-primary" type="submit" onclick="location.href='register.html'">Sign up</button>
-          </ul>
-        </form>
+        </div>
+        <div class="col-lg-6">
+          <div class="div-follower-list">
+            <h4>Follower List:</h4>
+            <br>
+            <ul class="follower-list">
+              <li>
+                <div class="follower-entry">
+                  <img id="img-follower-entry" src="images/person3.jpeg">
+                  <a id="name-follower-entry" href=#>Name</a>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
       </div>
 
-    </div> <!-- /container -->
-
-      <nav class="navbar navbar-inverse navbar-fixed-bottom">
+    <nav class="navbar navbar-inverse navbar-fixed-bottom">
       <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
             <li><a href="#" class="nav-bottom-words">Terms</a></li>

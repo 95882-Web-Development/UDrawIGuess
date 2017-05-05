@@ -23,7 +23,7 @@
 
     <link rel="icon" href="../../favicon.ico">
 
-    <title>Check others works</title>
+    <title>Global Stream</title>
 
     <!-- Bootstrap core CSS -->
     <link href="/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -89,116 +89,16 @@
     </nav>
 
     <div class="main-content">
-
-      <div class="ranking col-sm-2 offset-sm-1">
-        <h4>Ranking</h4>
-        <br>
-        <a onclick="">1. Tommy </a>
-        <br>
-        <br>
-        <a onclick="">2. Invisible </a>
-        <br>
-        <br>
-        <a onclick="">3. The Fin </a>
-        <br>
-        <br>
-        <a onclick="">4. Bruno Mars </a>
-
-      </div>
-
-      <div class="post-collection text-muted">
-        <div class="container posts-container">
-
-          <!-- <div class="row"> -->
-            <div class="card">
-              <img src="images/empty_img.jpg" alt="Card image cap" width="200" height="200">
-              <p class="card-text">By: XXX</p>
-              <button class="btn-guess" data-toggle="modal" data-target="#guess-Modal">Guess it!</button>
-              <button class="btn-like"><span class="glyphicon glyphicon-heart" aria-hidden="true"></span></button>
-            </div>
-             <div class="card">
-              <img src="images/empty_img.jpg" alt="Card image cap" width="200" height="200">
-              <p class="card-text">By: XXX</p>
-              <button class="btn-guess">Guess it!</button>
-              <button class="btn-like"><span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
-            </div>
-            <div class="card">
-              <img src="images/empty_img.jpg" alt="Card image cap" width="200" height="200">
-              <p class="card-text">By: XXX</p>
-              <button class="btn-guess">Guess it!</button>
-              <button class="btn-like"><span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
-            </div>
-
-            <div class="card">
-              <img src="images/empty_img.jpg" alt="Card image cap" width="200" height="200">
-              <p class="card-text">By: XXX</p>
-              <button class="btn-guess">Guess it!</button>
-              <button class="btn-like"><span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
-            </div>
-             <div class="card">
-              <img src="images/empty_img.jpg" alt="Card image cap" width="200" height="200">
-              <p class="card-text">By: XXX</p>
-              <button class="btn-guess">Guess it!</button>
-              <button class="btn-like"><span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
-            </div>
-            <div class="card">
-              <img src="images/empty_img.jpg" alt="Card image cap" width="200" height="200">
-              <p class="card-text">By: XXX</p>
-              <button class="btn-guess">Guess it!</button>
-              <button class="btn-like"><span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
-            </div>
-
-           <div class="card">
-              <img src="images/empty_img.jpg" alt="Card image cap" width="200" height="200">
-              <p class="card-text">By: XXX</p>
-              <button class="btn-guess">Guess it!</button>
-              <button class="btn-like"><span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
-            </div>
-             <div class="card">
-              <img src="images/empty_img.jpg" alt="Card image cap" width="200" height="200">
-              <p class="card-text">By: XXX</p>
-              <button class="btn-guess">Guess it!</button>
-              <button class="btn-like"><span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
-            </div>
-            <div class="card">
-              <img src="images/empty_img.jpg" alt="Card image cap" width="200" height="200">
-              <p class="card-text">By: XXX</p>
-              <button class="btn-guess">Guess it!</button>
-              <button class="btn-like"><span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
-            </div>
-          <!-- </div> -->
-
-        </div>
+      <div id="canvasDiv"></div>
+      <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+      <div>
+      <a id="link-download" download="Canvas.png"><button id="btn-download">Download</button></a>
+      <button id="btn-clear">Clear</button>
+      <br>
+      <img id="img-download" src="">
       </div>
     </div>
 
-    <!-- Modal NEW document-->
-    <div class="modal fade" id="guess-Modal" tabindex="-1" role="dialog" aria-labelledby="new-doc-ModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                    <h4 class="modal-title" id="new-doc-ModalLabel">Make a wild guess!</h4>
-                </div>
-                <div class="modal-body">
-                    <img src="images/empty_img.jpg" class="img-modal" alt="Card image cap">
-                    <br>
-                    <form action="/action_page.php" class="guess-form">
-                      <div class="guess-form-input">
-                        Guess Answer: <input type="text" name="guess-input" class="guess-input-box">
-                        <input type="submit" value="Submit" class="btn-guess-submit">
-                      </div>
-                      <a class="guess-tips">Tips: This is empty.</a>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" id="btn-form-new-doc" class="btn btn-primary">Check the statistics behind</button>
-                </div>
-            </div>
-        </div>
-    </div>
 
     <nav class="navbar navbar-inverse navbar-fixed-bottom">
       <div id="navbar" class="navbar-collapse collapse">
@@ -226,5 +126,11 @@
 
     <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"></script>
+    <!--[if IE]><script type="text/javascript" src="excanvas.js"></script><![endif]-->
+    <script type="text/javascript" src="js/drawingPage.js"></script>
+    <script type="text/javascript">
+      drawingApp.init();
+    </script>
+
   </body>
 </html>

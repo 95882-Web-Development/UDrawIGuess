@@ -11,8 +11,57 @@ body {
 .navbar-nav > li > a {padding-top:5px !important; padding-bottom:5px !important;}
 .navbar {min-height:20px !important}
 
+.name-label{
+  position:absolute; 
+  z-index:1; 
+  top:218px; 
+  left:50%; 
+  transform:translate(-50%,0);
+}
+
 .profile-container{
   opacity:0.95;
+}
+
+.follow-info{
+  left: 50%;
+  top: 250px;
+  height: 50px;
+  position:absolute; 
+  z-index:1; 
+  transform:translate(-50%,0); 
+}
+
+.follow-label{
+
+}
+
+#label-follower{
+  margin-left: 40px;
+}
+
+.follow-num{
+  padding-left: 15px;
+}
+
+#num-follower{
+  margin-left: 78px;
+}
+
+.btn-add-friend{
+  position:absolute; 
+  z-index:1; 
+  top:320px; 
+  left:50%; 
+  transform:translate(-50%,0); 
+}
+
+.personal-info{
+  position:absolute; 
+  z-index:1; 
+  top:380px; 
+  left:50%; 
+  transform:translate(-50%,0); 
 }
 
 .btn-guess{

@@ -1,0 +1,82 @@
+body {
+  padding-top: 40px;
+  padding-bottom: 40px;
+  background-color: #eee;
+  /*background-image:url(../images/background.jpg); */
+  background-size: cover;  
+  height:auto; 
+  opacity:0.92;
+}
+
+.navbar-nav > li > a {padding-top:5px !important; padding-bottom:5px !important;}
+.navbar {min-height:20px !important}
+
+.img-circle{
+  margin-top:10%; 
+  margin-right:10px;
+}
+
+.btn-icon-left{
+  background-color:transparent; 
+  border:none; 
+  outline:none; 
+  margin-top:10%; 
+  margin-right:2px;
+}
+
+.btn-icon-mid{
+  background-color:transparent; 
+  border:none; 
+  outline:none; 
+  margin-top:10%; 
+  margin-right:6px;
+}
+
+.btn-icon-right{
+  background-color:transparent; 
+  border:none; 
+  outline:none; 
+  margin-top:6%; 
+  margin-right:30px;
+}
+
+.nav-glyphicon{
+  color:white; 
+  font-size:2em;
+}
+
+.div-follow-list{
+  margin-top: 50px;
+  margin-left: 50px;
+}
+
+.div-follower-list{
+  margin-top: 50px;
+  margin-left: 50px;
+}
+
+#img-follow-entry{
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+#img-follower-entry{
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
