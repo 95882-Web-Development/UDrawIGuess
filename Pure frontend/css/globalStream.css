@@ -5,6 +5,36 @@ body {
   opacity:0.93;
 }
 
+button:hover {
+  background-color:#bdbdc1;
+  cursor: pointer;
+}
+
+span:hover {
+    color: #88aae2;
+    cursor: pointer;
+}
+
+.btn-to-draw{
+  position: fixed;
+  border-color: white;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  bottom: 80px;
+  right: 50px;
+  z-index: 100;
+  text-align: center;
+  background-color: #e3e5e8;
+}
+
+.icon-draw{
+  color: #990000;
+  font-size: 2em;
+  margin-top: 14px;
+  margin-left: 2px;
+}
+
 .btn-guess{
   margin-right: 95px;
   background: rgba(47, 118, 169, 0.94);
