@@ -117,8 +117,85 @@ var drawingApp = (function(){
 			clickY = new Array();
 			clickDrag = new Array();
 		}, false);
+
+		/*
+		Post('/picture_submit')
+		Req{
+			picture
+			tag
+			description
+		}
+		Res{
+		code: 0(id)/1(error)
+		message:
+		}
+		*/
+
+		$("#btn-submit").click(function(e){
+			var canvasTemp = document.getElementById("canvas");
+			var img_data = canvasTemp.toDataURL("image/png");
+		  	var image = document.getElementById("img-download");
+		  	image.src = img_data;
+
+		  	// var success_callback = function (response) {
+	        //     console.log("client response", response)
+	        //     var res_data = response.json();
+				// var success = true;
+	        //
+	        //     if (response == null || response == undefined) {
+             //    	success = false;
+            	// }
+            //
+	        //     if (success) {
+	        //     	var code = res_data.code;
+	        //         console.log("submit img returen code: " + code)
+	        //         //location.href = "/profile.html"
+	        //     } else {
+	        //         alert("Submit img failure: " + res_data.message);
+	        //     }
+	        // };
+
+	        var formData = new FormData()
+	        formData.append("picture", img_data)
+	        formData.append("tag", "this is a tag.")
+	        formData.append("description", "this is a description.")
+
+            fetch("http://localhost:4000/picture_submit", {
+                    method: "POST",
+                    headers: {
+                        'Accept': 'application/json, text/plain',
+                    },
+                    body: {'json':"json"},
+                }).then(function(response){
+                    console.log("client response", response)
+                    var res_data = response.json();
+                    var success = true;
+
+                    if (response == null || response == undefined) {
+                        success = false;
+                    }
+
+                    if (success) {
+                        var code = res_data.code;
+                        console.log("submit img returen code: " + code)
+                        //location.href = "/profile.html"
+                    } else {
+                        alert("Submit img failure: " + res_data.message);
+                    }
+                });
+
+		});
 	};
 	return {
 		init: init
 	};
 }());
+
+
+
+
+
+
+
+
+

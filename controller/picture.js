@@ -4,11 +4,13 @@ var Picture = require('../model/picture').Picture;
 
 /** create function to create Company. */
 exports.create = function (req, res) {
+    console.log(req);
+    console.log("request body: " + req.body);
     var results;
     var error;
     Picture.create(req.body, function(err, result) {
         if (!err) {
-             return res.json(result);
+            res.json(result);
         } else {
             error=err;
             // return res.send(err); // 500 error

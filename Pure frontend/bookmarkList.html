@@ -110,7 +110,6 @@
               <p class="card-text">By: XXX</p>
               <button class="btn-guess" data-toggle="modal" data-target="#guess-Modal">Guess it!</button>
               <button class="btn-like"><span class="glyphicon glyphicon-heart" aria-hidden="true"></span></button>
-              <button class="btn-bookmark"><span class="glyphicon glyphicon-heart" aria-hidden="true"></span></button>
             </div>
              <div class="card">
               <img src="images/empty_img.jpg" alt="Card image cap" width="200" height="200">
@@ -170,34 +169,6 @@
 
     <div class="btn-to-draw">
       <a href="drawingPage.html"><span class="glyphicon glyphicon-pencil icon-draw"></span></a>
-    </div>
-
-    <!-- Modal NEW document-->
-    <div class="modal fade" id="guess-Modal" tabindex="-1" role="dialog" aria-labelledby="new-doc-ModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                    <h4 class="modal-title" id="new-doc-ModalLabel">Make a wild guess!</h4>
-                </div>
-                <div class="modal-body">
-                    <img src="images/empty_img.jpg" class="img-modal" alt="Card image cap">
-                    <br>
-                    <form action="/action_page.php" class="guess-form">
-                      <div class="guess-form-input">
-                        Guess Answer: <input type="text" name="guess-input" class="guess-input-box">
-                        <input type="submit" value="Submit" class="btn-guess-submit">
-                      </div>
-                      <a class="guess-tips">Tips: This is empty.</a>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" id="btn-form-new-doc" class="btn btn-primary">Check the statistics behind</button>
-                </div>
-            </div>
-        </div>
     </div>
 
     <nav class="navbar navbar-inverse navbar-fixed-bottom">
