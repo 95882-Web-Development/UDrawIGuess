@@ -15,16 +15,10 @@ May Node and Express be with you.
     <button type="submit">Submit</button>
 </form>
 </hr>
-<ul>
-    <%= messages%>
-    <%if(locals.pictures){pictures.forEach(function(picture){ %>
-    <li><%=picture.title%> - <%=picture.answer %></li>
-    <%});}%>
-</ul>
-<form action="/picture_submit" method="POST">
-    <input type="text" placeholder="Title" name="title">
-    <input type="text" placeholder="Answer" name="answer">
-    <input type="text" placeholder="image" name="image">
+<form action="/signup" method="POST">
+    <input type="text" placeholder="username" name="username">
+    <input type="text" placeholder="password" name="password">
+    <input type="text" placeholder="email" name="email">
     <button type="submit">Submit</button>
 </form>
 </body>

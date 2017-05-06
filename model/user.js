@@ -13,7 +13,11 @@ var UserSchema = new Schema({
     password: { type: String },
     email :{type: String},
     following:[String],
-    follower:[String]
+    follower:[String],
+    guess_num: {type: String},
+    guess_correct_num: {type: String},
+    pictures_draw:[String],
+    pictures_mark:[String],
 });
 
 
@@ -47,7 +51,7 @@ UserSchema.statics = {
         this.remove(removeData, callback);
     },
     create: function(data, callback) {
-        var picture = new this(data);
+        var user = new this(data);
         user.save(callback);
     }
 };

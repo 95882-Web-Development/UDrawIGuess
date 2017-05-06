@@ -9,15 +9,18 @@ var mongoose = require('mongoose'),
  */
 
 var PictureSchema = new Schema({
-    title: { type: String },
-    answer: {type: String },
-    image :{type: String},
-    author:{type: String},
+    picture_id: {type: String },
+    picture :{type: String},
+    user_id:{type: String},
+    username:{type: String},
+    answer:{type: String},
+    like_number:{type: Number},
+    tag: {type: String},
+    description: {type:String}
 });
 
 
 PictureSchema.statics = {
-
      /**
       findOnecompany. return the one company object.
       @param id: get id to find one company by id.

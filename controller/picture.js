@@ -2,6 +2,14 @@
 
 var Picture = require('../model/picture').Picture;
 
+
+exports.get_global = function (req, res){
+
+}
+
+exports.get_mine = function (req, res){
+
+}
 /** create function to create Company. */
 exports.create = function (req, res) {
     console.log(req);
@@ -12,20 +20,15 @@ exports.create = function (req, res) {
         if (!err) {
             res.json(result);
         } else {
-            error=err;
-            // return res.send(err); // 500 error
+            return res.send(err); // 500 error
         }
     });
-    console.log(result);
-    console.log(error);
-    res.render('index',{picture: results, messages:error});
 };
 
 /** getCompany function to get Company by id. */
 exports.get = function (req, res) {
-    var result;
-    console.log(req.params.id);
-    Picture.get({_id: req.params.id}, function(err, result) {
+    console.log(req.params.picture_id);
+    Picture.get({_id: req.params.picutre_id}, function(err, result) {
         if (!err) {
             return res.json(result);
         } else {

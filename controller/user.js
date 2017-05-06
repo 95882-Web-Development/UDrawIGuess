@@ -4,13 +4,26 @@ var User = require('../model/user').User;
 
 /** create function to create Company. */
 exports.signup = function (req, res) {
-    User.create(req.body, function(err, result) {
-        if (!err) {
-            return res.json(result);
-        } else {
-            return res.send(err); // 500 error
+    User.get({username: req.body.username}, function(err, result){
+        if(!err){
+            if(result !== null){
+                return res.json({error: 'user is exised'}); // 500 error
+            }else{
+                User.create(req.body, function(err, result) {
+                    if (!err) {
+                        var newUser = {username: req.body.username, password: req.body.password, email: req.body.email};
+                        req.session.user = newUser;
+                        res.redirect('index');
+                    } else {
+                        return res.json({error: 'user is exised'}); // 500 error
+                    }
+                });
+            }
+        }else{
+            return res.send(err);
         }
-    });
+    })
+
 };
 
 exports.login = function (req, res) {
@@ -62,7 +75,7 @@ exports.do_dislike = function(req, res){
 
 };
 
-exports.show_likelist = function(req, res){
+exports.show_bookmarks = function(req, res){
 
 };
 
