@@ -7,19 +7,24 @@
 <body>
 May Node and Express be with you.
 
-<ul class="quotes">
-    <% for(var i=0; i<quotes.length; i++) {%>
-    <li class="quote">
-        <span><%= quotes[i].title %></span>
-        <span><%= quotes[i].answer %></span>
-    </li>
-    <% } %>
-</ul>
-<a href="person" >aaaa</a>
-<form action="/submitPicture" method="POST">
+<a href="/picture_delete/590cc1da16cd71cacb704e1a" >delete</a>
+<form action="/picture_submit" method="POST">
     <input type="text" placeholder="Title" name="title">
     <input type="text" placeholder="Answer" name="answer">
-    <input type="text" placeholder="Answer" name="url">
+    <input type="text" placeholder="image" name="image">
+    <button type="submit">Submit</button>
+</form>
+</hr>
+<ul>
+    <%= messages%>
+    <%if(locals.pictures){pictures.forEach(function(picture){ %>
+    <li><%=picture.title%> - <%=picture.answer %></li>
+    <%});}%>
+</ul>
+<form action="/picture_submit" method="POST">
+    <input type="text" placeholder="Title" name="title">
+    <input type="text" placeholder="Answer" name="answer">
+    <input type="text" placeholder="image" name="image">
     <button type="submit">Submit</button>
 </form>
 </body>
