@@ -5,7 +5,7 @@ var Picture = require('../model/picture').Picture;
 /** create function to create Company. */
 exports.create = function (req, res) {
     console.log(req);
-    console.log("request body: " + req.body);
+    console.log("request body: " + req.body.tag);
     var results;
     var error;
     Picture.create(req.body, function(err, result) {

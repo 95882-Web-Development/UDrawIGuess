@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link href="dist/css/bootstrap.css" rel="stylesheet">
+    <link href="css/profile.css" rel="stylesheet">
+    <link href="dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!--<script type="text/javascript" charset="utf-8" src="assets/js/jquery-3.1.0.min.js"></script>-->
+    <script type="text/javascript" charset="utf-8" src="assets/js/jquery-3.1.1.js"></script>
+    <script type="text/javascript" charset="utf-8" src="assets/js/tether.min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="assets/js/vue.min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="assets/js/lodash@4.16.0.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <link rel="icon" href="../../favicon.ico">
+
+    <!-- Bootstrap core CSS -->
+    <link href="dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="dist/css/bootstrap.css" rel="stylesheet">
+
+    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <script src="assets/js/ie-emulation-modes-warning.js"></script>
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <link href="assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="css/grumblr.css" rel="stylesheet">
+    <link href="css/globalStream.css" rel="stylesheet">
+    <link href="css/drawingPage.css" rel="stylesheet">
+
+    <title>Drawing...In the Zone</title>
+
+  </head>
+
+  <body style="">
+
+    <nav class="navbar navbar-inverse navbar-fixed-top" id="top-nav">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a href="login.html" class="navbar-brand" href="#">U Draw I Guess</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <div class="nav navbar-right">
+              <ul class="nav navbar-nav navbar-right">
+                <li>
+                  <div>
+                    <img src="images/person2.jpeg" onclick="location.href='profile.html';" class="img-circle" alt="personal icon" width="43" height="43">
+                  </div>
+                </li>
+                <li>
+                    <button type="button" class="btn btn-default btn-md btn-icon-left"><span class="glyphicon glyphicon-bell" aria-hidden="true"></span>
+                    </button>
+                </li>
+                <li>
+                    <button type="button" class="btn btn-default btn-md btn-icon-right" onclick="location.href='login.html';" style=""><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>
+                    </button>
+                </li>
+              </ul>
+          </div>
+          <form class="navbar-form navbar-left">
+            
+            <input type="text" class="form-control" placeholder="Search...">
+            <button type="button" class="btn btn-default btn-sm btn-search">
+              <span class="glyphicon glyphicon-search icon-search" aria-hidden="true"></span>
+            </button>
+          </form>
+        </div>
+      </div>
+    </nav>
+
+    <div class="main-content">
+      <div class="left-lane">
+        <h4 class="text-color">Pick a color: </h4>
+        <button id="red-picker" class="btn-color"></button>
+        <button id="blue-picker" class="btn-color"></button>
+        <button id="black-picker" class="btn-color"></button>
+
+        <h4 class="text-size">Pick a pen size: </h4>
+        <button id="small-size" class="btn-size">Small</button>
+        <button id="mid-size" class="btn-size">Middle</button>
+        <button id="big-size" class="btn-size">Big</button>
+      </div>
+      <div class="mid-lane">
+         <canvas id="canvas"></canvas>
+      </div>
+      <div class="right-lane">
+        <button id="btn-keyword" class="btn-right">Get Word!</button>
+        <br>
+        <a id="text-keyword" class="btn-right">Apple</a>
+
+        <button id="btn-clear" class="btn-right">Clear</button>
+        <button id="btn-submit" class="btn-right">Submit</button>
+        <button id="btn-exit" class="btn-right">Exit</button>
+
+        <button id="btn-download" class="btn-right">Download</button>
+        <br><br>
+        <img id="img-download" src="" width="200px" height="200px">
+      </div>
+    </div>
+    <br>
+
+    <nav class="navbar navbar-inverse navbar-fixed-bottom" id="bottom-nav">
+      <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="#" class="nav-bottom-words">Terms</a></li>
+            <li><a href="#" class="nav-bottom-words">Help</a></li>
+            <li><a href="#" class="nav-bottom-words">Contact us</a></li>
+          </ul>
+          <form class="navbar-form navbar-left">
+            <a href="#" class="nav-bottom-words">About Us</a>
+          </form>
+      </div>
+    </nav>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+    <script src="dist/js/bootstrap.min.js"></script>
+    <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
+    <script src="assets/js/vendor/holder.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="assets/js/ie10-viewport-bug-workaround.js"></script>
+
+    <!--<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js"></script>-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"></script>
+    <!--[if IE]><script type="text/javascript" src="excanvas.js"></script><![endif]-->
+    <script type="text/javascript" src="js/drawingPage.js"></script>
+    <script type="text/javascript">
+      drawingApp.init();
+    </script>
+
+  </body>
+</html>

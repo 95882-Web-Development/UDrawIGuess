@@ -137,52 +137,29 @@ var drawingApp = (function(){
 		  	var image = document.getElementById("img-download");
 		  	image.src = img_data;
 
-		  	// var success_callback = function (response) {
-	        //     console.log("client response", response)
-	        //     var res_data = response.json();
-				// var success = true;
-	        //
-	        //     if (response == null || response == undefined) {
-             //    	success = false;
-            	// }
-            //
-	        //     if (success) {
-	        //     	var code = res_data.code;
-	        //         console.log("submit img returen code: " + code)
-	        //         //location.href = "/profile.html"
-	        //     } else {
-	        //         alert("Submit img failure: " + res_data.message);
-	        //     }
-	        // };
+			var data = {"picture": img_data, "tag":"this is tag", "description":"this is description"};
 
-	        var formData = new FormData()
-	        formData.append("picture", img_data)
-	        formData.append("tag", "this is a tag.")
-	        formData.append("description", "this is a description.")
+			fetch("http://localhost:4000/picture_submit", {
+				method: "POST",
+				headers: {'Content-Type': 'application/json'},
+				body: JSON.stringify(data),
+			}).then(function(response){
+				console.log("client response", response)
+				var res_data = response.json();
+				var success = true;
 
-            var data = new FormData();
-            data.append( "json", JSON.stringify(formData));
+				if (response == null || response == undefined) {
+				    success = false;
+				}
 
-            fetch("http://localhost:4000/picture_submit", {
-                    method: "POST",
-                    data: data,
-                }).then(function(response){
-                    console.log("client response", response)
-                    // var res_data = response.json();
-                    // var success = true;
-                    //
-                    // if (response == null || response == undefined) {
-                    //     success = false;
-                    // }
-                    //
-                    // if (success) {
-                    //     var code = res_data.code;
-                    //     console.log("submit img returen code: " + code)
-                    //     //location.href = "/profile.html"
-                    // } else {
-                    //     alert("Submit img failure: " + res_data.message);
-                    // }
-                });
+				if (success) {
+				    var code = res_data.code;
+				    console.log("submit img returen code: " + code)
+				    //location.href = "/profile.html"
+				} else {
+				    alert("Submit img failure: " + res_data.message);
+				}
+			});
 
 		});
 	};

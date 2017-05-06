@@ -1,0 +1,198 @@
+body {
+  /*background-image:url(../images/background.jpg); */
+  background-size: cover;  
+  height:auto; 
+  opacity:0.93;
+}
+
+button:hover {
+  background-color:#bdbdc1;
+  cursor: pointer;
+}
+
+span:hover {
+    color: #88aae2;
+    cursor: pointer;
+}
+
+.btn-to-draw{
+  position: fixed;
+  border-color: white;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  bottom: 80px;
+  right: 50px;
+  z-index: 100;
+  text-align: center;
+  background-color: #e3e5e8;
+}
+
+.icon-draw{
+  color: #990000;
+  font-size: 2em;
+  margin-top: 14px;
+  margin-left: 2px;
+}
+
+.btn-guess{
+  margin-right: 95px;
+  background: rgba(47, 118, 169, 0.94);
+  border: #B13B3B;
+  border-radius: 2px;
+  color: white;
+}
+
+.btn-like{
+  background-color:transparent; 
+  border:none; 
+  outline:none;
+  color:rgba(165, 28, 70, 0.57);
+  font-size: 1.25em;
+}
+
+.img-circle{
+  margin-top:10%; 
+  margin-right:10px;
+}
+
+.btn-icon-left{
+  background-color:transparent; 
+  border:none; 
+  outline:none; 
+  margin-top:10%; 
+  margin-right:6px;
+}
+
+.btn-icon-right{
+  background-color:transparent; 
+  border:none; 
+  outline:none; 
+  margin-top:6%; 
+  margin-right:30px
+}
+
+.glyphicon-bell{
+  color:white !important; 
+  font-size:2em !important;
+}
+
+.glyphicon-log-out{
+  color:white !important; 
+  font-size:2em !important;
+}
+
+.glyphicon-plus-sign{
+  color:gray; 
+  font-size:2em;
+}
+
+.input-newpost{
+  resize:both; 
+  width:420px; 
+  height:80px; 
+  resize:horizontal;
+}
+
+/*.globalstream-container{
+  text-align: center;
+  overflow:hidden;
+  background-color: gray;
+  background-size:cover;
+  padding-left: 2%;
+  padding-right: 2%;
+  width:100%;
+  height:100%;
+}*/
+
+.main-content {
+  height: 100%;
+  width: 100%;
+  /*margin-left: 3rem;
+  margin-right: 3rem;*/
+  position: absolute;
+}
+
+.posts-container {
+  max-width: 100% !important;
+}
+
+.ranking {
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+  min-height:100%;
+  overflow:hidden;
+  position:relative;
+  display:block;
+}
+
+.post-collection {
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+  padding-right: 4rem;
+  padding-left: 4rem;
+  min-height:100%;
+  overflow:hidden;
+  position:relative;
+  display:block;
+  background-color: #f7f7f7;
+}
+
+.card {
+  float: left;
+  width: 33.333%;
+  padding: 3rem;
+  margin-bottom: 2rem;
+  border: 0;
+}
+
+.card > img {
+  margin-bottom: .75rem;
+}
+
+.card-text {
+  font-size: 85%;
+}
+
+.img-modal{
+  width: 400px; 
+  height: 400px;
+  display: block;
+  margin: 0 auto;
+}
+
+.btn-add{
+  text-align: center;
+  background: #880909;
+  padding: 6px 25px;
+  border: 2px solid #880909;
+  color: white;
+  width:100px;
+  height:35px;
+}
+
+.guess-form-input{
+  display: block;
+  margin-left: 80px;
+}
+
+.guess-tips{
+  margin-left: 180px;
+}
+
+.guess-input{
+}
+
+.btn-guess-submit{
+  margin-left: 80px;
+  background: #a94442;
+  border: #B13B3B;
+  border-radius: 2px;
+  color: white;
+}
+
+.guess-form{
+  display: block;
+  margin: 0 auto;
+}
+
