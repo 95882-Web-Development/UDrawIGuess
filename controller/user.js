@@ -1,6 +1,7 @@
 'use strict';
 
 var User = require('../model/user').User;
+var Picture = require('../model/picture').Picture;
 
 /** create function to create Company. */
 exports.signup = function (req, res) {
@@ -9,11 +10,13 @@ exports.signup = function (req, res) {
             if(result !== null){
                 return res.json({error: 'user is exised'}); // 500 error
             }else{
-                User.create(req.body, function(err, result) {
+                var newUser = req.body;
+                newUser.guess_num = 0;
+                newUser.guess_correct_num = 0;
+                User.create(newUser, function(err, result) {
                     if (!err) {
-                        var newUser = {username: req.body.username, password: req.body.password, email: req.body.email};
-                        req.session.user = newUser;
-                        res.redirect('index');
+                        req.session.user = result;
+                        res.redirect('/');
                     } else {
                         return res.json({error: 'user is exised'}); // 500 error
                     }
@@ -27,16 +30,26 @@ exports.signup = function (req, res) {
 };
 
 exports.login = function (req, res) {
-
+    User.get({username: req.body.username}, function(err, result){
+        if(!err){
+            if(result !== null){
+                req.session.user = result;
+                return res.json({code:0, message: 'success',user_id:result._id}); // 500 error
+            }else{
+            }
+        }else{
+            return res.send(err);
+        }
+    })
 }
 
 exports.logout = function (req, res){
 
 }
 /** getCompany function to get Company by id. */
-exports.get = function (req, res) {
-    console.log(req.params.id);
-    User.get({_id: req.params.id}, function(err, result) {
+exports.get_user = function (req, res) {
+    console.log(req.params.user_id);
+    User.get({_id: req.params.user_id}, function(err, result) {
         if (!err) {
             return res.json(result);
         } else {
@@ -56,7 +69,56 @@ exports.getAll = function (req, res){
 };
 
 exports.do_follow = function(req, res){
-
+    var data = new Object();
+    User.get({_id:req.params.user_id}, function(err, result) {
+        if(!err){
+            result.email="ddd";
+            result.follower.push(req.session.user._id);
+            User.updateById(req.params.user_id,result,function(err, result){
+                if(!err) {
+                    User.get({_id:req.params.user_id}, function(err, result) {
+                        if(!err){
+                            console.log(result);
+                        }
+                    });
+                    return res.json({code: 0, message: 'success', user_id: req.session.user._id});
+                }// 500 error
+                else{
+                    return res.send(err);
+                }
+            });
+        }
+    });
+    //
+    // User.get({_id: req.params.user_id}, function(err, result) {
+    //     if (!err) {
+    //         var data = result;
+    //         data.follower.push(req.session.user._id);
+    //         User.updateById(req.param.user_id,data,function(err, result){
+    //             if(!err) {
+    //                 User.get({_id: req.params.user_id}, function(err, result) {
+    //                     if(!err){
+    //                         console.log(result);
+    //                     }
+    //                 });
+    //                 return res.json({code: 0, message: 'success', user_id: req.session.user._id});
+    //             }// 500 error
+    //             else{
+    //                 return res.send(err);
+    //             }
+    //         });
+    //     } else {
+    //         return res.send(err); // 500 error
+    //     }
+    // });
+    // req.session.user.following.push(req.params.user_id);
+    // User.updateById(req.session.user._id,req.session.user,function(err, result){
+    //     if(!err){
+    //
+    //     }else{
+    //         return res.send(err);
+    //     }
+    // });
 };
 
 exports.do_unfollow = function(req, res){
@@ -78,8 +140,6 @@ exports.do_dislike = function(req, res){
 exports.show_bookmarks = function(req, res){
 
 };
-
-
 
 
 /** updateCompany function to get Company by id. */

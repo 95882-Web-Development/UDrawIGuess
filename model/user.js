@@ -14,8 +14,9 @@ var UserSchema = new Schema({
     email :{type: String},
     following:[String],
     follower:[String],
-    guess_num: {type: String},
-    guess_correct_num: {type: String},
+    guess_num: {type: Number},
+    guess_correct_num: {type: Number},
+    like_by_num:{type: Number},
     pictures_draw:[String],
     pictures_mark:[String],
 });
@@ -45,7 +46,7 @@ UserSchema.statics = {
      @param callback: callback of this form.
      */
     updateById: function(id, updateData, callback) {
-        this.update(id, {$set: updateData}, callback);
+        this.update({_id:id}, {$set: updateData}, callback);
     },
     removeById: function(removeData, callback) {
         this.remove(removeData, callback);
