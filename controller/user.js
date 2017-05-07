@@ -17,7 +17,7 @@ exports.signup = function (req, res) {
                 newUser.guess_correct_num = 0;
                 User.create(newUser, function(err, result) {
                     if (!err) {
-                        req.session.user = result;
+                        globals.user = result;
                         // globals.user= user;
                         res.redirect('/');
                     } else {
@@ -36,11 +36,10 @@ exports.login = function (req, res) {
     User.get({username: req.body.username}, function(err, result){
         if(!err){
             if(result !== null){
-                req.session.user = result;
+                globals.user = result;
                 globals.user= result;
-                console.log("login session id" + req.sessionID);
-                // return res.render({code:0, message: 'success',user_id:result._id}); // 500 error
-                return res.redirect('/frontend/globalStream.html');
+                return res.render({code:0, message: 'success',user_id:result._id}); // 500 error
+                // return res.redirect('/frontend/globalStream.html');
             }else{
             }
         }else{
@@ -79,7 +78,7 @@ exports.do_follow = function(req, res){
     User.get({_id:req.params.user_id}, function(err, result) {
         if(!err){
             result.email="ddd";
-            result.follower.push(req.session.user._id);
+            result.follower.push(globals.user._id);
             User.updateById(req.params.user_id,result,function(err, result){
                 if(!err) {
                     User.get({_id:req.params.user_id}, function(err, result) {
@@ -87,7 +86,7 @@ exports.do_follow = function(req, res){
                             console.log(result);
                         }
                     });
-                    return res.json({code: 0, message: 'success', user_id: req.session.user._id});
+                    return res.json({code: 0, message: 'success', user_id: globals.user._id});
                 }// 500 error
                 else{
                     return res.send(err);
@@ -99,7 +98,7 @@ exports.do_follow = function(req, res){
     // User.get({_id: req.params.user_id}, function(err, result) {
     //     if (!err) {
     //         var data = result;
-    //         data.follower.push(req.session.user._id);
+    //         data.follower.push(globals.user._id);
     //         User.updateById(req.param.user_id,data,function(err, result){
     //             if(!err) {
     //                 User.get({_id: req.params.user_id}, function(err, result) {
@@ -107,7 +106,7 @@ exports.do_follow = function(req, res){
     //                         console.log(result);
     //                     }
     //                 });
-    //                 return res.json({code: 0, message: 'success', user_id: req.session.user._id});
+    //                 return res.json({code: 0, message: 'success', user_id: globals.user._id});
     //             }// 500 error
     //             else{
     //                 return res.send(err);
@@ -117,8 +116,8 @@ exports.do_follow = function(req, res){
     //         return res.send(err); // 500 error
     //     }
     // });
-    // req.session.user.following.push(req.params.user_id);
-    // User.updateById(req.session.user._id,req.session.user,function(err, result){
+    // globals.user.following.push(req.params.user_id);
+    // User.updateById(globals.user._id,globals.user,function(err, result){
     //     if(!err){
     //
     //     }else{
@@ -128,7 +127,31 @@ exports.do_follow = function(req, res){
 };
 
 exports.do_unfollow = function(req, res){
-
+    var data = new Object();
+    User.get({_id:req.params.user_id}, function(err, result) {
+        if(!err){
+            result.email="ddd";
+            result.follower.push(globals.user._id);
+            for(var i = 0; i < result.follower.length; i++){
+                if(result.follower[i]  == golbals.user._id){
+                    delete result.follower[i];
+                }
+            }
+            User.updateById(req.params.user_id,result,function(err, result){
+                if(!err) {
+                    User.get({_id:req.params.user_id}, function(err, result) {
+                        if(!err){
+                            console.log(result);
+                        }
+                    });
+                    return res.json({code: 0, message: 'success', user_id: globals.user._id});
+                }// 500 error
+                else{
+                    return res.send(err);
+                }
+            });
+        }
+    });
 };
 
 exports.show_followlist = function(req, res){

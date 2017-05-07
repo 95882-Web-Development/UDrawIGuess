@@ -6,13 +6,12 @@ var globals = require('../model/global'); //<< globals.js path
 
 
 exports.get_global = function (req, res){
-    console.log("global get req: " + req.sessionID);
     Picture.getAll({},function(err,result){
         var pictures= result;
         if(!err){
             User.getAll({},function(err, result){
                 var data = new Object();
-                // data.my_id = req.session.user._id;
+                // data.my_id = globals.user._id;
                 data.my_id = globals.user._id;
                 data.ranking = [];
                 result.forEach(function(item, index){
@@ -28,16 +27,17 @@ exports.get_global = function (req, res){
 }
 
 exports.get_mine = function (req, res){
-    Picture.getAll({user_id:req.session.user._id},function(err,result){
+    Picture.getAll({user_id:globals.user._id},function(err,result){
         if(!err){
             var data = new Object();
             data.pictures = result;
-            data.my_id = req.session.user._id;
-            data.username = req.session.user.username;
-            data.following_num = req.session.user.following.length;
-            data.follower_num = req.session.user.follower.length;
-            data.guess_num = req.session.user.guess_num;
-            data.guess_correct_num = req.session.user.guess_correct_num;
+            data.my_id = globals.user._id;
+            data.username = globals.user.username;
+            data.following_num = globals.user.following.length;
+            data.follower_num = globals.user.follower.length;
+            data.guess_num = globals.user.guess_num;
+            data.guess_correct_num = globals.user.guess_correct_num;
+            
             return res.json(data);
         }else{
             return res.send(err); // 500 error
@@ -47,15 +47,15 @@ exports.get_mine = function (req, res){
 /** create function to create Company. */
 exports.create = function (req, res) {
     console.log("request: " + req.body.tag);
-    console.log("userid  "+req.session.user._id);
+    console.log("userid  "+globals.user._id);
     var data = req.body;
-    data.user_id = req.session.user._id;
+    data.user_id = globals.user._id;
 
     Picture.create(req.body, function(err, result) {
         if (!err) {
             console.log("result_id:"+result._id);
-            req.session.user.pictures_draw.push(result.id);
-            User.updateById(req.session.user._id,req.session.user,function(err,result){
+            globals.user.pictures_draw.push(result.id);
+            User.updateById(globals.user._id,globals.user,function(err,result){
                 if(!err){
                     return res.json({code:0, message:"success"});
                 }
