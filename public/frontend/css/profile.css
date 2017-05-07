@@ -57,9 +57,9 @@ span:hover {
   left: 50%;
   top: 250px;
   height: 50px;
-  position:absolute; 
-  z-index:1; 
-  transform:translate(-50%,0); 
+  position:absolute;
+  z-index:1;
+  transform:translate(-50%,0);
 }
 
 .follow-label{
@@ -78,10 +78,36 @@ span:hover {
   margin-left: 78px;
 }
 
+
+.fav-info{
+  left: 50%;
+  top: 310px;
+  height: 50px;
+  position:absolute;
+  z-index:1;
+  transform:translate(-50%,0);
+}
+
+.like-label{
+
+}
+
+#label-bookmark{
+  margin-left: 40px;
+}
+
+.fav-num{
+  padding-left: 15px;
+}
+
+#num-bookmark{
+  margin-left: 78px;
+}
+
 .btn-add-friend{
   position:absolute; 
   z-index:1; 
-  top:320px; 
+  top:370px;
   left:50%; 
   transform:translate(-50%,0); 
 }
@@ -89,7 +115,7 @@ span:hover {
 .personal-info{
   position:absolute; 
   z-index:1; 
-  top:380px; 
+  top:420px;
   left:50%; 
   transform:translate(-50%,0); 
 }

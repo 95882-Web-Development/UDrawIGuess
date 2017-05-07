@@ -129,7 +129,6 @@ var drawingApp = (function(){
 				body: JSON.stringify(data),
 			}).then(function(response){
 				// console.log("client response", response)
-				// var res_data = response.json();
 				// var success = true;
                 //
 				// if (response == null || response == undefined) {

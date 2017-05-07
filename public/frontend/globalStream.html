@@ -63,8 +63,12 @@
                     <img src="images/person2.jpeg" onclick="location.href='http://localhost:4000/frontend/profile.html';" class="img-circle" alt="personal icon" width="43" height="43">
                   </div>
                 </li>
+                  <li>
+                      <button id="btn_invite" type="button" class="btn btn-default btn-md btn-icon-left"><span class="glyphicon glyphicon-link" aria-hidden="true"></span>
+                      </button>
+                  </li>
                 <li>
-                    <button type="button" class="btn btn-default btn-md btn-icon-left"><span class="glyphicon glyphicon-bell" aria-hidden="true"></span>
+                    <button type="button" class="btn btn-default btn-md btn-icon-mid"><span class="glyphicon glyphicon-bell" aria-hidden="true"></span>
                     </button>
                 </li>
                 <li>
@@ -109,29 +113,13 @@
         <div id="picture_list" class="container posts-container">
 
           <!-- <div class="row"> -->
-            <div class="card">
-              <img src="images/empty_img.jpg" alt="Card image cap" width="200" height="200">
-              <p class="card-text">By: XXX</p>
-              <button class="btn-guess" data-toggle="modal" data-target="#guess-Modal">Guess it!</button>
-              <button class="btn-like"><span class="glyphicon glyphicon-heart" aria-hidden="true"></span></button>
-              <button class="btn-bookmark"><span class="glyphicon glyphicon-pushpin" aria-hidden="true"></span></button>
-            </div>
-
-            <div class="card">
-                <img src="images/empty_img.jpg" alt="Card image cap" width="200" height="200">
-                <p class="card-text">By: XXX</p>
-                <button class="btn-guess" data-toggle="modal" data-target="#guess-Modal">Guess it!</button>
-                <button class="btn-like"><span class="glyphicon glyphicon-heart" aria-hidden="true"></span></button>
-                <button class="btn-bookmark"><span class="glyphicon glyphicon-pushpin" aria-hidden="true"></span></button>
-            </div>
-
-            <div class="card">
-                <img src="images/empty_img.jpg" alt="Card image cap" width="200" height="200">
-                <p class="card-text">By: XXX</p>
-                <button class="btn-guess" data-toggle="modal" data-target="#guess-Modal">Guess it!</button>
-                <button class="btn-like"><span class="glyphicon glyphicon-heart" aria-hidden="true"></span></button>
-                <button class="btn-bookmark"><span class="glyphicon glyphicon-pushpin" aria-hidden="true"></span></button>
-            </div>
+            <!--<div class="card">-->
+              <!--<img src="images/empty_img.jpg" alt="Card image cap" width="200" height="200">-->
+              <!--<p class="card-text">By: XXX</p>-->
+              <!--<button class="btn-guess" data-toggle="modal" data-target="#guess-Modal">Guess it!</button>-->
+              <!--<button class="btn-like"><span class="glyphicon glyphicon-heart" aria-hidden="true"></span></button>-->
+              <!--<button class="btn-bookmark"><span class="glyphicon glyphicon-pushpin" aria-hidden="true"></span></button>-->
+            <!--</div>-->
 
         </div>
       </div>
@@ -144,7 +132,7 @@
 
     <!-- templates-->
     <li id="ranking_item_template" class="hide">
-        <a href="" class="ranking_username">Default title</a>
+        <a onClick="goToProfilePage(); return false;" class="ranking_username">Default title</a>
     </li>
 
     <div id="picture_item_template" class="hide">

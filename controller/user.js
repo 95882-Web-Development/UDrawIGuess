@@ -38,8 +38,8 @@ exports.login = function (req, res) {
             if(result !== null){
                 globals.user = result;
                 globals.user= result;
-                return res.render({code:0, message: 'success',user_id:result._id}); // 500 error
-                // return res.redirect('/frontend/globalStream.html');
+                //return res.render({code:0, message: 'success',user_id:result._id}); // 500 error
+                return res.redirect('/frontend/globalStream.html');
             }else{
             }
         }else{

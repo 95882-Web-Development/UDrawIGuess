@@ -11,6 +11,14 @@ body {
 }
 
 .btn-icon-left{
+	background-color:transparent;
+	border:none;
+	outline:none;
+	margin-top:10%;
+	margin-right:6px;
+}
+
+.btn-icon-mid{
   background-color:transparent; 
   border:none; 
   outline:none; 
@@ -24,6 +32,11 @@ body {
   outline:none; 
   margin-top:6%; 
   margin-right:30px
+}
+
+.glyphicon-link{
+	color:white !important;
+	font-size:2em !important;
 }
 
 .glyphicon-bell{

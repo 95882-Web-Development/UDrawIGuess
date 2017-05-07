@@ -2,26 +2,20 @@ $(document).ready(function () {
     init();
 })
 
+function goToProfilePage(e){
+    console.log("enter click ranking_username");
+    //location.href="http://localhost:4000/frontend/profile.html";
+    var rank_name = event.target;
+    var user_id = $(rank_name).attr("id");
+    localStorage.setItem("profile_user_id",user_id);
+    location.href = "http://localhost:4000/frontend/profile.html";
+}
+
 function init() {
     var ranking_item_template = $("#ranking_item_template");
     var picture_item_template = $("#picture_item_template");
 
     console.log("enter globalStream.init");
-
-    $("li.a.ranking_username").click(function (event) {
-        console.log("enter click ranking_username");
-        //location.href="http://localhost:4000/frontend/profile.html";
-        var rank_name = event.target;
-        var user_id = rank_name.attr("id");
-
-        var url = "http://localhost:4000/user/" + user_id;
-        fetch(url, {
-            method: "GET",
-        }).then(function(response) {
-            localStorage.setItem("profile_user_id",user_id);
-            location.href = "http://localhost:4000/frontend/profile.html";
-        });
-    });
 
     $(".btn-like").click(function(e){
         console.log("like button clicked");
@@ -50,21 +44,6 @@ function init() {
             localStorage.setItem("bookmark_res",response);
         });
     });
-
-    // $('body').on('click', 'a.ranking_username', function (event) {
-    //     console.log("enter click ranking_username");
-    //     location.href = "http://localhost:4000/frontend/profile.html";
-    //     var rank_name = event.target;
-    //     var user_id = rank_name.attr("id");
-    //
-    //     var url = "http://localhost:4000/user/:" + user_id;
-    //     fetch(url, {
-    //         method: "GET",
-    //     }).then(function(response) {
-    //         localStorage.setItem("profile_user_id",user_id);
-    //         window.location = "http://localhost:4000/frontend/profile.html";
-    //     });
-    // });
 
     function fetchGlobal() {
         return fetch("http://localhost:4000/global").then(function(response) {
@@ -98,7 +77,7 @@ function init() {
             new_item.addClass("ranking_item");
 
             new_item.find(".ranking_username").text(username);
-            new_item.find(".ranking_username").attr("href", href);
+            //new_item.find(".ranking_username").attr("href", href);
             new_item.find(".ranking_username").attr("id", user_id);
 
             var ranking_list = $("#ranking_list");
@@ -137,18 +116,6 @@ function init() {
 
     });
 
-    // fetch("http://localhost:4000/global", {
-    //     method: "GET",
-    // }).then(function(response){
-    //     var res = response;
-    //     console.log("first then: " + res);
-    // }).then(function(d){
-    //         var data = d;
-    //     console.log("second then: ", data);
-    //     //var data = JSON.parse(response);
-    //
-    //
-    // });
 }
 
 

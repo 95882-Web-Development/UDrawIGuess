@@ -5,6 +5,10 @@ body {
   opacity:0.93;
 }
 
+.navbar-right{
+	margin-right: 20px !important;
+}
+
 .img-circle{
   margin-top:10%; 
   margin-right:10px;

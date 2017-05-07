@@ -65,6 +65,14 @@ span:hover {
 }
 
 .btn-icon-left{
+  background-color:transparent;
+  border:none;
+  outline:none;
+  margin-top:10%;
+  margin-right:6px;
+}
+
+.btn-icon-mid{
   background-color:transparent; 
   border:none; 
   outline:none; 
@@ -78,6 +86,11 @@ span:hover {
   outline:none; 
   margin-top:6%; 
   margin-right:30px
+}
+
+.glyphicon-link{
+  color:white !important;
+  font-size:2em !important;
 }
 
 .glyphicon-bell{
@@ -149,7 +162,7 @@ span:hover {
 .card {
   float: left;
   width: 33.333%;
-  padding: 3rem;
+  padding: 2.5rem;
   margin-bottom: 2rem;
   border: 0;
 }
