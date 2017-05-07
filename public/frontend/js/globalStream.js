@@ -46,7 +46,9 @@ function init() {
     });
 
     function fetchGlobal() {
-        return fetch("http://localhost:4000/global").then(function(response) {
+        return fetch("http://localhost:4000/global", {
+            credentials: "same-origin"
+        }).then(function(response) {
             return response.json();
         }).then(function(json) {
             return json;

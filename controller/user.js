@@ -36,9 +36,10 @@ exports.login = function (req, res) {
     User.get({username: req.body.username}, function(err, result){
         if(!err){
             if(result !== null){
+                // req.session.user = result;
                 globals.user = result;
-                globals.user= result;
                 //return res.render({code:0, message: 'success',user_id:result._id}); // 500 error
+
                 return res.redirect('/frontend/globalStream.html');
             }else{
             }
@@ -49,6 +50,7 @@ exports.login = function (req, res) {
 }
 
 exports.logout = function (req, res){
+    console.log(req.session.user._id);
 
 }
 /** getCompany function to get Company by id. */
@@ -86,12 +88,19 @@ exports.do_follow = function(req, res){
                             console.log(result);
                         }
                     });
-                    return res.json({code: 0, message: 'success', user_id: globals.user._id});
                 }// 500 error
                 else{
                     return res.send(err);
                 }
             });
+        }
+    });
+    globals.user.following.push(req.params.user_id);
+    User.updateById(globals.user._id,globals.user,function(err, result){
+        if(!err){
+            return res.send(result);
+        }else{
+            return res.send(err);
         }
     });
     //
@@ -116,14 +125,6 @@ exports.do_follow = function(req, res){
     //         return res.send(err); // 500 error
     //     }
     // });
-    // globals.user.following.push(req.params.user_id);
-    // User.updateById(globals.user._id,globals.user,function(err, result){
-    //     if(!err){
-    //
-    //     }else{
-    //         return res.send(err);
-    //     }
-    // });
 };
 
 exports.do_unfollow = function(req, res){
@@ -131,12 +132,13 @@ exports.do_unfollow = function(req, res){
     User.get({_id:req.params.user_id}, function(err, result) {
         if(!err){
             result.email="ddd";
-            result.follower.push(globals.user._id);
             for(var i = 0; i < result.follower.length; i++){
-                if(result.follower[i]  == golbals.user._id){
-                    delete result.follower[i];
+                if(result.follower[i]  == globals.user._id){
+                   result.follower.splice(i,1);
+                    break;
                 }
             }
+
             User.updateById(req.params.user_id,result,function(err, result){
                 if(!err) {
                     User.get({_id:req.params.user_id}, function(err, result) {
@@ -144,19 +146,62 @@ exports.do_unfollow = function(req, res){
                             console.log(result);
                         }
                     });
-                    return res.json({code: 0, message: 'success', user_id: globals.user._id});
-                }// 500 error
+                }
                 else{
                     return res.send(err);
                 }
             });
+
+            for(var i = 0; i < globals.user.following.length; i++){
+                if(globals.user.following[i] == req.params.user_id) {
+                    globals.user.following.splice(i, 1);
+                    break;
+                }
+                // globals.user.following.push(req.params.user_id);
+            }
         }
+            User.updateById(globals.user._id,globals.user,function(err, result){
+                if(!err){
+                    res.send('success');
+                }else{
+                    return res.send(err);
+                }
+        });
     });
 };
 
-exports.show_followlist = function(req, res){
+exports.show_followlist = function(req, res) {
+    User.get({_id: globals.user.id}, function (err, result) {
+        if (!err) {
+            var count = 0;
+            var data = new Object();
+            data.follower = [];
+            data.following = [];
+            for (var i = 0; i < result.following.length; i++) {
+                User.get({_id: result.following[i]}, function (err, result) {
+                    data.following.push(result);
+                    count++;
+                    if(count === result.following.length + result.follower.length)
+                    {
+                        return res.json(data);
+                    }
+                });
+            }
 
-};
+            for (var i = 0; i < result.follower.length; i++) {
+                User.get({_id: result.follower[i]}, function (err, result) {
+                    data.follower.push(result);
+                    count++;
+                    if(count === result.following.length + result.follower.length) {
+                        return res.json(data);
+                    }
+                });
+            }
+        } else {
+            return res.send(err);
+        }
+    });
+}
 
 exports.do_like = function(req, res){
 
