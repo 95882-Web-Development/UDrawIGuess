@@ -14,7 +14,7 @@ function init() {
         var rank_name = event.target;
         var user_id = rank_name.attr("id");
 
-        var url = "http://localhost:4000/user/:" + user_id;
+        var url = "http://localhost:4000/user/" + user_id;
         fetch(url, {
             method: "GET",
         }).then(function(response) {
@@ -66,11 +66,17 @@ function init() {
     //     });
     // });
 
-    fetch("http://localhost:4000/global", {
-        method: "GET",
-    }).then(function(data){
-        console.log("get_keyword response", data);
-        //var data = JSON.parse(response);
+    function fetchGlobal() {
+        return fetch("http://localhost:4000/global").then(function(response) {
+            return response.json();
+        }).then(function(json) {
+            return json;
+        });
+    }
+
+    fetchGlobal().then(function(result) {
+        console.log(result);
+        var data = result;
         var my_id = data.my_id;
         var ranking = [];
         var pictures = [];
@@ -84,7 +90,7 @@ function init() {
             var user_id = ranking[i].user_id;
             var username = ranking[i].username;
 
-            var href = "/profile.html?user_id=" + user_id;
+            var href = "/profile.html/user/" + user_id;
 
             var new_item = ranking_item_template.clone();
             new_item.attr("id", user_id);
@@ -108,7 +114,7 @@ function init() {
             var tag = pictures[j].tag;
             var picture_src = pictures[j].picture;
 
-            var user_href = "/profile.html?user_id=" + user_id;
+            var user_href = "/profile.html/user/" + user_id;
 
             var new_item = picture_item_template.clone();
 
@@ -130,6 +136,19 @@ function init() {
         }
 
     });
+
+    // fetch("http://localhost:4000/global", {
+    //     method: "GET",
+    // }).then(function(response){
+    //     var res = response;
+    //     console.log("first then: " + res);
+    // }).then(function(d){
+    //         var data = d;
+    //     console.log("second then: ", data);
+    //     //var data = JSON.parse(response);
+    //
+    //
+    // });
 }
 
 
