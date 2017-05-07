@@ -68,9 +68,9 @@ function init() {
 
     fetch("http://localhost:4000/global", {
         method: "GET",
-    }).then(function(response){
-        console.log("get_keyword response", response);
-        var data = JSON.parse(response);
+    }).then(function(data){
+        console.log("get_keyword response", data);
+        //var data = JSON.parse(response);
         var my_id = data.my_id;
         var ranking = [];
         var pictures = [];

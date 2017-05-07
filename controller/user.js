@@ -3,8 +3,9 @@
 var User = require('../model/user').User;
 var Picture = require('../model/picture').Picture;
 var path    = require("path");
-
+var globals = require('../model/global'); //<< globals.js path
 /** create function to create Company. */
+
 exports.signup = function (req, res) {
     User.get({username: req.body.username}, function(err, result){
         if(!err){
@@ -17,6 +18,7 @@ exports.signup = function (req, res) {
                 User.create(newUser, function(err, result) {
                     if (!err) {
                         req.session.user = result;
+                        // globals.user= user;
                         res.redirect('/');
                     } else {
                         return res.json({error: 'user is exised'}); // 500 error
@@ -35,6 +37,8 @@ exports.login = function (req, res) {
         if(!err){
             if(result !== null){
                 req.session.user = result;
+                globals.user= result;
+                console.log("login session id" + req.sessionID);
                 // return res.render({code:0, message: 'success',user_id:result._id}); // 500 error
                 return res.redirect('/frontend/globalStream.html');
             }else{

@@ -2,16 +2,18 @@
 
 var Picture = require('../model/picture').Picture;
 var User = require('../model/user').User;
+var globals = require('../model/global'); //<< globals.js path
 
 
 exports.get_global = function (req, res){
-    console.log("global get req: " + req)
+    console.log("global get req: " + req.sessionID);
     Picture.getAll({},function(err,result){
         var pictures= result;
         if(!err){
             User.getAll({},function(err, result){
                 var data = new Object();
-                data.my_id = req.session.user._id;
+                // data.my_id = req.session.user._id;
+                data.my_id = globals.user._id;
                 data.ranking = [];
                 result.forEach(function(item, index){
                     data.ranking.push({user_id:item._id,username:item.username})
