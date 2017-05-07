@@ -2,6 +2,7 @@
 
 var User = require('../model/user').User;
 var Picture = require('../model/picture').Picture;
+var path    = require("path");
 
 /** create function to create Company. */
 exports.signup = function (req, res) {
@@ -34,7 +35,8 @@ exports.login = function (req, res) {
         if(!err){
             if(result !== null){
                 req.session.user = result;
-                return res.json({code:0, message: 'success',user_id:result._id}); // 500 error
+                // return res.render({code:0, message: 'success',user_id:result._id}); // 500 error
+                return res.sendFile(path.join(__dirname+'/../public/frontend/globalStream.html'));
             }else{
             }
         }else{

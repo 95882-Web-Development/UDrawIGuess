@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>MY APP</title>
+</head>
+<body>
+
+<form action="/signup" method="POST">
+    <label>signup</label>
+    <input type="text" placeholder="username" name="username">
+    <input type="text" placeholder="password" name="password">
+    <input type="text" placeholder="email" name="email">
+    <button type="submit">Submit</button>
+</form>
+<br>
+<form action="/login" method="POST">
+    <label>login</label>
+    <input type="text" placeholder="username" name="username">
+    <input type="text" placeholder="password" name="password">
+    <input type="text" placeholder="email" name="email">
+    <button type="submit">Submit</button>
+</form>
+<br>
+<form action="/picture_submit" method="POST">
+    <label>picuture_submit</label>
+    <input type="text" placeholder="Title" name="picture">
+    <input type="text" placeholder="image" name="tag">
+    <input type="text" placeholder="image" name="description">
+    <input type="text" placeholder="Answer" name="answer" value="apple">
+    <button type="submit">Submit</button>
+</form>
+</hr>
+
+
+<a href="/logout" >logout</a><br>
+<a href="/global" >global</a><br>
+<a href="/me" >me</a><br>
+
+<a href="/user/590da33f2ba4bae7e40c0089">user_id</a><br>
+<a href="/follow/590da33f2ba4bae7e40c0089" >follow</a><br>
+<a href="/unfollow/590da33f2ba4bae7e40c0089" >unfollow</a><br>
+
+<a href="/followlist" >followlist</a><br>
+<a href="/like/590da33f2ba4bae7e40c0089" >like</a><br>
+<a href="/dislike/590da33f2ba4bae7e40c0089">dislike</a>
+<a href="/show_bookmarks" >show_bookmarks</a><br>
+<a href="/invite">invite</a>
+
+</body>
+</html>
