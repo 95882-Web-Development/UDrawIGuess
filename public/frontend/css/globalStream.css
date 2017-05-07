@@ -36,7 +36,7 @@ span:hover {
 }
 
 .btn-guess{
-  margin-right: 95px;
+  margin-right: 75px;
   background: rgba(47, 118, 169, 0.94);
   border: #B13B3B;
   border-radius: 2px;
@@ -46,6 +46,14 @@ span:hover {
 .btn-like{
   background-color:transparent; 
   border:none; 
+  outline:none;
+  color:rgba(165, 28, 70, 0.57);
+  font-size: 1.25em;
+}
+
+.btn-bookmark{
+  background-color:transparent;
+  border:none;
   outline:none;
   color:rgba(165, 28, 70, 0.57);
   font-size: 1.25em;

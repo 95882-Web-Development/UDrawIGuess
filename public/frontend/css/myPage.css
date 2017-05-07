@@ -1,0 +1,286 @@
+body {
+  padding-top: 40px;
+  padding-bottom: 40px;
+  background-color: #eee;
+  /*background-image:url(../images/background.jpg); */
+  background-size: cover;  
+  height:auto; 
+  opacity:0.92;
+}
+
+button:hover {
+  background-color:#bdbdc1;
+  cursor: pointer;
+}
+
+span:hover {
+    color: #88aae2;
+    cursor: pointer;
+}
+
+.btn-to-draw{
+  position: fixed;
+  border-color: white;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  bottom: 80px;
+  right: 50px;
+  z-index: 100;
+  text-align: center;
+  background-color: #e3e5e8;
+}
+
+.icon-draw{
+  color: #990000;
+  font-size: 2em;
+  margin-top: 14px;
+  margin-left: 2px;
+}
+
+.navbar-nav > li > a {padding-top:5px !important; padding-bottom:5px !important;}
+.navbar {min-height:20px !important}
+
+.name-label{
+  position:absolute; 
+  z-index:1; 
+  top:218px; 
+  left:50%; 
+  transform:translate(-50%,0);
+}
+
+.profile-container{
+  opacity:0.95;
+}
+
+.follow-info{
+  left: 50%;
+  top: 250px;
+  height: 50px;
+  position:absolute; 
+  z-index:1; 
+  transform:translate(-50%,0); 
+}
+
+.follow-label{
+
+}
+
+#label-follower{
+  margin-left: 40px;
+}
+
+.follow-num{
+  padding-left: 15px;
+}
+
+#num-follower{
+  margin-left: 78px;
+}
+
+.fav-info{
+  left: 50%;
+  top: 310px;
+  height: 50px;
+  position:absolute;
+  z-index:1;
+  transform:translate(-50%,0);
+}
+
+.like-label{
+
+}
+
+#label-bookmark{
+  margin-left: 40px;
+}
+
+.fav-num{
+  padding-left: 15px;
+}
+
+#num-bookmark{
+  margin-left: 78px;
+}
+
+.personal-info{
+  position:absolute; 
+  z-index:1; 
+  top:380px;
+  left:50%; 
+  transform:translate(-50%,0); 
+}
+
+.btn-like{
+  margin-left: 10px;
+  background-color:transparent; 
+  border:none; 
+  outline:none;
+  color:rgba(165, 28, 70, 0.57);
+  font-size: 1.25em;
+}
+
+.btn-bookmark{
+  margin-left: 80px;
+  background-color:transparent;
+  border:none;
+  outline:none;
+  color:rgba(165, 28, 70, 0.57);
+  font-size: 1.25em;
+}
+
+.img-circle{
+  margin-top:10%; 
+  margin-right:10px;
+}
+
+.btn-icon-left{
+  background-color:transparent; 
+  border:none; 
+  outline:none; 
+  margin-top:10%; 
+  margin-right:2px;
+}
+
+.btn-icon-mid{
+  background-color:transparent; 
+  border:none; 
+  outline:none; 
+  margin-top:10%; 
+  margin-right:6px;
+}
+
+.btn-icon-right{
+  background-color:transparent; 
+  border:none; 
+  outline:none; 
+  margin-top:6%; 
+  margin-right:30px;
+}
+
+.nav-glyphicon{
+  color:white; 
+  font-size:2em;
+}
+
+.posts-container {
+  max-width: 90% !important;
+  margin-right: 0px !important;
+  margin-top: 20px;
+}
+
+.post-container{
+  text-align: left;
+  overflow:hidden;
+  position:relative;
+  background-color: white;
+  border-radius: 6px;
+  z-index:1;
+  background-size:cover;
+  padding-left: 2%;
+  padding-right: 2%;
+  height:150px;
+  width:90%;
+  margin-left:10%;
+  margin-right:10%;
+  margin-top:4%;
+}
+
+.post-photo{
+  position:absolute; 
+  z-index:1; 
+  top:15px; 
+  left:40px; 
+  transform:translate(-50%,0);
+}
+
+.post-name{
+  position:absolute; 
+  z-index:1; 
+  top:22px; 
+  left:125px; 
+  transform:translate(-50%,0);
+}
+
+.post-time{
+  position:absolute; 
+  z-index:1; 
+  top:24px; 
+  right:40px; 
+  /*transform:translate(-50%,0);*/
+  font-size:12px;
+}
+
+.btn-login{
+  background: none;
+  padding: 6px 25px;
+  border: 2px solid #B13B3B;
+  color: #B13B3B;
+  margin-left: -10%;
+}
+
+.btn-add{
+  text-align: center;
+  background: #880909;
+  padding: 6px 25px;
+  border: 2px solid #880909;
+  color: white;
+  width:100px;
+  height:35px;
+}
+
+.register-container{
+  text-align: center;
+  border-radius: 6px;
+  overflow:hidden;
+  position:absolute;
+  background-color: white;
+  z-index:1;
+  opacity:0.8;
+  background-size:cover;
+  padding-left: 2%;
+  padding-right: 2%;
+  height:100%;
+  width:70%;
+  margin-left:15%;
+  margin-right:15%;
+}
+
+log.container{
+   background-image:url("https://static.pexels.com/photos/26135/pexels-photo-26135.jpg");
+}
+
+.form-signin {
+  max-width: 330px;
+  padding: 15px;
+  margin: 0 auto;
+}
+.form-signin .form-signin-heading,
+.form-signin .checkbox {
+  margin-bottom: 10px;
+}
+.form-signin .checkbox {
+  font-weight: normal;
+}
+.form-signin .form-control {
+  position: relative;
+  height: auto;
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 10px;
+  font-size: 16px;
+}
+.form-signin .form-control:focus {
+  z-index: 2;
+}
+.form-signin input[type="email"] {
+  margin-bottom: -1px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+.form-signin input[type="password"] {
+  margin-bottom: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}

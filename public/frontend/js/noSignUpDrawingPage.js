@@ -115,63 +115,6 @@ var drawingApp = (function(){
 			clickDrag = new Array();
 		}, false);
 
-		$("#btn-submit").click(function(e){
-			var canvasTemp = document.getElementById("canvas");
-			var img_data = canvasTemp.toDataURL("image/png");
-		  	var image = document.getElementById("img-download");
-		  	image.src = img_data;
-
-			var data = {"picture": img_data, "tag":"this is tag", "description":"this is description"};
-
-			fetch("http://localhost:4000/picture_submit", {
-				method: "POST",
-				headers: {'Content-Type': 'application/json'},
-				body: JSON.stringify(data),
-			}).then(function(response){
-				// console.log("client response", response)
-				// var res_data = response.json();
-				// var success = true;
-                //
-				// if (response == null || response == undefined) {
-				//     success = false;
-				// }
-                //
-				// if (success) {
-				//     var code = res_data.code;
-				//     console.log("submit img returen code: " + code)
-				//     //location.href = "/profile.html"
-				// } else {
-				//     alert("Submit img failure: " + res_data.message);
-				// }
-			});
-
-		});
-
-        $("#btn-keyword").click(function(e){
-            var keyword = "computer";
-
-            fetch("http://localhost:4000/get_keyword", {
-                method: "GET",
-            }).then(function(response){
-                console.log("get_keyword response", response)
-                // var res_data = response.json();
-                // var success = true;
-                //
-                // if (response == null || response == undefined) {
-                //     success = false;
-                // }
-                //
-                // if (success) {
-                //     var code = res_data.code;
-                //     console.log("submit img returen code: " + code)
-                //     //location.href = "/profile.html"
-                // } else {
-                //     alert("Submit img failure: " + res_data.message);
-                // }
-            });
-
-        });
-
 	};
 	return {
 		init: init

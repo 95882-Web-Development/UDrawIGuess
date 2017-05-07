@@ -40,7 +40,7 @@
     <!-- Custom styles for this template -->
     <link href="css/grumblr.css" rel="stylesheet">
     <link href="css/globalStream.css" rel="stylesheet">
-    <link href="css/drawingPage.css" rel="stylesheet">
+    <link href="css/noSignUpDrawingPage.css" rel="stylesheet">
 
     <title>Drawing...In the Zone</title>
 
@@ -61,21 +61,10 @@
         </div>
         <div id="div-top-navbar" class="navbar-collapse collapse">
           <div class="nav navbar-right">
-              <ul class="nav navbar-nav navbar-right">
-                <li>
-                  <div>
-                    <img src="images/person2.jpeg" onclick="location.href='profile.html';" class="img-circle" alt="personal icon" width="43" height="43">
-                  </div>
-                </li>
-                <li>
-                    <button type="button" class="btn btn-default btn-md btn-icon-left"><span class="glyphicon glyphicon-bell" aria-hidden="true"></span>
-                    </button>
-                </li>
-                <li>
-                    <button type="button" class="btn btn-default btn-md btn-icon-right" onclick="location.href='login.html';" style=""><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>
-                    </button>
-                </li>
-              </ul>
+            <ul class="nav navbar-nav navbar-right">
+              <li class="nav-click"><a href="globalStream.html" class="nav-href">Log in</a></li>
+              <li class="nav-click"><a href="register.html" class="nav-href">Sign up</a></li>
+            </ul>
           </div>
           <form class="navbar-form navbar-left">
             
@@ -104,13 +93,10 @@
          <canvas id="canvas"></canvas>
       </div>
       <div class="right-lane">
-        <button id="btn-keyword" class="btn-right">Get Word!</button>
-        <br>
-        <a id="text-keyword" class="btn-right">Apple</a>
+        <h4 id="text-keyword">Start with drawing an Apple!</h4>
 
         <button id="btn-clear" class="btn-right">Clear</button>
-        <button id="btn-submit" class="btn-right">Submit</button>
-        <button id="btn-exit" class="btn-right">Exit</button>
+        <button id="btn-exit" onclick="location.href='http://localhost:4000/frontend/noSignUpGlobalStream.html';" class="btn-right">Exit</button>
 
         <button id="btn-download" class="btn-right">Download</button>
         <br><br>
@@ -146,7 +132,7 @@
     <!--<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js"></script>-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"></script>
     <!--[if IE]><script type="text/javascript" src="excanvas.js"></script><![endif]-->
-    <script type="text/javascript" src="js/drawingPage.js"></script>
+    <script type="text/javascript" src="js/noSignUpDrawingPage.js"></script>
     <script type="text/javascript">
       drawingApp.init();
     </script>

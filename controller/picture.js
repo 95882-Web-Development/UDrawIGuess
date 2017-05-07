@@ -5,6 +5,7 @@ var User = require('../model/user').User;
 
 
 exports.get_global = function (req, res){
+    console.log("global get req: " + req)
     Picture.getAll({},function(err,result){
         var pictures= result;
         if(!err){
@@ -43,9 +44,11 @@ exports.get_mine = function (req, res){
 }
 /** create function to create Company. */
 exports.create = function (req, res) {
+    console.log("request: " + req.body.tag);
     console.log("userid  "+req.session.user._id);
     var data = req.body;
     data.user_id = req.session.user._id;
+
     Picture.create(req.body, function(err, result) {
         if (!err) {
             console.log("result_id:"+result._id);
