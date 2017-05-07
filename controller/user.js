@@ -36,7 +36,7 @@ exports.login = function (req, res) {
             if(result !== null){
                 req.session.user = result;
                 // return res.render({code:0, message: 'success',user_id:result._id}); // 500 error
-                return res.sendFile(path.join(__dirname+'/../public/frontend/globalStream.html'));
+                return res.redirect('/frontend/globalStream.html');
             }else{
             }
         }else{
