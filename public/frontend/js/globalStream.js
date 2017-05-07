@@ -68,6 +68,9 @@ function init() {
 
     fetch("http://localhost:4000/global", {
         method: "GET",
+        xhrFields: {
+            withCredentials: true
+        }
     }).then(function(response){
         console.log("get_keyword response", response);
         var data = JSON.parse(response);
