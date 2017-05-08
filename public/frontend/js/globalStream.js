@@ -81,7 +81,7 @@ function clickBookmark(e) {
 
     if (bookmarkStatus == "0") {
 
-        var url = "http://localhost:4000/bookmark/" + pic_id;
+        var url = "http://localhost:4000/add_bookmarks/" + pic_id;
 
         function fetchBookmark() {
             return fetch(url).then(function (response) {

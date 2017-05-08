@@ -5,14 +5,23 @@ $(document).ready(function () {
 function init() {
     var picture_item_template = $("#picture_item_template");
 
-    console.log("enter globalStream.init");
+    console.log("enter mypage.init");
 
-    fetch("http://localhost:4000/me", {
-        method: "GET",
-    }).then(function(response){
-        console.log("get_keyword response", response);
-        var data = JSON.parse(response);
-        var my_id = data.my_id;
+    var url = "http://localhost:4000/me";
+
+    function fetchMe() {
+        return fetch(url).then(function (response) {
+            return response.json();
+        }).then(function (json) {
+            return json;
+        });
+    }
+
+    fetchMe().then(function (result) {
+        console.log(result);
+        var data = result;
+
+        var user_id = data.user_id;
         var username = data.username;
         var following_num = data.following_num;
         var follower_num = data.follower_num;
@@ -30,6 +39,9 @@ function init() {
         $("#num-bookmark").text(bookmark_by_num);
 
         for (var j = 0; j < pictures_len; j++) {
+
+            var user_id = pictures[j].user_id;
+            var username = pictures[j].username;
             var pic_id = pictures[j].picture_id;
             var like_num = pictures[j].like_num;
             var bookmark_num = pictures[j].bookmark_num;
@@ -45,9 +57,21 @@ function init() {
             new_item.addClass("card");
 
             new_item.find("#img_picture").attr("src", picture_src);
-            new_item.find("#description").text(des);
+            new_item.find("#img_picture").attr("id", pic_id);
+
+            new_item.find("#description").attr(des);
+
+            //new_item.find("#like_picture").attr("id", pic_id);
             new_item.find("#like_num").text(like_num);
+
+            //new_item.find("#bookmark_picture").attr("id", pic_id);
             new_item.find("#bookmark_num").text(bookmark_num);
+
+            new_item.find("#like_picture").css('color', 'rgba(165, 28, 70, 0.57)');
+            new_item.find("#like_picture").attr("value", "1");
+
+            new_item.find("#bookmark_picture").css('color', 'rgba(165, 28, 70, 0.57)');
+            new_item.find("#bookmark_picture").attr("value", "1");
 
             var picture_list = $("#picture_list");
             picture_list.append(new_item);
