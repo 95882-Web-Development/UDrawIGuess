@@ -109,6 +109,12 @@ function clickGuess(e){
     var btnGuess = event.target;
     var pic_id = $(btnGuess).attr("id");
 
+    $("#guess_madal_normal_body").removeClass();
+    $("#guess_madal_normal_body").addClass("modal-body");
+
+    $("#guess_madal_answer_body").removeClass();
+    $("#guess_madal_answer_body").addClass("hide");
+
     var url = "http://localhost:4000/picture/" + pic_id;
 
     function fetchPic() {
@@ -129,7 +135,75 @@ function clickGuess(e){
         $("#modal_guess_tag_content").text(tag);
         $("#modal_guess_img").attr("src", img_data);
         $("#modal_guess_tip").text("Tips: " + des);
+        $("#guess_modal_submit").attr("id", pic_id);
 
+    });
+}
+
+function checkAnswer(e){
+    var url = "http://localhost:4000/check_answer";
+    var btnGuess = event.target;
+    var pic_id = $(btnGuess).attr("id");
+    var guess_ans = $("#guess_modal input").val();
+
+    var data = {"picture_id": pic_id, "guess_word":guess_ans};
+
+    function fetchCheckAns() {
+        return fetch(url, {
+            method: "POST",
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify(data),
+        }).then(function (response) {
+            return response.json();
+        }).then(function (json) {
+            return json;
+        });
+    }
+
+    fetchCheckAns().then(function (result) {
+        console.log("guess submit: " + result);
+
+        if (result.code == "1"){
+            var answer = result.keyword;
+            $("#modal_guess_err_msg").text("Wrong Guess. Try Again!");
+        }
+        else{
+            $("#modal_guess_err_msg").text("Congrats! You guess it right!");
+        }
+    });
+}
+
+function getAnswer(e){
+    var url = "http://localhost:4000/check_answer";
+    var btnGuess = event.target;
+    var pic_id = $(btnGuess).attr("id");
+    var guess_ans = $("#guess_modal input").val();
+
+    var data = {"picture_id": pic_id, "guess_word":guess_ans};
+
+    function fetchCheckAns() {
+        return fetch(url, {
+            method: "POST",
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify(data),
+        }).then(function (response) {
+            return response.json();
+        }).then(function (json) {
+            return json;
+        });
+    }
+
+    fetchCheckAns().then(function (result) {
+        console.log("guess submit: " + result);
+        var answer = result.keyword;
+
+        $("#guess_madal_normal_body").removeClass();
+        $("#guess_madal_normal_body").addClass("hide");
+
+        $("#guess_madal_answer_body").removeClass();
+        $("#guess_madal_answer_body").addClass("modal-body");
+
+        $("#guess_madal_show_answer").text(answer);
     });
 }
 

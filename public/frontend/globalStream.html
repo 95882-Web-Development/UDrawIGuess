@@ -157,24 +157,30 @@
                 </button>
                 <h4 class="modal-title" id="guess-ModalLabel">Make a wild guess!</h4>
             </div>
-            <div class="modal-body">
+            <div id="guess_madal_normal_body" class="modal-body">
                 <div id="div_modal_guess_tag" class="div-modal-guess-tag">
                     <label id="modal_guess_tag_title">Tag:</label>
                     <label id="modal_guess_tag_content">tag content</label>
                 </div>
-
                 <img id="modal_guess_img" src="images/empty_img.jpg" class="img-modal" alt="Card image cap">
                 <br>
-                <form action="/action_page.php" class="guess-form">
-                    <div class="guess-form-input">
-                        Guess Answer: <input type="text" name="guess-input" class="guess-input-box">
-                        <input type="submit" value="Submit" class="btn-guess-submit">
-                    </div>
-                    <a id="modal_guess_tip" class="guess-tips">Tips: One word.</a>
-                </form>
+                <div id="div_guess_modal_form">
+                    <form action="/action_page.php" class="guess-form">
+                        <div class="guess-form-input">
+                            Guess Answer: <input id="guess_modal input" type="text" name="guess-input" class="guess-input-box">
+                            <input id="guess_modal_submit" onClick="checkAnswer(); return false;" type="submit" value="Submit" class="btn-guess-submit">
+                        </div>
+                        <label id="modal_guess_tip" class="guess-tips">Tips: One word.</label>
+                        <label id="modal_guess_err_msg"></label>
+                    </form>
+                </div>
+            </div>
+            <div id="guess_madal_answer_body" class="hide">
+                <h4>Answer is:</h4>
+                <h4 id="guess_madal_show_answer"></h4>
             </div>
             <div class="modal-footer">
-                <button type="button" id="btn-form-new-doc" class="btn btn-primary">Check the statistics behind</button>
+                <button id="guess_modal_check_ans" onClick="getAnswer(); return false;" type="button" id="btn-form-new-doc" class="btn btn-primary">Check the answer</button>
             </div>
         </div>
     </div>

@@ -250,3 +250,8 @@ span:hover {
   color: #337ab7;
 }
 
+#modal_guess_err_msg{
+    color: #B13B3B;
+}
+
+
