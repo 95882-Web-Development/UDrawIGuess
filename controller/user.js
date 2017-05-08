@@ -16,6 +16,9 @@ exports.signup = function (req, res) {
                 var newUser = req.body;
                 newUser.guess_num = 0;
                 newUser.guess_correct_num = 0;
+                newUser.liked_by_num = 0;
+                newUser.bookmarked_by_num = 0;
+                newUser.bookmark_num =0;
                 User.create(newUser, function(err, result) {
                     if (!err) {
                         globals.user = result;
@@ -258,11 +261,19 @@ exports.add_bookmarks = function(req, res){
     User.get({_id:globals.user._id}, function(err, result) {
         if(!err){
             result.pictures_mark.push(req.params.picture_id);
-            result.bookmarked_by_num ++;
+            result.bookmarked_by_num++;
             User.updateById(globals.user._id,result,function(err, result){
                 if(!err) {
-                    console.log(result);
-                    return res.json({code:0, message:"success"});
+                    Picture.get({_id:req.params.picture_id}, function(err, result){
+                        result.bookmark_num++;
+                        Picture.updateById(req.params.picture_id, result, function(err, result){
+                            if(!err){
+                                return res.json({code:0,message:'success'});
+                            }else{
+                                return res.send(err);
+                            }
+                        });
+                    });
                 }// 500 error
                 else{
                     return res.send(err);
@@ -283,7 +294,9 @@ exports.show_bookmarks = function(req, res){
                 return res.json({});
             for (var i = 0; i < length; i++) {
                 Picture.get({_id: result.pictures_mark[i]}, function (err, result) {
-                    data.pictures.push(result);
+                    if(result!=null){
+                        data.pictures.push(result);
+                    }
                     count++;
                     if(count == length)
                         return res.json(data);

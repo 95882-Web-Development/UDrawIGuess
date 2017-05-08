@@ -18,7 +18,7 @@ exports.get_global = function (req, res){
                 });
 
                 for(var i = 0; i < pictures.length; i++){
-                    for(var j = 0; j < pictures.like_users; j++){
+                    for(var j = 0; j < pictures[i].like_users.length; j++){
                         if(pictures[i].like_users[j] == globals.user._id){
                             pictures[i].has_like = 1;
                         }
@@ -79,6 +79,7 @@ exports.picture_submit = function (req, res) {
     console.log("userid  "+globals.user._id);
     var data = req.body;
     data.user_id = globals.user._id;
+    data.username = globals.user.username;
     data.like_num = 0;
     data.bookmark_num = 0;
     data.has_like = 0;

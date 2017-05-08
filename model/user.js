@@ -19,6 +19,7 @@ var UserSchema = new Schema({
     guess_correct_num: {type: Number},
     liked_by_num:{type: Number},
     bookmarked_by_num:{type: Number},
+    bookmark_num:{type:Number},
     pictures_draw:[String],
     pictures_mark:[String]
 });
