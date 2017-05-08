@@ -9,18 +9,23 @@
     <meta name="author" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-    <link rel="icon" href="../../favicon.ico">
+    <!--<script type="text/javascript" charset="utf-8" src="assets/js/jquery-3.1.0.min.js"></script>-->
+    <script type="text/javascript" charset="utf-8" src="assets/js/jquery-3.1.1.js"></script>
+    <script type="text/javascript" charset="utf-8" src="assets/js/tether.min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="assets/js/vue.min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="assets/js/lodash@4.16.0.js"></script>
+    <script type="text/javascript" charset="utf-8" src="assets/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 
     <title>Who are your friends?</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="dist/css/bootstrap.css" rel="stylesheet">
 
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <link href="/assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+    <link href="assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
     <link href="css/grumblr.css" rel="stylesheet">
@@ -28,8 +33,8 @@
 
     <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
     <!--[if lt IE 9]>
-    <script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
-    <script src="/assets/js/ie-emulation-modes-warning.js"></script>
+    <script src="assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <script src="assets/js/ie-emulation-modes-warning.js"></script>
 
 </head>
 
@@ -45,7 +50,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="login.html" href="#">U Draw I Guess</a>
+            <a class="navbar-brand" href="globalStream.html" href="#">U Draw I Guess</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <div class="nav navbar-right">
@@ -74,7 +79,7 @@
                     </li>
                     <li>
                         <button type="button" class="btn btn-default btn-md btn-icon-right"
-                                onclick="location.href='login.html';"><span
+                                onclick="logout(); return false;"><span
                                 class="glyphicon glyphicon-log-out nav-glyphicon" aria-hidden="true"></span>
                         </button>
                     </li>
@@ -97,12 +102,12 @@
             <h4>Follow List: </h4>
             <br>
             <ul class="follow-list">
-                <li>
-                    <div class="follow-entry">
-                        <img id="img-follow-entry" src="images/person1.jpg">
-                        <a onClick="goToProfilePage(); return false;" id="name-follow-entry" href=#>Name</a>
-                    </div>
-                </li>
+                <!--<li>-->
+                    <!--<div class="follow-entry">-->
+                        <!--<img id="img-follow-entry" src="images/person1.jpg">-->
+                        <!--<a onClick="goToProfilePage(); return false;" id="name-follow-entry" href=#>Name</a>-->
+                    <!--</div>-->
+                <!--</li>-->
             </ul>
         </div>
     </div>
@@ -111,12 +116,12 @@
             <h4>Follower List:</h4>
             <br>
             <ul class="follower-list">
-                <li>
-                    <div class="follower-entry">
-                        <img id="img-follower-entry" src="images/person3.jpeg">
-                        <a onClick="goToProfilePage(); return false;" id="name-follower-entry" href=#>Name</a>
-                    </div>
-                </li>
+                <!--<li>-->
+                    <!--<div class="follower-entry">-->
+                        <!--<img id="img-follower-entry" src="images/person3.jpeg">-->
+                        <!--<a onClick="goToProfilePage(); return false;" id="name-follower-entry" href=#>Name</a>-->
+                    <!--</div>-->
+                <!--</li>-->
             </ul>
         </div>
     </div>
@@ -215,5 +220,6 @@
 
 <script type="text/javascript" src="js/friendList.js"></script>
 <script type="text/javascript" src="js/publicFunction.js"></script>
+
 </body>
 </html>

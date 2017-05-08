@@ -92,6 +92,13 @@ exports.get_user = function (req, res) {
                     } else {
                         return res.send(err); // 500 error
                     }
+<<<<<<< Updated upstream
+=======
+                    if(count == draw_num) {
+                        console.log(data);
+                        return res.json(data);
+                    }
+>>>>>>> Stashed changes
                 });
             }
         } else {

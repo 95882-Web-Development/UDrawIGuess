@@ -34,10 +34,13 @@ function init() {
         var followerArr = [];
         var followingArr = [];
 
-        followerArr = followerArr.concat(data.followers);
-        followingArr = followingArr.concat(data.followers);
+        followerArr = followerArr.concat(data.follower);
+        followingArr = followingArr.concat(data.following);
         var followerNum = followerArr.length;
         var followingNum = followingArr.length;
+
+        console.log(followerNum);
+        console.log(followingNum);
 
         for (var i = 0; i < followingNum; i++){
             var user_id = followingArr[i].user_id;

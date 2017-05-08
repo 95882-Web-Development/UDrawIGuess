@@ -3,7 +3,9 @@ $(document).ready(function () {
 })
 
 function logout(e) {
-    var url = "http://localhost:4000/logout";
+    console.log("enter user logout");
+
+    var url = "http://localhost:4000/user_logout";
 
     function fetchLogout() {
         return fetch(url).then(function (response) {
@@ -16,6 +18,8 @@ function logout(e) {
     fetchLogout().then(function (result) {
         location.href = "http://localhost:4000/frontend/login.html";
     });
+
+    location.href = "http://localhost:4000/frontend/login.html";
 }
 
 function clickLike(e) {
@@ -48,10 +52,17 @@ function clickLike(e) {
             else{
                 $(btnLike).attr("value", "1");
                 $(btnLike).css('color', 'rgba(165, 28, 70, 0.57)');
+
+                var likeNum = $(btnLike).next();
+                var like_num = parseInt(likeNum.text())+1;
+                console.log(like_num);
+                $(likeNum).text(like_num);
             }
         });
     }
     else {
+        console.log("fetch for unlike with 1")
+
         var url = "http://localhost:4000/unlike/" + pic_id;
 
         function fetchUnlike() {
@@ -71,6 +82,11 @@ function clickLike(e) {
             else{
                 $(btnLike).attr("value", "0");
                 $(btnLike).css('color', 'gray');
+
+                var likeNum = $(btnLike).next();
+                var like_num = parseInt(likeNum.text())-1;
+                console.log(like_num);
+                $(likeNum).text(like_num);
             }
         });
     }
@@ -275,11 +291,17 @@ function init() {
         var my_id = data.my_id;
         var ranking = [];
         var pictures = [];
-        ranking = ranking.concat(data.ranking);
-        pictures = pictures.concat(data.pictures);
+        ranking = data.ranking;
+        pictures = data.pictures;
+
+        console.log(ranking)
+        console.log(pictures)
 
         var ranking_len = ranking.length;
         var pictures_len = pictures.length;
+
+        console.log(ranking_len)
+        console.log(pictures_len)
 
         for (var i = 0; i < ranking_len; i++) {
             var user_id = ranking[i].user_id;
