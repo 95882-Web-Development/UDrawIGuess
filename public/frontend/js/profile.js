@@ -2,61 +2,6 @@ $(document).ready(function () {
     init();
 })
 
-function clickLike(e) {
-
-    var btnLike = event.target;
-    var pic_id = $(btnLike).attr("id");
-    var likeStatus = $(btnLike).attr("value");
-    console.log(likeStatus);
-
-    if (likeStatus == "0") {
-        var url = "http://localhost:4000/like/" + pic_id;
-
-        function fetchLike() {
-            return fetch(url).then(function (response) {
-                return response.json();
-            }).then(function (json) {
-                return json;
-            });
-        }
-
-        fetchLike().then(function (result) {
-            console.log(result);
-
-            if (result.code == "1"){
-                console.log("ERROR: like incomplete");
-            }
-            else{
-                $(btnLike).attr("value", "1");
-                $(btnLike).css('color', 'rgba(165, 28, 70, 0.57)');
-            }
-        });
-    }
-    else {
-        var url = "http://localhost:4000/unlike/" + pic_id;
-
-        function fetchUnlike() {
-            return fetch(url).then(function (response) {
-                return response.json();
-            }).then(function (json) {
-                return json;
-            });
-        }
-
-        fetchUnlike().then(function (result) {
-            console.log(result);
-
-            if (result.code == "1"){
-                console.log("ERROR: unlike incomplete");
-            }
-            else{
-                $(btnLike).attr("value", "0");
-                $(btnLike).css('color', 'gray');
-            }
-        });
-    }
-}
-
 function clickBookmark(e) {
     var btnBookmark = event.target;
     var pic_id = $(btnBookmark).attr("id");
@@ -65,7 +10,7 @@ function clickBookmark(e) {
 
     if (bookmarkStatus == "0") {
 
-        var url = "http://localhost:4000/bookmark/" + pic_id;
+        var url = "http://localhost:4000/add_bookmarks/" + pic_id;
 
         function fetchBookmark() {
             return fetch(url).then(function (response) {

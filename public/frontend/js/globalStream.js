@@ -156,8 +156,8 @@ function clickGuess(e){
         $("#modal_guess_tag_content").text(tag);
         $("#modal_guess_img").attr("src", img_data);
         $("#modal_guess_tip").text("Tips: " + des);
-        $("#guess_modal_submit").attr("id", pic_id);
-        $("#guess_modal_check_ans").attr("id", pic_id);
+        $(".btn-guess-submit").attr("id", pic_id);
+        $(".guess-modal-check-ans").attr("id", pic_id);
     });
 }
 
@@ -221,6 +221,7 @@ function getAnswer(e){
     fetchCheckAns().then(function (result) {
         console.log("guess submit: " + result);
         var answer = result.keyword;
+        console.log("get keyword: " + answer);
 
         $("#guess_madal_normal_body").removeClass();
         $("#guess_madal_normal_body").addClass("hide");

@@ -1,4 +1,4 @@
-var User= require('../controller/user');
+var User = require('../controller/user');
 
 // API Server Endpoints
 module.exports = function(router){
