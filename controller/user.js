@@ -180,6 +180,7 @@ exports.show_followlist = function(req, res) {
         if (!err) {
             var count = 0;
             var data = new Object();
+            var length = result.following.length + result.follower.length;
             if(result.following.length + result.follower.length == 0)
                 return res.json({});
             data.follower = [];
@@ -188,7 +189,7 @@ exports.show_followlist = function(req, res) {
                 User.get({_id: result.following[i]}, function (err, result) {
                     data.following.push(result);
                     count++;
-                    if(count === result.following.length + result.follower.length)
+                    if(count === length)
                     {
                         return res.json(data);
                     }
@@ -199,7 +200,7 @@ exports.show_followlist = function(req, res) {
                 User.get({_id: result.follower[i]}, function (err, result) {
                     data.follower.push(result);
                     count++;
-                    if(count === result.following.length + result.follower.length) {
+                    if(count === length) {
                         return res.json(data);
                     }
                 });
