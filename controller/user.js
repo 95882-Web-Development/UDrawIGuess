@@ -81,12 +81,13 @@ exports.get_user = function (req, res) {
                     if (!err) {
                         data.pictures.push(result);
                         count++;
+                        if(count == draw_num) {
+                            console.log(data);
+                            return res.json(data);
+                        }
                     } else {
                         return res.send(err); // 500 error
                     }
-                    if(count == draw_num)
-                        console.log(data);
-                        return res.json(data);
                 });
             }
         } else {
