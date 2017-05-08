@@ -168,7 +168,7 @@ exports.do_unfollow = function(req, res){
                 if(!err) {
                     flag ++;
                     if(flag == 2){
-                        return res.json({code:1, message:"success"});
+                        return res.json({code:0, message:"success"});
                     }
                 }
                 else{

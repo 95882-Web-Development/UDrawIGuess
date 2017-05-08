@@ -27,6 +27,7 @@
     <input type="text" placeholder="Title" name="picture">
     <input type="text" placeholder="image" name="tag">
     <input type="text" placeholder="image" name="description">
+    <input type="text" placeholder="image" name="keyword" value = "banana">
     <input type="text" placeholder="Answer" name="answer" value="apple">
     <button type="submit">Submit</button>
 </form>
@@ -42,9 +43,16 @@
 
 <a href="/followlist" >followlist</a><br>
 <a href="/like/590fe680ebf420286d03b6f9" >like</a><br>
-<a href="/dislike/590fe680ebf420286d03b6f9">dislike</a>
-<a href="/show_bookmarks" >show_bookmarks</a><br>
-<a href="/invite">invite</a>
+<a href="/dislike/590fe680ebf420286d03b6f9">dislike</a><br>
+<a href="/get_keyword">get keyword</a><br>
+<form action="/check_answer" method="POST">
+    <label>check_keywords</label>
+    <input type="text" placeholder="Answer" name="picture_id" value="590ff601d3f5eb2b39466529">
+    <input type="text" placeholder="keyword" name="guess_word" value="banana">
+    <button type="submit">Submit</button>
+
+</form><a href="/show_bookmarks" >show_bookmarks</a><br>
+<a href="/invite">invite</a><br>
 
 </body>
 </html>

@@ -43,8 +43,9 @@ exports.get_mine = function (req, res){
         }
     })
 }
+
 /** create function to create Company. */
-exports.create = function (req, res) {
+exports.picture_submit = function (req, res) {
     console.log("request: " + req.body.tag);
     console.log("userid  "+globals.user._id);
     var data = req.body;
@@ -64,6 +65,39 @@ exports.create = function (req, res) {
                     return res.send(err);
                 }
             });
+        } else {
+            return res.send(err); // 500 error
+        }
+    });
+};
+
+exports.get_keyword = function(req, res){
+    var words = ["Apple", "Umbrella", "Banana", "Computer","Watermelon","Ice cream","T-shirt"]
+    var min = 0;
+    var max = words.length;
+    var index = Math.floor(Math.random() * (max - min)) + min;
+    console.log(words[index]);
+    return res.json({'keyword':words[index]});
+}
+
+exports.check_answer = function(req, res){
+    Picture.get({_id:req.body.picture_id}, function(err, result){
+        var code = 1;
+        if(!err && result != null){
+            if(result.keyword == req.body.guess_word){
+                code = 0;
+            }
+            return res.json({code:code,keyword: result.keyword});
+        }
+    });
+}
+
+/** getCompany function to get Company by id. */
+exports.get_picture = function (req, res) {
+    console.log(req.params.picture_id);
+    Picture.get({_id: req.params.picutre_id}, function(err, result) {
+        if (!err) {
+            return res.json(result);
         } else {
             return res.send(err); // 500 error
         }
