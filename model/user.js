@@ -20,7 +20,7 @@ var UserSchema = new Schema({
     liked_by_num:{type: Number},
     bookmarked_by_num:{type: Number},
     pictures_draw:[String],
-    pictures_mark:[String],
+    pictures_mark:[String]
 });
 
 UserSchema.statics = {
@@ -53,6 +53,7 @@ UserSchema.statics = {
     },
     create: function(data, callback) {
         var user = new this(data);
+        user.user_id = user._id;
         user.save(callback);
     }
 };

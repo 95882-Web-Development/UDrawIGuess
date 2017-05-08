@@ -51,6 +51,7 @@ exports.login = function (req, res) {
 
 exports.logout = function (req, res){
     globals.user = undefined;
+    return res.json({code:0, message:"success"});
 }
 /** getCompany function to get Company by id. */
 exports.get_user = function (req, res) {
@@ -214,7 +215,6 @@ exports.do_like = function(req, res){
         if(!err && result != null){
             result.like_users.push(globals.user._id);
             result.like_num ++;
-            result.has_like = 1;
             Picture.updateById(req.params.picture_id,result,function(err, result){
                 if(!err) {
                     return res.json({code:0, message:"success"});

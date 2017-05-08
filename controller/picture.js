@@ -7,7 +7,6 @@ var globals = require('../model/global'); //<< globals.js path
 
 exports.get_global = function (req, res){
     Picture.getAll({},function(err,result){
-        var pictures= result;
         if(!err){
             User.getAll({},function(err, result){
                 var data = new Object();
@@ -16,7 +15,23 @@ exports.get_global = function (req, res){
                 result.forEach(function(item, index){
                     data.ranking.push({user_id:item._id,username:item.username})
                 });
-                data.pictures = pictures;
+
+                for(var i = 0; i < result.length; i++){
+                    for(var j = 0; j < result.like_users; j++){
+                        if(result[i].like_users[j] == globals.user._id){
+                            result[i].has_like = 1;
+                        }
+                    }
+                }
+                for(var i = 0; i < result.length; i++){
+                    for(var j = 0; j < globals.user.pictures_mark.length; j++){
+                        if(result[i]._id == globals.user.pictures_mark[j]){
+                            result[i].has_bookmark = 1;
+                        }
+                    }
+                }
+
+                data.pictures = result;
                 return res.json(data);
             });
         }else{
@@ -29,6 +44,20 @@ exports.get_mine = function (req, res){
     Picture.getAll({user_id:globals.user._id},function(err,result){
         if(!err){
             var data = new Object();
+            for(var i = 0; i < result.length; i++){
+                for(var j = 0; j < result.like_users; j++){
+                    if(result[i].like_users[j] == globals.user._id){
+                        result[i].has_like = 1;
+                    }
+                }
+            }
+            for(var i = 0; i < result.length; i++){
+                for(var j = 0; j < globals.user.pictures_mark.length; j++){
+                    if(result[i]._id == globals.user.pictures_mark[j]){
+                        result[i].has_bookmark = 1;
+                    }
+                }
+            }
             data.pictures = result;
             data.my_id = globals.user._id;
             data.username = globals.user.username;
