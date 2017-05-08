@@ -13,10 +13,13 @@ var PictureSchema = new Schema({
     picture :{type: String},
     user_id:{type: String},
     username:{type: String},
-    answer:{type: String},
-    like_number:{type: Number},
+    keyword:{type: String},
+    like_num:{type: Number},
     tag: {type: String},
-    description: {type:String}
+    description: {type:String},
+    bookmark_num: {type: String},
+    has_like: {type: Number},
+    has_bookmark :{type: Number}
 });
 
 

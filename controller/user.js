@@ -19,9 +19,9 @@ exports.signup = function (req, res) {
                     if (!err) {
                         globals.user = result;
                         // globals.user= user;
-                        res.redirect('/');
+                        return res.redirect('/frontend/globalStream.html');
                     } else {
-                        return res.json({error: 'user is exised'}); // 500 error
+                        return res.json({code:1,message: 'user is exised',user_id:globals.user._id}); // 500 error
                     }
                 });
             }
@@ -39,9 +39,9 @@ exports.login = function (req, res) {
                 // req.session.user = result;
                 globals.user = result;
                 //return res.render({code:0, message: 'success',user_id:result._id}); // 500 error
-
                 return res.redirect('/frontend/globalStream.html');
             }else{
+                return res.json({code:1,message: 'log in error'}); // 500 error
             }
         }else{
             return res.send(err);
@@ -50,15 +50,44 @@ exports.login = function (req, res) {
 }
 
 exports.logout = function (req, res){
-    console.log(req.session.user._id);
-
+    globals.user = undefined;
 }
 /** getCompany function to get Company by id. */
 exports.get_user = function (req, res) {
     console.log(req.params.user_id);
     User.get({_id: req.params.user_id}, function(err, result) {
         if (!err) {
-            return res.json(result);
+            if(result == null){
+                return res.json({message:"user is not found"});
+            }
+            var data = new Object();
+            data.user_id = result._id;
+            data.username = result.username;
+            data.liked_by_num = result.liked_by_num;
+            data.bookmarked_by_num = result.bookmarked_by_num;
+            data.following_num = result.following.length;
+            data.follower_num = result.follower.length;
+            data.check_follow = 0;
+            data.pictures = [];
+            for(var i = 0; i < result.follower.length; i++){
+                if(result.follower[i] == globals.user._id)
+                    data.check_follow= 1;
+            }
+            var count = 0;
+            var draw_num = result.pictures_draw.length;
+            for(var i = 0; i < draw_num; i++){
+                Picture.get({_id: result.pictures_draw[i]}, function(err, result) {
+                    if (!err) {
+                        data.pictures.push(result);
+                        count++;
+                    } else {
+                        return res.send(err); // 500 error
+                    }
+                    if(count == draw_num)
+                        console.log(data);
+                        return res.json(data);
+                });
+            }
         } else {
             return res.send(err); // 500 error
         }
@@ -76,16 +105,21 @@ exports.getAll = function (req, res){
 };
 
 exports.do_follow = function(req, res){
-    var data = new Object();
     User.get({_id:req.params.user_id}, function(err, result) {
         if(!err){
-            result.email="ddd";
             result.follower.push(globals.user._id);
             User.updateById(req.params.user_id,result,function(err, result){
                 if(!err) {
                     User.get({_id:req.params.user_id}, function(err, result) {
                         if(!err){
-                            console.log(result);
+                            globals.user.following.push(req.params.user_id);
+                            User.updateById(globals.user._id,globals.user,function(err, result){
+                                if(!err){
+                                    return res.json({code:0, message:"success"});
+                                }else{
+                                    return res.send(err);
+                                }
+                            });
                         }
                     });
                 }// 500 error
@@ -93,14 +127,6 @@ exports.do_follow = function(req, res){
                     return res.send(err);
                 }
             });
-        }
-    });
-    globals.user.following.push(req.params.user_id);
-    User.updateById(globals.user._id,globals.user,function(err, result){
-        if(!err){
-            return res.send(result);
-        }else{
-            return res.send(err);
         }
     });
     //
@@ -128,10 +154,9 @@ exports.do_follow = function(req, res){
 };
 
 exports.do_unfollow = function(req, res){
-    var data = new Object();
     User.get({_id:req.params.user_id}, function(err, result) {
+        var flag = 0;
         if(!err){
-            result.email="ddd";
             for(var i = 0; i < result.follower.length; i++){
                 if(result.follower[i]  == globals.user._id){
                    result.follower.splice(i,1);
@@ -141,11 +166,10 @@ exports.do_unfollow = function(req, res){
 
             User.updateById(req.params.user_id,result,function(err, result){
                 if(!err) {
-                    User.get({_id:req.params.user_id}, function(err, result) {
-                        if(!err){
-                            console.log(result);
-                        }
-                    });
+                    flag ++;
+                    if(flag == 2){
+                        return res.json({code:1, message:"success"});
+                    }
                 }
                 else{
                     return res.send(err);
@@ -162,8 +186,10 @@ exports.do_unfollow = function(req, res){
         }
             User.updateById(globals.user._id,globals.user,function(err, result){
                 if(!err){
-                    res.send('success');
-                }else{
+                    flag ++;
+                    if(flag == 2){
+                        return res.json({code:1, message:"success"});
+                    }                }else{
                     return res.send(err);
                 }
         });
@@ -175,6 +201,8 @@ exports.show_followlist = function(req, res) {
         if (!err) {
             var count = 0;
             var data = new Object();
+            if(result.following.length + result.follower.length == 0)
+                return res.json({});
             data.follower = [];
             data.following = [];
             for (var i = 0; i < result.following.length; i++) {

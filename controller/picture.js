@@ -11,7 +11,6 @@ exports.get_global = function (req, res){
         if(!err){
             User.getAll({},function(err, result){
                 var data = new Object();
-                // data.my_id = globals.user._id;
                 data.my_id = globals.user._id;
                 data.ranking = [];
                 result.forEach(function(item, index){
@@ -50,10 +49,12 @@ exports.create = function (req, res) {
     console.log("userid  "+globals.user._id);
     var data = req.body;
     data.user_id = globals.user._id;
-
-    Picture.create(req.body, function(err, result) {
+    data.like_num = 0;
+    data.bookmark_num = 0;
+    data.has_like = 0;
+    data.has_bookmark = 0;
+    Picture.create(data, function(err, result) {
         if (!err) {
-            console.log("result_id:"+result._id);
             globals.user.pictures_draw.push(result.id);
             User.updateById(globals.user._id,globals.user,function(err,result){
                 if(!err){

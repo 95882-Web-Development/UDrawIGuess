@@ -9,6 +9,7 @@ var mongoose = require('mongoose'),
  */
 
 var UserSchema = new Schema({
+    user_id: {type: String},
     username: { type: String },
     password: { type: String },
     email :{type: String},
@@ -16,14 +17,13 @@ var UserSchema = new Schema({
     follower:[String],
     guess_num: {type: Number},
     guess_correct_num: {type: Number},
-    like_by_num:{type: Number},
+    liked_by_num:{type: Number},
+    bookmarked_by_num:{type: Number},
     pictures_draw:[String],
     pictures_mark:[String],
 });
 
-
 UserSchema.statics = {
-
     /**
      findOnecompany. return the one company object.
      @param id: get id to find one company by id.
