@@ -22,6 +22,7 @@ function clickLike(e) {
 
     var btnLike = event.target;
     var pic_id = $(btnLike).attr("id");
+    console.log(pic_id);
     var likeStatus = $(btnLike).attr("value");
     console.log(likeStatus);
 
@@ -136,7 +137,7 @@ function clickGuess(e){
         $("#modal_guess_img").attr("src", img_data);
         $("#modal_guess_tip").text("Tips: " + des);
         $("#guess_modal_submit").attr("id", pic_id);
-
+        $("#guess_modal_check_ans").attr("id", pic_id);
     });
 }
 
@@ -144,9 +145,10 @@ function checkAnswer(e){
     var url = "http://localhost:4000/check_answer";
     var btnGuess = event.target;
     var pic_id = $(btnGuess).attr("id");
-    var guess_ans = $("#guess_modal input").val();
+    var guess_ans = $("#guess_modal_input").val();
 
     var data = {"picture_id": pic_id, "guess_word":guess_ans};
+    console.log("checkAnswer: guess " + guess_ans);
 
     function fetchCheckAns() {
         return fetch(url, {
@@ -154,6 +156,7 @@ function checkAnswer(e){
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify(data),
         }).then(function (response) {
+            console.log(response);
             return response.json();
         }).then(function (json) {
             return json;
@@ -177,7 +180,9 @@ function getAnswer(e){
     var url = "http://localhost:4000/check_answer";
     var btnGuess = event.target;
     var pic_id = $(btnGuess).attr("id");
-    var guess_ans = $("#guess_modal input").val();
+    var guess_ans = $("#guess_modal_input").val();
+
+    console.log("checkAnswer: guess " + guess_ans);
 
     var data = {"picture_id": pic_id, "guess_word":guess_ans};
 
@@ -326,21 +331,21 @@ function init() {
             new_item.find("#owner_name").attr("id", user_id);
 
             if (has_like == "0") {
-                new_item.find("#like_picture").css('color', 'gray');
-                new_item.find("#like_picture").attr("value", "0");
+                new_item.find(".btn-like").css("color", "gray");
+                new_item.find(".btn-like").attr("value", "0");
             }
             else {
-                new_item.find("#like_picture").css('color', 'rgba(165, 28, 70, 0.57)');
-                new_item.find("#like_picture").attr("value", "1");
+                new_item.find(".btn-like").css("color", "rgba(165, 28, 70, 0.57)");
+                new_item.find(".btn-like").attr("value", "1");
             }
 
             if (has_bookmark == "0") {
-                new_item.find("#bookmark_picture").css('color', 'gray');
-                new_item.find("#bookmark_picture").attr("value", "0");
+                new_item.find(".btn-bookmark").css("color", 'gray');
+                new_item.find(".btn-bookmark").attr("value", "0");
             }
             else {
-                new_item.find("#bookmark_picture").css('color', 'rgba(165, 28, 70, 0.57)');
-                new_item.find("#bookmark_picture").attr("value", "1");
+                new_item.find(".btn-bookmark").css('color', 'rgba(165, 28, 70, 0.57)');
+                new_item.find(".btn-bookmark").attr("value", "1");
             }
 
             var picture_list = $("#picture_list");

@@ -211,11 +211,13 @@
     <img id="img_picture" src="images/empty_img.jpg" alt="Card image cap" width="200" height="200">
     <a id="owner_name" class="card-text">By: XXX</a>
     <button id="guessbtn_picture" class="btn-guess" data-toggle="modal" data-target="#guess-Modal">Guess it!</button>
-    <button onClick="clickLike(); return false;" id="like_picture" class="btn-like"><span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
+    <button onClick="clickLike(); return false;" id="like_picture"
+            class="btn-like glyphicon glyphicon-heart" aria-hidden="true">
     </button>
     <label id="like_num" class="like-num"></label>
-    <button onClick="clickBookmark(); return false;" id="bookmark_picture" class="btn-bookmark"><span class="glyphicon glyphicon-bookmark"
-                                                             aria-hidden="true"></span></button>
+    <button onClick="clickBookmark(); return false;" id="bookmark_picture"
+            aria-hidden="true" class="btn-bookmark glyphicon glyphicon-bookmark">
+    </button>
     <label id="bookmark_num" class="bookmark-num"></label>
 </div>
 

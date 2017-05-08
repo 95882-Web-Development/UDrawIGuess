@@ -133,15 +133,17 @@
     <div>
         <a onClick="goToProfilePage(); return false;" id="owner_name" class="card-text">By: XXX</a>
     </div>
-    <button onClick="clickGuess(); return false;" id="guessbtn_picture" class="btn-guess" data-toggle="modal" data-target="#guess-Modal">Guess
+    <button onClick="clickGuess(); return false;" id="guessbtn_picture"
+            class="btn-guess" data-toggle="modal" data-target="#guess-Modal">Guess
         it!
     </button>
-    <button onClick="clickLike(); return false;" id="like_picture" class="btn-like"><span class="glyphicon glyphicon-heart"
-                                                     aria-hidden="true"></span>
+    <button onClick="clickLike(); return false;" id="like_picture"
+            class="btn-like glyphicon glyphicon-heart" aria-hidden="true">
     </button>
     <label id="like_num" class="like-num">33</label>
-    <button onClick="clickBookmark(); return false;" id="bookmark_picture" class="btn-bookmark"><span class="glyphicon glyphicon-bookmark"
-                                                             aria-hidden="true"></span></button>
+    <button onClick="clickBookmark(); return false;" id="bookmark_picture"
+            aria-hidden="true" class="btn-bookmark glyphicon glyphicon-bookmark">
+    </button>
     <label id="bookmark_num" class="bookmark-num">56</label>
 </div>
 <!-- END templates-->
@@ -167,7 +169,7 @@
                 <div id="div_guess_modal_form">
                     <form action="/action_page.php" class="guess-form">
                         <div class="guess-form-input">
-                            Guess Answer: <input id="guess_modal input" type="text" name="guess-input" class="guess-input-box">
+                            Guess Answer: <input id="guess_modal_input" type="text" name="guess-input" class="guess-input-box">
                             <input id="guess_modal_submit" onClick="checkAnswer(); return false;" type="submit" value="Submit" class="btn-guess-submit">
                         </div>
                         <label id="modal_guess_tip" class="guess-tips">Tips: One word.</label>
@@ -176,7 +178,7 @@
                 </div>
             </div>
             <div id="guess_madal_answer_body" class="hide">
-                <h4>Answer is:</h4>
+                <h5>Answer is:</h5>
                 <h4 id="guess_madal_show_answer"></h4>
             </div>
             <div class="modal-footer">
