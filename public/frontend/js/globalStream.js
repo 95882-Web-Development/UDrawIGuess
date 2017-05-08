@@ -27,6 +27,8 @@ function clickLike(e) {
     console.log(likeStatus);
 
     if (likeStatus == "0") {
+        console.log("fetch for likestatus 0");
+
         var url = "http://localhost:4000/like/" + pic_id;
 
         function fetchLike() {
@@ -115,6 +117,8 @@ function clickGuess(e){
 
     $("#guess_madal_answer_body").removeClass();
     $("#guess_madal_answer_body").addClass("hide");
+    $('#guess_modal_input').val('');
+    $("#modal_guess_err_msg").text('');
 
     var url = "http://localhost:4000/picture/" + pic_id;
 

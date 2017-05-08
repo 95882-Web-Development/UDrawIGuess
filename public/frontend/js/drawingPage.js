@@ -115,8 +115,6 @@ var drawingApp = (function(){
 
 			var canvasTemp = document.getElementById("canvas");
 			var img_data = canvasTemp.toDataURL("image/png");
-		  	var image = document.getElementById("img-download");
-		  	image.src = img_data;
 
 			var data = {"picture": img_data, "tag":tag, "description":des, "keyword":keyword};
 
@@ -140,15 +138,21 @@ var drawingApp = (function(){
 		});
 
         $("#btn-keyword").click(function(e){
-            var keyword = "computer";
 
-            fetch("http://localhost:4000/get_keyword", {
-                method: "GET",
-            }).then(function(response){
-                console.log("get_keyword response", response);
+            var url = "http://localhost:4000/get_keyword";
 
-                $("#text-keyword").text(response.keyword);
+            function fetchKeyword() {
+                return fetch(url).then(function (response) {
+                    return response.json();
+                }).then(function (json) {
+                    return json;
+                });
+            }
 
+            fetchKeyword().then(function (result) {
+                console.log(result);
+
+                $("#text-keyword").text(result.keyword);
             });
 
         });
