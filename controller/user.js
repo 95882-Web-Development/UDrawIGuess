@@ -129,28 +129,6 @@ exports.do_follow = function(req, res){
             });
         }
     });
-    //
-    // User.get({_id: req.params.user_id}, function(err, result) {
-    //     if (!err) {
-    //         var data = result;
-    //         data.follower.push(globals.user._id);
-    //         User.updateById(req.param.user_id,data,function(err, result){
-    //             if(!err) {
-    //                 User.get({_id: req.params.user_id}, function(err, result) {
-    //                     if(!err){
-    //                         console.log(result);
-    //                     }
-    //                 });
-    //                 return res.json({code: 0, message: 'success', user_id: globals.user._id});
-    //             }// 500 error
-    //             else{
-    //                 return res.send(err);
-    //             }
-    //         });
-    //     } else {
-    //         return res.send(err); // 500 error
-    //     }
-    // });
 };
 
 exports.do_unfollow = function(req, res){
@@ -239,8 +217,45 @@ exports.do_dislike = function(req, res){
 
 };
 
-exports.show_bookmarks = function(req, res){
+exports.add_bookmarks = function(req, res){
+    User.get({_id:globals.user._id}, function(err, result) {
+        if(!err){
+            result.pictures_mark.push(req.params.picture_id);
+            result.bookmarked_by_num ++;
+            User.updateById(globals.user._id,result,function(err, result){
+                if(!err) {
+                    console.log(result);
+                    return res.json({code:0, message:"success"});
+                }// 500 error
+                else{
+                    return res.send(err);
+                }
+            });
+        }
+    });
+}
 
+exports.show_bookmarks = function(req, res){
+    User.get({_id: globals.user.id}, function (err, result) {
+        if (!err) {
+            var data = new Object();
+            var count = 0;
+            data.pictures = [];
+            var length = result.pictures_mark.length
+            if(length == 0)
+                return res.json({});
+            for (var i = 0; i < length; i++) {
+                Picture.get({_id: result.pictures_mark[i]}, function (err, result) {
+                    data.pictures.push(result);
+                    count++;
+                    if(count == length)
+                        return res.json(data);
+                });
+            }
+        }else{
+            return res.send(err);
+        }
+    });
 };
 
 

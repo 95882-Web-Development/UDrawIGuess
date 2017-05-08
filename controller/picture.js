@@ -95,7 +95,7 @@ exports.check_answer = function(req, res){
 /** getCompany function to get Company by id. */
 exports.get_picture = function (req, res) {
     console.log(req.params.picture_id);
-    Picture.get({_id: req.params.picutre_id}, function(err, result) {
+    Picture.get({_id: req.params.picture_id}, function(err, result) {
         if (!err) {
             return res.json(result);
         } else {
