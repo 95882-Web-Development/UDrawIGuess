@@ -210,11 +210,45 @@ exports.show_followlist = function(req, res) {
 }
 
 exports.do_like = function(req, res){
-
+    Picture.get({_id:req.params.picture_id}, function(err, result) {
+        if(!err && result != null){
+            result.like_users.push(globals.user._id);
+            result.like_num ++;
+            result.has_like = 1;
+            Picture.updateById(req.params.picture_id,result,function(err, result){
+                if(!err) {
+                    return res.json({code:0, message:"success"});
+                }// 500 error
+                else{
+                    return res.send(err);
+                }
+            });
+        }
+    });
 };
 
 exports.do_dislike = function(req, res){
-
+    Picture.get({_id:req.params.picture_id}, function(err, result) {
+        if(!err){
+            for(var i = 0; i < result.like_users.length; i++)
+            {
+                if(result.like_users[i] == globals.user._id){
+                    result.like_users.splice(i,1);
+                    result.like_num --;
+                    result.has_like = 0;
+                }
+            }
+            Picture.updateById(req.params.picture_id,result,function(err, result){
+                if(!err) {
+                    console.log(result);
+                    return res.json({code:0, message:"success"});
+                }// 500 error
+                else{
+                    return res.send(err);
+                }
+            });
+        }
+    });
 };
 
 exports.add_bookmarks = function(req, res){
@@ -258,6 +292,10 @@ exports.show_bookmarks = function(req, res){
     });
 };
 
+exports.invite = function(req, res){
+    var email = req.body.email;
+
+}
 
 /** updateCompany function to get Company by id. */
 exports.update = function (req, res) {

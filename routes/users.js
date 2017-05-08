@@ -9,10 +9,11 @@ module.exports = function(router){
       router.get('/follow/:user_id', User.do_follow),
       router.get('/unfollow/:user_id', User.do_unfollow),
       router.get('/followlist', User.show_followlist),
-      router.get('/like/:user_id', User.do_like),
-      router.get('/dislike/:user_id', User.do_dislike),
+      router.get('/like/:picture_id', User.do_like),
+      router.get('/dislike/:picture_id', User.do_dislike),
       router.get('/show_bookmarks',User.show_bookmarks),
           router.get('/add_bookmarks/:picture_id',User.add_bookmarks),
           router.post('/user_update/:user_id', User.update),
-      router.get('/user_logout', User.logout)
+      router.get('/user_logout', User.logout),
+          router.post('/invite', User.invite)
 };

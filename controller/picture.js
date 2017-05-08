@@ -36,7 +36,6 @@ exports.get_mine = function (req, res){
             data.follower_num = globals.user.follower.length;
             data.guess_num = globals.user.guess_num;
             data.guess_correct_num = globals.user.guess_correct_num;
-            
             return res.json(data);
         }else{
             return res.send(err); // 500 error

@@ -15,6 +15,7 @@ var PictureSchema = new Schema({
     username:{type: String},
     keyword:{type: String},
     like_num:{type: Number},
+    like_users:[String],
     tag: {type: String},
     description: {type:String},
     bookmark_num: {type: String},
