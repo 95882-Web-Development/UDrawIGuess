@@ -4,6 +4,7 @@ var User = require('../model/user').User;
 var Picture = require('../model/picture').Picture;
 var path    = require("path");
 var globals = require('../model/global'); //<< globals.js path
+var nodemailer = require('nodemailer');
 /** create function to create Company. */
 
 exports.signup = function (req, res) {
@@ -296,7 +297,30 @@ exports.show_bookmarks = function(req, res){
 
 exports.invite = function(req, res){
     var email = req.body.email;
-
+    var transporter = nodemailer.createTransport({
+        service: 'Gmail',
+        auth: {
+            user: 'jasoncmu2016@gmail.com', // Your email id
+            pass: 'chenjiasen' // Your password
+        }
+    });
+    var text = 'UDrawIGuess Invitaion from \n\n' + globals.user.username;
+    var mailOptions = {
+        from: 'jasoncmu2016@gmail.com', // sender address
+        to: 'jasonvivi.chen@gmail.com', // list of receivers
+        subject: text, // Subject line
+        text: text //, // plaintext body
+        // html: '<b>Hello world ✔</b>' // You can choose to send an HTML body instead
+    };
+    transporter.sendMail(mailOptions, function(error, info){
+        if(error){
+            console.log(error);
+            res.json({yo: 'error'});
+        }else{
+            console.log('Message sent: ' + info.response);
+            res.json({yo: info.response});
+        };
+    });
 }
 
 /** updateCompany function to get Company by id. */
