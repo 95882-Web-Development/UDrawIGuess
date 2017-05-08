@@ -121,7 +121,7 @@ span:hover {
 }
 
 .btn-guess{
-  margin-right: 95px;
+  margin-right: 40px;
   background: rgba(47, 118, 169, 0.94);
   border: #B13B3B;
   border-radius: 2px;
@@ -131,6 +131,14 @@ span:hover {
 .btn-like{
   background-color:transparent; 
   border:none; 
+  outline:none;
+  color:rgba(165, 28, 70, 0.57);
+  font-size: 1.25em;
+}
+
+.btn-bookmark{
+  background-color:transparent;
+  border:none;
   outline:none;
   color:rgba(165, 28, 70, 0.57);
   font-size: 1.25em;
@@ -289,4 +297,57 @@ log.container{
   margin-bottom: 10px;
   border-top-left-radius: 0;
   border-top-right-radius: 0;
+}
+
+.img-modal{
+  width: 400px;
+  height: 400px;
+  display: block;
+  margin: 0 auto;
+}
+
+.guess-form-input{
+  display: block;
+  margin-left: 80px;
+}
+
+.guess-tips{
+  margin-left: 180px;
+}
+
+.guess-input{
+}
+
+.btn-guess-submit{
+  margin-left: 80px;
+  background: #a94442;
+  border: #B13B3B;
+  border-radius: 2px;
+  color: white;
+}
+
+.btn-invite-submit{
+  margin-left: 20px;
+  background: #a94442;
+  border: #B13B3B;
+  border-radius: 2px;
+  color: white;
+}
+
+.btn-flag-submit{
+  margin-left: 10px;
+  background: #a94442;
+  border: #B13B3B;
+  border-radius: 2px;
+  color: white;
+}
+
+.guess-form{
+  display: block;
+  margin: 0 auto;
+}
+
+.textarea-flag{
+  width: 450px;
+  height: 100px ;
 }

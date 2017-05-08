@@ -246,6 +246,32 @@ span:hover {
   margin-right:15%;
 }
 
+.btn-invite-submit{
+  margin-left: 20px;
+  background: #a94442;
+  border: #B13B3B;
+  border-radius: 2px;
+  color: white;
+}
+
+.btn-flag-submit{
+  margin-left: 10px;
+  background: #a94442;
+  border: #B13B3B;
+  border-radius: 2px;
+  color: white;
+}
+
+.guess-form{
+  display: block;
+  margin: 0 auto;
+}
+
+.textarea-flag{
+  width: 450px;
+  height: 100px ;
+}
+
 log.container{
    background-image:url("https://static.pexels.com/photos/26135/pexels-photo-26135.jpg");
 }

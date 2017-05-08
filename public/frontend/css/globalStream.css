@@ -36,7 +36,7 @@ span:hover {
 }
 
 .btn-guess{
-  margin-right: 75px;
+  margin-right: 40px;
   background: rgba(47, 118, 169, 0.94);
   border: #B13B3B;
   border-radius: 2px;
@@ -95,6 +95,11 @@ span:hover {
 
 .glyphicon-bell{
   color:white !important; 
+  font-size:2em !important;
+}
+
+.glyphicon-flag{
+  color:white !important;
   font-size:2em !important;
 }
 
@@ -212,8 +217,36 @@ span:hover {
   color: white;
 }
 
+.btn-invite-submit{
+  margin-left: 40px;
+  background: #a94442;
+  border: #B13B3B;
+  border-radius: 2px;
+  color: white;
+}
+
+.btn-flag-submit{
+  margin-left: 10px;
+  background: #a94442;
+  border: #B13B3B;
+  border-radius: 2px;
+  color: white;
+}
+
 .guess-form{
   display: block;
   margin: 0 auto;
+}
+
+.textarea-flag{
+  width: 450px;
+  height: 100px ;
+}
+
+.div-modal-guess-tag{
+  margin-left: 80px;
+  font-size: 1.2em;
+  margin-bottom: 5px;
+  color: #337ab7;
 }
 

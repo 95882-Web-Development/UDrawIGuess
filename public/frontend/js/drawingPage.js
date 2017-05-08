@@ -128,20 +128,17 @@ var drawingApp = (function(){
 				headers: {'Content-Type': 'application/json'},
 				body: JSON.stringify(data),
 			}).then(function(response){
-				// console.log("client response", response)
-				// var success = true;
-                //
-				// if (response == null || response == undefined) {
-				//     success = false;
-				// }
-                //
-				// if (success) {
-				//     var code = res_data.code;
-				//     console.log("submit img returen code: " + code)
-				//     //location.href = "/profile.html"
-				// } else {
-				//     alert("Submit img failure: " + res_data.message);
-				// }
+			    console.log("drawing submit: " + response);
+
+                if (response.code == "1"){
+                    var errorElement = document.getElementById("submit-error-msg");
+                    errorElement.text("Submission Error, please submit again");
+                    errorElement.style.color = "#bf4040";
+                }
+                else{
+                    location.href = "globalStream.html";
+                }
+
 			});
 
 		});
@@ -152,21 +149,10 @@ var drawingApp = (function(){
             fetch("http://localhost:4000/get_keyword", {
                 method: "GET",
             }).then(function(response){
-                console.log("get_keyword response", response)
-                // var res_data = response.json();
-                // var success = true;
-                //
-                // if (response == null || response == undefined) {
-                //     success = false;
-                // }
-                //
-                // if (success) {
-                //     var code = res_data.code;
-                //     console.log("submit img returen code: " + code)
-                //     //location.href = "/profile.html"
-                // } else {
-                //     alert("Submit img failure: " + res_data.message);
-                // }
+                console.log("get_keyword response", response);
+
+                $("#text-keyword").text(response.keyword);
+
             });
 
         });

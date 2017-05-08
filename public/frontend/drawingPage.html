@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -31,7 +31,8 @@
     <link href="dist/css/bootstrap.css" rel="stylesheet">
 
     <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
-    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <!--[if lt IE 9]>
+    <script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
     <script src="assets/js/ie-emulation-modes-warning.js"></script>
 
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
@@ -44,56 +45,63 @@
 
     <title>Drawing...In the Zone</title>
 
-  </head>
+</head>
 
-  <body style="">
+<body style="">
 
-    <nav class="navbar navbar-inverse navbar-fixed-top" id="top-nav">
-      <div class="container-fluid">
+<nav class="navbar navbar-inverse navbar-fixed-top" id="top-nav">
+    <div class="container-fluid">
         <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a href="login.html" class="navbar-brand" href="#">U Draw I Guess</a>
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+                    aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="login.html" class="navbar-brand" href="#">U Draw I Guess</a>
         </div>
         <div id="div-top-navbar" class="navbar-collapse collapse">
-          <div class="nav navbar-right">
-              <ul class="nav navbar-nav navbar-right">
-                <li>
-                  <div>
-                    <img src="images/person2.jpeg" onclick="location.href='http://localhost:4000/frontend/myPage.html';" class="img-circle" alt="personal icon" width="43" height="43">
-                  </div>
-                </li>
-                  <li>
-                      <button id="btn_invite" type="button" class="btn btn-default btn-md btn-icon-left"><span class="glyphicon glyphicon-link" aria-hidden="true"></span>
-                      </button>
-                  </li>
-                <li>
-                    <button type="button" class="btn btn-default btn-md btn-icon-mid"><span class="glyphicon glyphicon-bell" aria-hidden="true"></span>
-                    </button>
-                </li>
-                <li>
-                    <button type="button" class="btn btn-default btn-md btn-icon-right" onclick="location.href='login.html';" style=""><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>
-                    </button>
-                </li>
-              </ul>
-          </div>
-          <form class="navbar-form navbar-left">
-            
-            <input type="text" class="form-control" placeholder="Search...">
-            <button type="button" class="btn btn-default btn-sm btn-search">
-              <span class="glyphicon glyphicon-search icon-search" aria-hidden="true"></span>
-            </button>
-          </form>
-        </div>
-      </div>
-    </nav>
+            <div class="nav navbar-right">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <div>
+                            <img src="images/person2.jpeg"
+                                 onclick="location.href='http://localhost:4000/frontend/myPage.html';"
+                                 class="img-circle" alt="personal icon" width="43" height="43">
+                        </div>
+                    </li>
+                    <li>
+                        <button id="btn_invite" type="button" class="btn btn-default btn-md btn-icon-left"><span
+                                class="glyphicon glyphicon-link" aria-hidden="true"></span>
+                        </button>
+                    </li>
+                    <li>
+                        <button type="button" class="btn btn-default btn-md btn-icon-mid"><span
+                                class="glyphicon glyphicon-bell" aria-hidden="true"></span>
+                        </button>
+                    </li>
+                    <li>
+                        <button type="button" class="btn btn-default btn-md btn-icon-right"
+                                onclick="location.href='login.html';" style=""><span class="glyphicon glyphicon-log-out"
+                                                                                     aria-hidden="true"></span>
+                        </button>
+                    </li>
+                </ul>
+            </div>
+            <form class="navbar-form navbar-left">
 
-    <div class="main-content">
-      <div class="left-lane">
+                <input type="text" class="form-control" placeholder="Search...">
+                <button type="button" class="btn btn-default btn-sm btn-search">
+                    <span class="glyphicon glyphicon-search icon-search" aria-hidden="true"></span>
+                </button>
+            </form>
+        </div>
+    </div>
+</nav>
+
+<div class="main-content">
+    <div class="left-lane">
         <h4 class="text-color">Pick a color: </h4>
         <button id="red-picker" class="btn-color"></button>
         <button id="blue-picker" class="btn-color"></button>
@@ -103,57 +111,62 @@
         <button id="small-size" class="btn-size">Small</button>
         <button id="mid-size" class="btn-size">Middle</button>
         <button id="big-size" class="btn-size">Big</button>
-      </div>
-      <div class="mid-lane">
-         <canvas id="canvas"></canvas>
-      </div>
-      <div class="right-lane">
+    </div>
+    <div class="mid-lane">
+        <canvas id="canvas"></canvas>
+    </div>
+    <div class="right-lane">
         <button id="btn-keyword" class="btn-right">Get Word!</button>
         <br>
         <a id="text-keyword" class="btn-right">Apple</a>
 
         <button id="btn-clear" class="btn-right">Clear</button>
+        <div>
+            <label id="submit-error-msg">Note: Your Masterpiece will be in public after Submission : )</label>
+        </div>
+
         <button id="btn-submit" class="btn-right">Submit</button>
         <button id="btn-exit" class="btn-right">Exit</button>
 
         <button id="btn-download" class="btn-right">Download</button>
         <br><br>
         <img id="img-download" src="" width="200px" height="200px">
-      </div>
     </div>
-    <br>
+</div>
+<br>
 
-    <nav class="navbar navbar-inverse navbar-fixed-bottom" id="bottom-nav">
-      <div id="div-bottom-navbar" class="navbar-collapse collapse">
-          <ul class="nav navbar-nav navbar-right">
+<nav class="navbar navbar-inverse navbar-fixed-bottom" id="bottom-nav">
+    <div id="div-bottom-navbar" class="navbar-collapse collapse">
+        <ul class="nav navbar-nav navbar-right">
             <li><a href="#" class="nav-bottom-words">Terms</a></li>
             <li><a href="#" class="nav-bottom-words">Help</a></li>
             <li><a href="#" class="nav-bottom-words">Contact us</a></li>
-          </ul>
-          <form class="navbar-form navbar-left">
+        </ul>
+        <form class="navbar-form navbar-left">
             <a href="#" class="nav-bottom-words">About Us</a>
-          </form>
-      </div>
-    </nav>
+        </form>
+    </div>
+</nav>
 
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
-    <script src="dist/js/bootstrap.min.js"></script>
-    <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
-    <script src="assets/js/vendor/holder.min.js"></script>
-    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <script src="assets/js/ie10-viewport-bug-workaround.js"></script>
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+<script src="dist/js/bootstrap.min.js"></script>
+<!-- Just to make our placeholder images work. Don't actually copy the next line! -->
+<script src="assets/js/vendor/holder.min.js"></script>
+<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+<script src="assets/js/ie10-viewport-bug-workaround.js"></script>
 
-    <!--<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js"></script>-->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"></script>
-    <!--[if IE]><script type="text/javascript" src="excanvas.js"></script><![endif]-->
-    <script type="text/javascript" src="js/drawingPage.js"></script>
-    <script type="text/javascript">
-      drawingApp.init();
-    </script>
+<!--<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js"></script>-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"></script>
+<!--[if IE]>
+<script type="text/javascript" src="excanvas.js"></script><![endif]-->
+<script type="text/javascript" src="js/drawingPage.js"></script>
+<script type="text/javascript">
+    drawingApp.init();
+</script>
 
-  </body>
+</body>
 </html>

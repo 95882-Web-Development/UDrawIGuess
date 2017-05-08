@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -27,110 +27,193 @@
     <link href="css/friendList.css" rel="stylesheet">
 
     <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
-    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <!--[if lt IE 9]>
+    <script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
     <script src="/assets/js/ie-emulation-modes-warning.js"></script>
 
-  </head>
+</head>
 
-  <body class="globalstream-container">
+<body class="globalstream-container">
 
-    <nav class="navbar navbar-inverse navbar-fixed-top">
-      <div class="container-fluid">
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container-fluid">
         <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="login.html" href="#">U Draw I Guess</a>
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+                    aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="login.html" href="#">U Draw I Guess</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
-          <div class="nav navbar-right">
-              <ul class="nav navbar-nav navbar-right">
-                <li>
-                  <div>
-                    <img src="images/person2.jpeg" class="img-circle" alt="personal icon" width="44" height="44">
-                  </div>
-                </li>
-                <li>
-                    <button type="button" class="btn btn-default btn-md btn-icon-left" onclick="location.href='globalstream.html';"><span class="glyphicon glyphicon-home nav-glyphicon" aria-hidden="true"></span>
-                    </button>
-                </li>
-                <li>
-                    <button type="button" class="btn btn-default btn-md btn-icon-mid"><span class="glyphicon glyphicon-bell nav-glyphicon" aria-hidden="true"></span>
-                    </button>
-                </li>
-                <li>
-                    <button type="button" class="btn btn-default btn-md btn-icon-right" onclick="location.href='login.html';"><span class="glyphicon glyphicon-log-out nav-glyphicon" aria-hidden="true"></span>
-                    </button>
-                </li>
-              </ul>
-          </div>
-          <form class="navbar-form navbar-left">
-            
-            <input type="text" class="form-control" placeholder="Search...">
-            <button type="button" class="btn btn-default btn-sm btn-search">
-              <span class="glyphicon glyphicon-search icon-search" aria-hidden="true"></span>
-            </button>
-          </form>
-        </div>
-      </div>
-    </nav>
+            <div class="nav navbar-right">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <div>
+                            <img src="images/person2.jpeg" class="img-circle" alt="personal icon" width="44"
+                                 height="44">
+                        </div>
+                    </li>
+                    <li>
+                        <button id="btn_invite" type="button" class="btn btn-default btn-md btn-icon-left" data-toggle="modal" data-target="#invite-Modal">
+                            <span class="glyphicon glyphicon-link nav-glyphicon" aria-hidden="true"></span>
+                        </button>
+                    </li>
+                    <li>
+                        <button id="btn_flag" type="button" class="btn btn-default btn-md btn-icon-mid" data-toggle="modal" data-target="#flag-Modal">
+                            <span class="glyphicon glyphicon-flag nav-glyphicon" aria-hidden="true"></span>
+                        </button>
+                    </li>
+                    <li>
+                        <button type="button" class="btn btn-default btn-md btn-icon-left"
+                                onclick="location.href='myPage.html';"><span
+                                class="glyphicon glyphicon-home nav-glyphicon" aria-hidden="true"></span>
+                        </button>
+                    </li>
+                    <li>
+                        <button type="button" class="btn btn-default btn-md btn-icon-right"
+                                onclick="location.href='login.html';"><span
+                                class="glyphicon glyphicon-log-out nav-glyphicon" aria-hidden="true"></span>
+                        </button>
+                    </li>
+                </ul>
+            </div>
+            <form class="navbar-form navbar-left">
 
-    <div>
-        <div class="col-lg-6">
-          <div class="div-follow-list">
+                <input type="text" class="form-control" placeholder="Search...">
+                <button type="button" class="btn btn-default btn-sm btn-search">
+                    <span class="glyphicon glyphicon-search icon-search" aria-hidden="true"></span>
+                </button>
+            </form>
+        </div>
+    </div>
+</nav>
+
+<div>
+    <div class="col-lg-6">
+        <div class="div-follow-list">
             <h4>Follow List: </h4>
             <br>
             <ul class="follow-list">
-              <li>
-                <div class="follow-entry">
-                  <img id="img-follow-entry" src="images/person1.jpg">
-                  <a id="name-follow-entry" href=#>Name</a>
-                </div>
-              </li>
+                <li>
+                    <div class="follow-entry">
+                        <img id="img-follow-entry" src="images/person1.jpg">
+                        <a onClick="goToProfilePage(); return false;" id="name-follow-entry" href=#>Name</a>
+                    </div>
+                </li>
             </ul>
-          </div>
         </div>
-        <div class="col-lg-6">
-          <div class="div-follower-list">
+    </div>
+    <div class="col-lg-6">
+        <div class="div-follower-list">
             <h4>Follower List:</h4>
             <br>
             <ul class="follower-list">
-              <li>
-                <div class="follower-entry">
-                  <img id="img-follower-entry" src="images/person3.jpeg">
-                  <a id="name-follower-entry" href=#>Name</a>
-                </div>
-              </li>
+                <li>
+                    <div class="follower-entry">
+                        <img id="img-follower-entry" src="images/person3.jpeg">
+                        <a onClick="goToProfilePage(); return false;" id="name-follower-entry" href=#>Name</a>
+                    </div>
+                </li>
             </ul>
-          </div>
         </div>
-      </div>
+    </div>
+</div>
 
-    <nav class="navbar navbar-inverse navbar-fixed-bottom">
-      <div id="navbar" class="navbar-collapse collapse">
-          <ul class="nav navbar-nav navbar-right">
+<!-- following template -->
+<li id="following_template" class="hide">
+    <div class="follow-entry">
+        <img id="img-follow-entry" src="images/person1.jpg">
+        <a onClick="goToProfilePage(); return false;" class="name-follow-entry" href=#>Name</a>
+    </div>
+</li>
+<!-- follower template -->
+<li id="follower_template" class="hide">
+    <div class="follower-entry">
+        <img id="img-follower-entry" src="images/person3.jpeg">
+        <a onClick="goToProfilePage(); return false;" class="name-follower-entry" href=#>Name</a>
+    </div>
+</li>
+<!-- END template -->
+
+
+<div class="modal fade" id="invite-Modal" tabindex="-1" role="dialog" aria-labelledby="new-doc-ModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title" id="invite-ModalLabel">Invite a friend!</h4>
+            </div>
+            <div class="modal-body">
+                <form action="" class="invite-form">
+                    <div class="invite-form-input">
+                        Friend's Email: <input type="text" name="invite-input" class="invite-input-box">
+                        <input type="submit" value="Send" class="btn-invite-submit">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="flag-Modal" tabindex="-1" role="dialog" aria-labelledby="new-doc-ModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title" id="flag-ModalLabel">File a Report/Falgging:</h4>
+            </div>
+            <div class="modal-body">
+                <form action="" id="flag-form" class="flag-form">
+                    <div class="flag-form-input">
+                        <h5>Please state the person/picture you want to report. We will contact you soon.</h5>
+                        <textarea class="textarea-flag" name="flag" form="flag-form">Enter description here...</textarea>
+                        <input type="submit" value="Send" class="btn-flag-submit">
+                        <h5>Thanks for your help to this community!</h5>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+<nav class="navbar navbar-inverse navbar-fixed-bottom">
+    <div id="navbar" class="navbar-collapse collapse">
+        <ul class="nav navbar-nav navbar-right">
             <li><a href="#" class="nav-bottom-words">Terms</a></li>
             <li><a href="#" class="nav-bottom-words">Help</a></li>
             <li><a href="#" class="nav-bottom-words">Contact us</a></li>
-          </ul>
-          <form class="navbar-form navbar-left">
+        </ul>
+        <form class="navbar-form navbar-left">
             <a href="#" class="nav-bottom-words">About Us</a>
-          </form>
-      </div>
-    </nav>
+        </form>
+    </div>
+</nav>
 
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
-    <script src="/dist/js/bootstrap.min.js"></script>
-    <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
-    <script src="/assets/js/vendor/holder.min.js"></script>
-    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <script src="/assets/js/ie10-viewport-bug-workaround.js"></script>
-  </body>
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+<script src="dist/js/bootstrap.min.js"></script>
+<!-- Just to make our placeholder images work. Don't actually copy the next line! -->
+<script src="assets/js/vendor/holder.min.js"></script>
+<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+<script src="assets/js/ie10-viewport-bug-workaround.js"></script>
+
+<script type="text/javascript" src="js/friendList.js"></script>
+<script type="text/javascript" src="js/publicFunction.js"></script>
+</body>
 </html>

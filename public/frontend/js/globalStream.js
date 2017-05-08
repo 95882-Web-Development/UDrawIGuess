@@ -2,12 +2,143 @@ $(document).ready(function () {
     init();
 })
 
-function goToProfilePage(e){
+function logout(e) {
+    var url = "http://localhost:4000/logout";
+
+    function fetchLogout() {
+        return fetch(url).then(function (response) {
+            return response.json();
+        }).then(function (json) {
+            return json;
+        });
+    }
+
+    fetchLogout().then(function (result) {
+        location.href = "http://localhost:4000/frontend/login.html";
+    });
+}
+
+function clickLike(e) {
+
+    var btnLike = event.target;
+    var pic_id = $(btnLike).attr("id");
+    var likeStatus = $(btnLike).attr("value");
+    console.log(likeStatus);
+
+    if (likeStatus == "0") {
+        var url = "http://localhost:4000/like/" + pic_id;
+
+        function fetchLike() {
+            return fetch(url).then(function (response) {
+                return response.json();
+            }).then(function (json) {
+                return json;
+            });
+        }
+
+        fetchLike().then(function (result) {
+            console.log(result);
+
+            if (result.code == "1"){
+                console.log("ERROR: like incomplete");
+            }
+            else{
+                $(btnLike).attr("value", "1");
+                $(btnLike).css('color', 'rgba(165, 28, 70, 0.57)');
+            }
+        });
+    }
+    else {
+        var url = "http://localhost:4000/unlike/" + pic_id;
+
+        function fetchUnlike() {
+            return fetch(url).then(function (response) {
+                return response.json();
+            }).then(function (json) {
+                return json;
+            });
+        }
+
+        fetchUnlike().then(function (result) {
+            console.log(result);
+
+            if (result.code == "1"){
+                console.log("ERROR: unlike incomplete");
+            }
+            else{
+                $(btnLike).attr("value", "0");
+                $(btnLike).css('color', 'gray');
+            }
+        });
+    }
+}
+
+function clickBookmark(e) {
+    var btnBookmark = event.target;
+    var pic_id = $(btnBookmark).attr("id");
+    var bookmarkStatus = $(btnBookmark).attr("value");
+    console.log(bookmarkStatus);
+
+    if (bookmarkStatus == "0") {
+
+        var url = "http://localhost:4000/bookmark/" + pic_id;
+
+        function fetchBookmark() {
+            return fetch(url).then(function (response) {
+                return response.json();
+            }).then(function (json) {
+                return json;
+            });
+        }
+
+        fetchBookmark().then(function (result) {
+            console.log(result);
+
+            if (result.code == "1"){
+                console.log("ERROR: like incomplete");
+            }
+            else{
+                $(btnBookmark).attr("value", "1");
+                $(btnBookmark).css('color', 'rgba(165, 28, 70, 0.57)');
+            }
+        });
+    }
+}
+
+function clickGuess(e){
+    var btnGuess = event.target;
+    var pic_id = $(btnGuess).attr("id");
+
+    var url = "http://localhost:4000/picture/" + pic_id;
+
+    function fetchPic() {
+        return fetch(url).then(function (response) {
+            return response.json();
+        }).then(function (json) {
+            return json;
+        });
+    }
+
+    fetchPic().then(function (result) {
+        console.log(result);
+
+        var img_data = result.picture;
+        var tag = result.tag;
+        var des = result.description;
+
+        $("#modal_guess_tag_content").text(tag);
+        $("#modal_guess_img").attr("src", img_data);
+        $("#modal_guess_tip").text("Tips: " + des);
+
+    });
+}
+
+function goToProfilePage(e) {
     console.log("enter click ranking_username");
     //location.href="http://localhost:4000/frontend/profile.html";
     var rank_name = event.target;
     var user_id = $(rank_name).attr("id");
-    localStorage.setItem("profile_user_id",user_id);
+    localStorage.setItem("profile_user_id", user_id);
     location.href = "http://localhost:4000/frontend/profile.html";
 }
 
@@ -17,7 +148,7 @@ function init() {
 
     console.log("enter globalStream.init");
 
-    $(".btn-like").click(function(e){
+    $(".btn-like").click(function (e) {
         console.log("like button clicked");
         var like_btn = e.target;
         var pic_div = $(like_btn).parent().parent();
@@ -26,12 +157,12 @@ function init() {
         var url = "http://localhost:4000/like/:" + pic_id;
         fetch(url, {
             method: "GET",
-        }).then(function(response) {
-            localStorage.setItem("like_res",response);
+        }).then(function (response) {
+            localStorage.setItem("like_res", response);
         });
     });
 
-    $(".btn-bookmark").click(function(e){
+    $(".btn-bookmark").click(function (e) {
         console.log("bookmark button clicked");
         var bookmark_btn = e.target;
         var pic_div = $(bookmark_btn).parent().parent();
@@ -40,22 +171,22 @@ function init() {
         var url = "http://localhost:4000/bookmark/:" + pic_id;
         fetch(url, {
             method: "GET",
-        }).then(function(response) {
-            localStorage.setItem("bookmark_res",response);
+        }).then(function (response) {
+            localStorage.setItem("bookmark_res", response);
         });
     });
 
     function fetchGlobal() {
         return fetch("http://localhost:4000/global", {
             credentials: "same-origin"
-        }).then(function(response) {
+        }).then(function (response) {
             return response.json();
-        }).then(function(json) {
+        }).then(function (json) {
             return json;
         });
     }
 
-    fetchGlobal().then(function(result) {
+    fetchGlobal().then(function (result) {
         console.log(result);
         var data = result;
         var my_id = data.my_id;
@@ -92,10 +223,12 @@ function init() {
             var pic_id = pictures[j].picture_id;
             var answer = pictures[j].answer;
             var like_num = pictures[j].like_num;
+            var bookmark_num = pictures[j].bookmark_num;
             var tag = pictures[j].tag;
             var picture_src = pictures[j].picture;
 
-            var user_href = "/profile.html/user/" + user_id;
+            var has_like = pictures[j].has_like;
+            var has_bookmark = pictures[j].has_bookmark;
 
             var new_item = picture_item_template.clone();
 
@@ -105,12 +238,36 @@ function init() {
             new_item.addClass("card");
 
             new_item.find("#img_picture").attr("src", picture_src);
-            new_item.find("#owner_name").text(username);
-            new_item.find("#owner_name").attr("href", user_href);
+            new_item.find("#img_picture").attr("id", pic_id);
+
+            new_item.find("#guessbtn_picture").attr("id", pic_id);
+
+            new_item.find("#like_picture").attr("id", pic_id);
             new_item.find("#like_num").text(like_num);
 
-            //like icon change color (liked/not liked)
-            //bookmark icon change color (bookmarked/not bookmarked)
+            new_item.find("#bookmark_picture").attr("id", pic_id);
+            new_item.find("#bookmark_num").text(bookmark_num);
+
+            new_item.find("#owner_name").text(username);
+            new_item.find("#owner_name").attr("id", user_id);
+
+            if (has_like == "0") {
+                new_item.find("#like_picture").css('color', 'gray');
+                new_item.find("#like_picture").attr("value", "0");
+            }
+            else {
+                new_item.find("#like_picture").css('color', 'rgba(165, 28, 70, 0.57)');
+                new_item.find("#like_picture").attr("value", "1");
+            }
+
+            if (has_bookmark == "0") {
+                new_item.find("#bookmark_picture").css('color', 'gray');
+                new_item.find("#bookmark_picture").attr("value", "0");
+            }
+            else {
+                new_item.find("#bookmark_picture").css('color', 'rgba(165, 28, 70, 0.57)');
+                new_item.find("#bookmark_picture").attr("value", "1");
+            }
 
             var picture_list = $("#picture_list");
             picture_list.append(new_item);

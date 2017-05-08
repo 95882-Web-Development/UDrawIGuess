@@ -69,6 +69,32 @@ body {
   margin-right: 10px;
 }
 
+.btn-invite-submit{
+  margin-left: 20px;
+  background: #a94442;
+  border: #B13B3B;
+  border-radius: 2px;
+  color: white;
+}
+
+.btn-flag-submit{
+  margin-left: 10px;
+  background: #a94442;
+  border: #B13B3B;
+  border-radius: 2px;
+  color: white;
+}
+
+.guess-form{
+  display: block;
+  margin: 0 auto;
+}
+
+.textarea-flag{
+  width: 450px;
+  height: 100px ;
+}
+
 
 
 
