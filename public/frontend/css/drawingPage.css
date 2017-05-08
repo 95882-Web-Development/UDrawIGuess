@@ -215,7 +215,7 @@ body {
 }
 
 #btn-clear{
-	margin-top: 20%;
+	margin-top: 15%;
 	width: 100px;
 	height: 30px;
 	border-radius: 5px;
@@ -226,7 +226,7 @@ body {
 
 #submit-error-msg{
 	margin-left: 30px;
-	margin-top: 20%;
+	margin-top: 10%;
 	margin-right: 30px;
 }
 
@@ -260,4 +260,21 @@ body {
 	background-color: #f2f2f2;
 	border: 1px solid;
 	border-color: #808080;
+}
+
+.div-text-keyword{
+	margin-top: 15px;
+	margin-left: 20px;
+	font-size: 1.5em;
+	color: #ac3939;
+}
+
+.div-user-input{
+	margin-top: 10%;
+	margin-left: 50px;
+}
+
+#description_input{
+	width: auto;
+	height: 60px;
 }

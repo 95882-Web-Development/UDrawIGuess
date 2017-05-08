@@ -101,13 +101,6 @@ var drawingApp = (function(){
 	    $(".btn-color").click(setColor);
 	    $(".btn-size").click(setSize);
 
-		document.getElementById("btn-download").addEventListener("click", function(e){
-			var canvasTemp = document.getElementById("canvas");
-			var dt = canvasTemp.toDataURL("image/png");
-		  	var image = document.getElementById("img-download");
-		  	image.src = dt;
-		}, false);
-
 		document.getElementById("btn-clear").addEventListener("click", function(e){
 			context.clearRect(0, 0, canvasElement.width, canvasElement.height);
 			clickX = new Array();
@@ -116,12 +109,16 @@ var drawingApp = (function(){
 		}, false);
 
 		$("#btn-submit").click(function(e){
+		    var keyword = $("#text-keyword").text();
+            var tag = $("#tag_input").val();
+            var des = $("#description_input").val();
+
 			var canvasTemp = document.getElementById("canvas");
 			var img_data = canvasTemp.toDataURL("image/png");
 		  	var image = document.getElementById("img-download");
 		  	image.src = img_data;
 
-			var data = {"picture": img_data, "tag":"this is tag", "description":"this is description"};
+			var data = {"picture": img_data, "tag":tag, "description":des, "keyword":keyword};
 
 			fetch("http://localhost:4000/picture_submit", {
 				method: "POST",
@@ -138,7 +135,6 @@ var drawingApp = (function(){
                 else{
                     location.href = "globalStream.html";
                 }
-
 			});
 
 		});

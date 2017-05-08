@@ -118,18 +118,28 @@
     <div class="right-lane">
         <button id="btn-keyword" class="btn-right">Get Word!</button>
         <br>
-        <a id="text-keyword" class="btn-right">Apple</a>
-
+        <div class="div-text-keyword">
+            <label id="text-keyword" class="btn-right">Apple</label>
+        </div>
         <button id="btn-clear" class="btn-right">Clear</button>
+        <div class="div-user-input">
+            <label>Tag:</label>
+            <br>
+            <input id="tag_input" type="text" placeholder="Tag your drawing!">
+            <br>
+            <label>Description:</label>
+            <br>
+            <textarea id="description_input" placeholder="Enter your tips for guessing..."></textarea>
+        </div>
         <div>
             <label id="submit-error-msg">Note: Your Masterpiece will be in public after Submission : )</label>
         </div>
 
         <button id="btn-submit" class="btn-right">Submit</button>
-        <button id="btn-exit" class="btn-right">Exit</button>
+        <button onclick="location.href='http://localhost:4000/frontend/globalStream.html'" id="btn-exit" class="btn-right">Exit</button>
 
-        <button id="btn-download" class="btn-right">Download</button>
-        <br><br>
+        <!--<button id="btn-download" class="btn-right">Download</button>-->
+        <!--<br><br>-->
         <img id="img-download" src="" width="200px" height="200px">
     </div>
 </div>
