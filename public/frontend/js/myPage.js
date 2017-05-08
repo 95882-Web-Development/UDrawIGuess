@@ -59,7 +59,10 @@ function init() {
             new_item.find("#img_picture").attr("src", picture_src);
             new_item.find("#img_picture").attr("id", pic_id);
 
-            new_item.find("#description").attr(des);
+            var new_des = "Description: " + des;
+            new_item.find("#description").text(new_des);
+            var new_tag = "Tag: " + tag;
+            new_item.find("#tag").text(new_tag);
 
             //new_item.find("#like_picture").attr("id", pic_id);
             new_item.find("#like_num").text(like_num);

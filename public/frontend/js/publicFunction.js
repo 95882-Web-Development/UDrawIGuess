@@ -1,6 +1,7 @@
-function logout(e){
+function logout(e) {
+    console.log("enter user logout");
 
-    var url = "http://localhost:4000/logout";
+    var url = "http://localhost:4000/user_logout";
 
     function fetchLogout() {
         return fetch(url).then(function (response) {
@@ -13,4 +14,6 @@ function logout(e){
     fetchLogout().then(function (result) {
         location.href = "http://localhost:4000/frontend/login.html";
     });
+
+    location.href = "http://localhost:4000/frontend/login.html";
 }

@@ -68,7 +68,7 @@
                     </li>
                     <li>
                         <button type="button" class="btn btn-default btn-md btn-icon-left"
-                                onclick="location.href='globalstream.html';"><span
+                                onclick="location.href='bookmarkList.html';"><span
                                 class="glyphicon glyphicon-bookmark nav-glyphicon" aria-hidden="true"></span>
                         </button>
                     </li>
@@ -85,7 +85,7 @@
                     </li>
                     <li>
                         <button type="button" class="btn btn-default btn-md btn-icon-right"
-                                onclick="location.href='login.html';"><span
+                                onclick="logout(); return false;"><span
                                 class="glyphicon glyphicon-log-out nav-glyphicon" aria-hidden="true"></span>
                         </button>
                     </li>
@@ -141,16 +141,16 @@
     <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
         <div id="picture_list" class="container posts-container">
 
-            <div id="picture_item_template" class="card">
-                <img id="img_picture" src="images/empty_img.jpg" width="200" height="200">
-                <p id="description" class="card-text">This is a description.</p>
-                <button id="like_picture" class="btn-like"><span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
-                </button>
-                <label id="like_num" class="like-num">3</label>
-                <button id="bookmark_picture" class="btn-bookmark"><span class="glyphicon glyphicon-bookmark"
-                                                                         aria-hidden="true"></span></button>
-                <label id="bookmark_num" class="bookmark-num">6</label>
-            </div>
+            <!--<div id="picture_item_template" class="card">-->
+                <!--<img id="img_picture" src="images/empty_img.jpg" width="200" height="200">-->
+                <!--<p id="description" class="card-text">This is a description.</p>-->
+                <!--<button id="like_picture" class="btn-like"><span class="glyphicon glyphicon-heart" aria-hidden="true"></span>-->
+                <!--</button>-->
+                <!--<label id="like_num" class="like-num">3</label>-->
+                <!--<button id="bookmark_picture" class="btn-bookmark"><span class="glyphicon glyphicon-bookmark"-->
+                                                                         <!--aria-hidden="true"></span></button>-->
+                <!--<label id="bookmark_num" class="bookmark-num">6</label>-->
+            <!--</div>-->
         </div>
     </div>
 </div>
@@ -162,12 +162,11 @@
 <!-- Templates -->
 <div id="picture_item_template" class="hide">
     <img id="img_picture" src="images/empty_img.jpg" width="200" height="200">
+    <p id="tag" class="card-text">This is a tag.</p>
     <p id="description" class="card-text">This is a description.</p>
-    <button id="like_picture" class="btn-like"><span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
-    </button>
+    <span id="like_picture" class="btn-like glyphicon glyphicon-heart" aria-hidden="true"></span>
     <label id="like_num" class="like-num"></label>
-    <button id="bookmark_picture" class="btn-bookmark"><span class="glyphicon glyphicon-bookmark"
-                                                             aria-hidden="true"></span></button>
+    <span id="bookmark_picture" class="btn-bookmark glyphicon glyphicon-bookmark" aria-hidden="true"></span>
     <label id="bookmark_num" class="bookmark-num"></label>
 </div>
 <!-- END Templates -->
@@ -279,5 +278,7 @@
 <script src="assets/js/ie10-viewport-bug-workaround.js"></script>
 
 <script type="text/javascript" src="js/myPage.js"></script>
+<script type="text/javascript" src="js/publicFunction.js"></script>
+
 </body>
 </html>

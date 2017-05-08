@@ -103,6 +103,10 @@ span:hover {
   margin-left: 78px;
 }
 
+#tag{
+  font-weight: bold;
+}
+
 .personal-info{
   position:absolute; 
   z-index:1; 
