@@ -260,3 +260,48 @@ function inviteFriend(e){
         location.href = "";
     });
 }
+
+function search(e){
+    console.log("enter search");
+
+    var input = $("#search_input").val();
+
+    console.log("search input: " + input);
+
+    var data = {"input": input};
+
+    var url = "http://localhost:4000/search";
+
+    function fetchSearch() {
+        return fetch(url, {
+            method: "POST",
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify(data),
+        }).then(function (response) {
+            return response.json();
+        }).then(function (json) {
+            return json;
+        });
+    }
+
+    fetchSearch().then(function (result) {
+        console.log("search result: " + result);
+        var code = parseInt(result.code);
+        console.log("search: code " + code);
+
+        if (code == 11){
+            //username
+            var user_id = result.user_id;
+            localStorage.setItem("profile_user_id", user_id);
+            location.href = "http://localhost:4000/frontend/profile.html";
+        }
+        else if (code == 12){
+            //friend list
+            location.href = "http://localhost:4000/frontend/friendList.html";
+        }
+        else{
+            //bookmark list
+            location.href = "http://localhost:4000/frontend/bookmarkList.html";
+        }
+    });
+}
