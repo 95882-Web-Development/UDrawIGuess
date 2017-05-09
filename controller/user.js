@@ -384,6 +384,7 @@ exports.invite = function(req, res){
     });
 
     var email = req.body.email;
+    console.log(email);
     var transporter = nodemailer.createTransport({
         service: 'Gmail',
         auth: {
@@ -391,13 +392,13 @@ exports.invite = function(req, res){
             pass: 'chenjiasen' // Your password
         }
     });
-    var text = 'UDrawIGuess Invitaion from \n\n' + globals.user.username;
+    var text = 'UDrawIGuess Invitaion from your friends \n\n' + globals.user.username;
     var mailOptions = {
         from: 'jasoncmu2016@gmail.com', // sender address
-        to: email, // list of receivers
+        to: email+"", // list of receivers
         subject: text, // Subject line
-        text: text //, // plaintext body
-        // html: '<b>Hello world ✔</b>' // You can choose to send an HTML body instead
+        // text: text, //, // plaintext body
+        html: '<h2>UDrawIGuess Invitaion from your friends</h2><br><h2>Click Like:</h2><a href="http://localhost:4000/frontend/noSignUpGlobalStream.html"> U Draw I Guess</a>' // You can choose to send an HTML body instead
     };
     transporter.sendMail(mailOptions, function(error, info){
         if(error){

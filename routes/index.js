@@ -3,6 +3,6 @@ module.exports = function(router) {
     return res.redirect('/frontend/noSignUpGlobalStream.html');
   });
   router.get('/test', function(req, res, next) {
-    res.render('signup',{messages:"aaa"});
+    res.render('index',{messages:"aaa"});
   });
 };
