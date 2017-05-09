@@ -22,6 +22,25 @@ function logout(e) {
     location.href = "http://localhost:4000/frontend/login.html";
 }
 
+
+function inviteFriend(e){
+    console.log("enter invite friend");
+
+    var email = $("#invite_input").val();
+    console.log(email)
+
+    var data = {"email": email};
+
+    fetch("http://localhost:4000/invite", {
+        method: "POST",
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(data),
+    }).then(function(response){
+        console.log("invitation submit: " + response);
+        location.href = "";
+    });
+}
+
 function search(e){
     console.log("enter search");
 
