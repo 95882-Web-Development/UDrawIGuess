@@ -108,6 +108,12 @@ var drawingApp = (function(){
 			clickDrag = new Array();
 		}, false);
 
+        $("#search_input").keypress(function(event){
+            if(event.keyCode == 13){
+                search();
+            }
+        });
+
 		$("#btn-submit").click(function(e){
 		    var keyword = $("#text-keyword").text();
             var tag = $("#tag_input").val();

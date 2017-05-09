@@ -7,6 +7,12 @@ function init() {
 
     console.log("enter mypage.init");
 
+    $("#search_input").keypress(function(event){
+        if(event.keyCode == 13){
+            search();
+        }
+    });
+
     var url = "http://localhost:4000/me";
 
     function fetchMe() {

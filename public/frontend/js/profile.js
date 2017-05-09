@@ -86,6 +86,12 @@ function startFollow(e){
 function init() {
     console.log("enter profile page init");
 
+    $("#search_input").keypress(function(event){
+        if(event.keyCode == 13){
+            search();
+        }
+    });
+
     var user_id = localStorage.getItem("profile_user_id");
     var my_id = localStorage.getItem("my_id");
 

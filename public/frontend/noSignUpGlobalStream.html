@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -9,177 +9,160 @@
     <meta name="author" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-      <!-- Bootstrap core CSS -->
-      <link href="dist/css/bootstrap.min.css" rel="stylesheet">
-      <link href="dist/css/bootstrap.css" rel="stylesheet">
+    <!-- Bootstrap core CSS -->
+    <link href="dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="dist/css/bootstrap.css" rel="stylesheet">
 
-      <!-- Custom styles for this template -->
-      <link href="css/grumblr.css" rel="stylesheet">
-      <link href="css/noSignUpGlobalStream.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="css/grumblr.css" rel="stylesheet">
+    <link href="css/noSignUpGlobalStream.css" rel="stylesheet">
 
-      <!--<script type="text/javascript" charset="utf-8" src="assets/js/jquery-3.1.0.min.js"></script>-->
-      <script type="text/javascript" charset="utf-8" src="assets/js/jquery-3.1.1.js"></script>
-      <script type="text/javascript" charset="utf-8" src="assets/js/tether.min.js"></script>
-      <script type="text/javascript" charset="utf-8" src="assets/js/vue.min.js"></script>
-      <script type="text/javascript" charset="utf-8" src="assets/js/lodash@4.16.0.js"></script>
-      <script type="text/javascript" charset="utf-8" src="assets/js/bootstrap.min.js"></script>
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <!--<script type="text/javascript" charset="utf-8" src="assets/js/jquery-3.1.0.min.js"></script>-->
+    <script type="text/javascript" charset="utf-8" src="assets/js/jquery-3.1.1.js"></script>
+    <script type="text/javascript" charset="utf-8" src="assets/js/tether.min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="assets/js/vue.min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="assets/js/lodash@4.16.0.js"></script>
+    <script type="text/javascript" charset="utf-8" src="assets/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 
-      <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
-      <!--[if lt IE 9]><script src="assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
-      <script src="assets/js/ie-emulation-modes-warning.js"></script>
+    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <!--[if lt IE 9]>
+    <script src="assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <script src="assets/js/ie-emulation-modes-warning.js"></script>
 
-      <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-      <link href="assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <link href="assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
 
     <title>Check others works</title>
 
-  </head>
+</head>
 
-  <body style="">
+<body style="">
 
-    <nav class="navbar navbar-inverse navbar-fixed-top">
-      <div class="container-fluid">
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container-fluid">
         <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a href="noSignUpGlobalStream.html" class="navbar-brand">U Draw I Guess</a>
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+                    aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="noSignUpGlobalStream.html" class="navbar-brand">U Draw I Guess</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
-          <div class="nav navbar-right">
-              <ul class="nav navbar-nav navbar-right">
-                  <li class="nav-click"><a href="login.html" class="nav-href">Log in</a></li>
-                  <li class="nav-click"><a href="register.html" class="nav-href">Sign up</a></li>
-              </ul>
-          </div>
-          <form class="navbar-form navbar-left">
-            
-            <input type="text" class="form-control" placeholder="Search...">
-            <button type="button" class="btn btn-default btn-sm btn-search">
-              <span class="glyphicon glyphicon-search icon-search" aria-hidden="true"></span>
-            </button>
-          </form>
+            <div class="nav navbar-right">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="nav-click"><a href="login.html" class="nav-href">Log in</a></li>
+                    <li class="nav-click"><a href="register.html" class="nav-href">Sign up</a></li>
+                </ul>
+            </div>
         </div>
-      </div>
-    </nav>
+    </div>
+</nav>
 
-    <div class="main-content">
+<div class="main-content">
 
-      <div class="post-collection text-muted">
+    <div class="post-collection text-muted">
         <div id="picture_list" class="container posts-container">
 
-          <!-- <div class="row"> -->
-            <div class="card">
-              <img src="images/empty_img.jpg" alt="Card image cap" width="200" height="200">
-              <p class="card-text">By: XXX</p>
-              <button class="btn-guess" data-toggle="modal" data-target="#guess-Modal">Guess it!</button>
-            </div>
-
-            <div class="card">
-                <img src="images/empty_img.jpg" alt="Card image cap" width="200" height="200">
-                <p class="card-text">By: XXX</p>
-                <button class="btn-guess" data-toggle="modal" data-target="#guess-Modal">Guess it!</button>
-            </div>
-
-            <div class="card">
-                <img src="images/empty_img.jpg" alt="Card image cap" width="200" height="200">
-                <p class="card-text">By: XXX</p>
-                <button class="btn-guess" data-toggle="modal" data-target="#guess-Modal">Guess it!</button>
-            </div>
-
         </div>
-      </div>
     </div>
+</div>
 
-    <div class="btn-to-draw">
-      <a href="noSignUpDrawingPage.html"><span class="glyphicon glyphicon-pencil icon-draw"></span></a>
-    </div>
+<div class="btn-to-draw">
+    <a href="noSignUpDrawingPage.html"><span class="glyphicon glyphicon-pencil icon-draw"></span></a>
+</div>
 
+<!-- templates-->
 
-    <!-- templates-->
+<div id="picture_item_template" class="hide">
+    <img id="img_picture" src="images/empty_img.jpg" alt="Card image cap" width="200" height="200">
+    <a id="owner_name" class="card-text">By: XXX</a>
+    <button id="guessbtn_picture" onClick="clickNoSignUpGuess(); return false;" class="btn-guess" data-toggle="modal"
+            data-target="#guess-Modal">Guess it!
+    </button>
+    <button id="like_picture" class="btn-like"><span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
+    </button>
+    <label id="like_num" class="like-num"></label>
+    <button id="bookmark_picture" class="btn-bookmark"><span class="glyphicon glyphicon-pushpin"
+                                                             aria-hidden="true"></span></button>
+</div>
+<!-- END templates-->
 
-    <div id="picture_item_template" class="hide">
-        <img id="img_picture" src="images/empty_img.jpg" alt="Card image cap" width="200" height="200">
-        <a id="owner_name" class="card-text">By: XXX</a>
-        <button id="guessbtn_picture" onClick="clickNoSignUpGuess(); return false;" class="btn-guess" data-toggle="modal" data-target="#guess-Modal">Guess it!</button>
-        <button id="like_picture" class="btn-like"><span class="glyphicon glyphicon-heart" aria-hidden="true"></span></button>
-        <label id="like_num" class="like-num"></label>
-        <button id="bookmark_picture" class="btn-bookmark"><span class="glyphicon glyphicon-pushpin" aria-hidden="true"></span></button>
-    </div>
-    <!-- END templates-->
-
-    <!-- Modal NEW document-->
-    <div class="modal fade" id="guess-Modal" tabindex="-1" role="dialog" aria-labelledby="new-doc-ModalLabel"
-         aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                    <h4 class="modal-title" id="guess-ModalLabel">Make a wild guess!</h4>
+<!-- Modal NEW document-->
+<div class="modal fade" id="guess-Modal" tabindex="-1" role="dialog" aria-labelledby="new-doc-ModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title" id="guess-ModalLabel">Make a wild guess!</h4>
+            </div>
+            <div id="guess_madal_normal_body" class="modal-body">
+                <img id="modal_guess_img" src="images/empty_img.jpg" class="img-modal" alt="Card image cap">
+                <br>
+                <div id="div_guess_modal_form">
+                    <form action="/action_page.php" class="guess-form">
+                        <div class="guess-form-input">
+                            Guess Answer: <input id="guess_modal_input" type="text" name="guess-input"
+                                                 class="guess-input-box">
+                            <input id="guess_modal_submit" onClick="checkNoSignUpAnswer(); return false;" type="submit"
+                                   value="Submit" class="btn-guess-submit">
+                        </div>
+                        <label id="modal_guess_tip" class="guess-tips">Tips: One word.</label>
+                        <label id="modal_guess_err_msg"></label>
+                    </form>
                 </div>
-                <div id="guess_madal_normal_body" class="modal-body">
-                    <img id="modal_guess_img" src="images/empty_img.jpg" class="img-modal" alt="Card image cap">
-                    <br>
-                    <div id="div_guess_modal_form">
-                        <form action="/action_page.php" class="guess-form">
-                            <div class="guess-form-input">
-                                Guess Answer: <input id="guess_modal_input" type="text" name="guess-input" class="guess-input-box">
-                                <input id="guess_modal_submit" onClick="checkNoSignUpAnswer(); return false;" type="submit" value="Submit" class="btn-guess-submit">
-                            </div>
-                            <label id="modal_guess_tip" class="guess-tips">Tips: One word.</label>
-                            <label id="modal_guess_err_msg"></label>
-                        </form>
-                    </div>
-                </div>
-                <div id="guess_madal_answer_body" class="hide">
-                    <h5>Answer is:</h5>
-                    <h4 id="guess_madal_show_answer"></h4>
-                </div>
-                <div class="modal-footer">
-                    <button id="guess_modal_check_ans" onClick="getNoSignUpAnswer(); return false;" type="button" class="btn btn-primary guess-modal-check-ans">Check the answer</button>
-                </div>
+            </div>
+            <div id="guess_madal_answer_body" class="hide">
+                <h5>Answer is:</h5>
+                <h4 id="guess_madal_show_answer"></h4>
+            </div>
+            <div class="modal-footer">
+                <button id="guess_modal_check_ans" onClick="getNoSignUpAnswer(); return false;" type="button"
+                        class="btn btn-primary guess-modal-check-ans">Check the answer
+                </button>
             </div>
         </div>
     </div>
+</div>
 
 
-    <nav class="navbar navbar-inverse navbar-fixed-bottom">
-      <div id="div-bottom-navbar" class="navbar-collapse collapse">
-          <ul class="nav navbar-nav navbar-right">
+<nav class="navbar navbar-inverse navbar-fixed-bottom">
+    <div id="div-bottom-navbar" class="navbar-collapse collapse">
+        <ul class="nav navbar-nav navbar-right">
             <li><a href="#" class="nav-bottom-words">Terms</a></li>
             <li><a href="#" class="nav-bottom-words">Help</a></li>
             <li><a href="#" class="nav-bottom-words">Contact us</a></li>
-          </ul>
-          <form class="navbar-form navbar-left">
+        </ul>
+        <form class="navbar-form navbar-left">
             <a href="#" class="nav-bottom-words">About Us</a>
-          </form>
-      </div>
-    </nav>
+        </form>
+    </div>
+</nav>
 
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
-    <script src="dist/js/bootstrap.min.js"></script>
-    <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
-    <script src="assets/js/vendor/holder.min.js"></script>
-    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <script src="assets/js/ie10-viewport-bug-workaround.js"></script>
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+<script src="dist/js/bootstrap.min.js"></script>
+<!-- Just to make our placeholder images work. Don't actually copy the next line! -->
+<script src="assets/js/vendor/holder.min.js"></script>
+<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+<script src="assets/js/ie10-viewport-bug-workaround.js"></script>
 
-    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"></script>
 
-    <script type="text/javascript" src="js/noSignUpGlobalStream.js"></script>
-    <!--<script type="text/javascript">-->
-        <!--globalStream.init();-->
-    <!--</script>-->
+<script type="text/javascript" src="js/noSignUpGlobalStream.js"></script>
+<!--<script type="text/javascript">-->
+<!--globalStream.init();-->
+<!--</script>-->
 
-  </body>
+</body>
 </html>

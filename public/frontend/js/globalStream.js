@@ -326,6 +326,12 @@ function init() {
         });
     });
 
+    $("#search_input").keypress(function(event){
+        if(event.keyCode == 13){
+            search();
+        }
+    });
+
     function fetchGlobal() {
         return fetch("http://localhost:4000/global", {
             credentials: "same-origin"

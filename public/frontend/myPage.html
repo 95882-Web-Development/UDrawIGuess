@@ -62,14 +62,20 @@
                         </div>
                     </li>
                     <li>
-                        <button id="btn_invite" type="button" class="btn btn-default btn-md btn-icon-left" data-toggle="modal" data-target="#invite-Modal">
-                            <span class="glyphicon glyphicon-link nav-glyphicon" aria-hidden="true"></span>
+                        <button type="button" class="btn btn-default btn-md btn-icon-left"
+                                onclick="location.href='bookmarkList.html';"><span
+                                class="glyphicon glyphicon-bookmark nav-glyphicon" aria-hidden="true"></span>
                         </button>
                     </li>
                     <li>
                         <button type="button" class="btn btn-default btn-md btn-icon-left"
-                                onclick="location.href='bookmarkList.html';"><span
-                                class="glyphicon glyphicon-bookmark nav-glyphicon" aria-hidden="true"></span>
+                                onclick="location.href='history.html';"><span
+                                class="glyphicon glyphicon-eye-open nav-glyphicon" aria-hidden="true"></span>
+                        </button>
+                    </li>
+                    <li>
+                        <button id="btn_invite" type="button" class="btn btn-default btn-md btn-icon-left" data-toggle="modal" data-target="#invite-Modal">
+                            <span class="glyphicon glyphicon-link nav-glyphicon" aria-hidden="true"></span>
                         </button>
                     </li>
                     <li>
@@ -92,9 +98,8 @@
                 </ul>
             </div>
             <form class="navbar-form navbar-left">
-
-                <input type="text" class="form-control" placeholder="Search...">
-                <button type="button" class="btn btn-default btn-sm btn-search">
+                <input id="search_input" type="text" class="form-control" placeholder="Search...">
+                <button id="search_btn" onclick="search(); return false;" type="button" class="btn btn-default btn-sm btn-search">
                     <span class="glyphicon glyphicon-search icon-search" aria-hidden="true"></span>
                 </button>
             </form>

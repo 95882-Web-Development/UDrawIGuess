@@ -8,14 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <!-- Bootstrap core CSS -->
-    <link href="dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="dist/css/bootstrap.css" rel="stylesheet">
-
-    <!-- Custom styles for this template -->
-    <link href="css/grumblr.css" rel="stylesheet">
-    <link href="css/globalStream.css" rel="stylesheet">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
     <!--<script type="text/javascript" charset="utf-8" src="assets/js/jquery-3.1.0.min.js"></script>-->
     <script type="text/javascript" charset="utf-8" src="assets/js/jquery-3.1.1.js"></script>
@@ -24,26 +17,28 @@
     <script type="text/javascript" charset="utf-8" src="assets/js/lodash@4.16.0.js"></script>
     <script type="text/javascript" charset="utf-8" src="assets/js/bootstrap.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    <!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>-->
 
-    <link rel="icon" href="../../favicon.ico">
+    <title>Your history log</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="dist/css/bootstrap.css" rel="stylesheet">
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <link href="assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="css/grumblr.css" rel="stylesheet">
+    <link href="css/history.css" rel="stylesheet">
 
     <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
     <!--[if lt IE 9]>
     <script src="assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
     <script src="assets/js/ie-emulation-modes-warning.js"></script>
 
-    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <link href="assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
-
-
-    <link rel="icon" href="../../favicon.ico">
-
-    <title>Check others works</title>
-
 </head>
 
-<body style="">
+<body class="globalstream-container">
 
 <nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container-fluid">
@@ -55,137 +50,70 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a href="globalStream.html" class="navbar-brand">U Draw I Guess</a>
+            <a class="navbar-brand" href="globalStream.html" href="#">U Draw I Guess</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <div class="nav navbar-right">
                 <ul class="nav navbar-nav navbar-right">
                     <li>
                         <div>
-                            <img src="images/person2.jpeg"
-                                 onclick="location.href='http://localhost:4000/frontend/myPage.html';"
-                                 class="img-circle" alt="personal icon" width="43" height="43">
+                            <img src="images/person2.jpeg" onclick="location.href='http://localhost:4000/frontend/myPage.html';"
+                                 class="img-circle" alt="personal icon" width="44" height="44">
                         </div>
                     </li>
                     <li>
                         <button id="btn_invite" type="button" class="btn btn-default btn-md btn-icon-left" data-toggle="modal" data-target="#invite-Modal">
-                            <span class="glyphicon glyphicon-link" aria-hidden="true"></span>
+                            <span class="glyphicon glyphicon-link nav-glyphicon" aria-hidden="true"></span>
                         </button>
-                    </li>s
+                    </li>
                     <li>
                         <button id="btn_flag" type="button" class="btn btn-default btn-md btn-icon-mid" data-toggle="modal" data-target="#flag-Modal">
-                            <span class="glyphicon glyphicon-flag" aria-hidden="true"></span>
+                            <span class="glyphicon glyphicon-flag nav-glyphicon" aria-hidden="true"></span>
+                        </button>
+                    </li>
+                    <li>
+                        <button type="button" class="btn btn-default btn-md btn-icon-left"
+                                onclick="location.href='myPage.html';"><span
+                                class="glyphicon glyphicon-home nav-glyphicon" aria-hidden="true"></span>
                         </button>
                     </li>
                     <li>
                         <button type="button" class="btn btn-default btn-md btn-icon-right"
-                                onclick="logout(); return false;" style=""><span class="glyphicon glyphicon-log-out"
-                                                                                     aria-hidden="true"></span>
+                                onclick="logout(); return false;"><span
+                                class="glyphicon glyphicon-log-out nav-glyphicon" aria-hidden="true"></span>
                         </button>
                     </li>
                 </ul>
             </div>
-            <form class="navbar-form navbar-left">
-                <input id="search_input" type="text" class="form-control" placeholder="Search...">
-                <button id="search_btn" onclick="search(); return false;" type="button" class="btn btn-default btn-sm btn-search">
-                    <span class="glyphicon glyphicon-search icon-search" aria-hidden="true"></span>
-                </button>
-            </form>
         </div>
     </div>
 </nav>
 
-<div class="main-content">
+<div>
+    <div class="col-lg-6">
+        <div class="div-history-list">
+            <h4>History: </h4>
+            <br>
+            <ul class="history-list">
+                <!--<li id="history_template">-->
+                    <!--<div class="history-entry">-->
+                        <!--<h5 id="history-content">this is history</h5>-->
+                    <!--</div>-->
+                <!--</li>-->
 
-    <div class="ranking col-sm-2 offset-sm-1">
-        <h4>Ranking</h4>
-        <br>
-        <ol id="ranking_list" class="ranking_list">
-            <!--<li class="ranking_item">-->
-                <!--<a href="" class="ranking_username">The Fin</a>-->
-            <!--</li>-->
-            <!--<li class="ranking_item">-->
-                <!--<a href="" class="ranking_username">Bruno Mars</a>-->
-            <!--</li>-->
-        </ol>
-    </div>
-
-    <div class="post-collection text-muted">
-        <div id="picture_list" class="container posts-container">
-
+            </ul>
         </div>
     </div>
 </div>
 
-<div class="btn-to-draw">
-    <a href="drawingPage.html"><span class="glyphicon glyphicon-pencil icon-draw"></span></a>
-</div>
-
-
-<!-- templates-->
-<li id="ranking_item_template" class="hide">
-    <a onClick="goToProfilePage(); return false;" class="ranking_username">Default title</a>
+<!-- history template -->
+<li id="history_template" class="hide">
+    <div class="history-entry">
+        <h5 id="history-content"></h5>
+    </div>
 </li>
+<!-- END template -->
 
-<div id="picture_item_template" class="hide">
-    <img id="img_picture" src="images/empty_img.jpg" alt="Card image cap" width="200" height="200">
-    <div>
-        <a onClick="goToProfilePage(); return false;" id="owner_name" class="card-text">By: XXX</a>
-    </div>
-    <button onClick="clickGuess(); return false;" id="guessbtn_picture"
-            class="btn-guess" data-toggle="modal" data-target="#guess-Modal">Guess
-        it!
-    </button>
-    <button onClick="clickLike(); return false;" id="like_picture"
-            class="btn-like glyphicon glyphicon-heart" aria-hidden="true">
-    </button>
-    <label id="like_num" class="like-num"></label>
-    <button onClick="clickBookmark(); return false;" id="bookmark_picture"
-            aria-hidden="true" class="btn-bookmark glyphicon glyphicon-bookmark">
-    </button>
-    <label id="bookmark_num" class="bookmark-num"></label>
-</div>
-<!-- END templates-->
-
-<!-- Modal NEW document-->
-<div class="modal fade" id="guess-Modal" tabindex="-1" role="dialog" aria-labelledby="new-doc-ModalLabel"
-     aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-                <h4 class="modal-title" id="guess-ModalLabel">Make a wild guess!</h4>
-            </div>
-            <div id="guess_madal_normal_body" class="modal-body">
-                <div id="div_modal_guess_tag" class="div-modal-guess-tag">
-                    <label id="modal_guess_tag_title">Tag:</label>
-                    <label id="modal_guess_tag_content">tag content</label>
-                </div>
-                <img id="modal_guess_img" src="images/empty_img.jpg" class="img-modal" alt="Card image cap">
-                <br>
-                <div id="div_guess_modal_form">
-                    <form action="/action_page.php" class="guess-form">
-                        <div class="guess-form-input">
-                            Guess Answer: <input id="guess_modal_input" type="text" name="guess-input" class="guess-input-box">
-                            <input id="guess_modal_submit" onClick="checkAnswer(); return false;" type="submit" value="Submit" class="btn-guess-submit">
-                        </div>
-                        <label id="modal_guess_tip" class="guess-tips">Tips: One word.</label>
-                        <label id="modal_guess_err_msg"></label>
-                    </form>
-                </div>
-            </div>
-            <div id="guess_madal_answer_body" class="hide">
-                <h5>Answer is:</h5>
-                <h4 id="guess_madal_show_answer"></h4>
-            </div>
-            <div class="modal-footer">
-                <button id="guess_modal_check_ans" onClick="getAnswer(); return false;" type="button" class="btn btn-primary guess-modal-check-ans">Check the answer</button>
-            </div>
-        </div>
-    </div>
-</div>
 
 <div class="modal fade" id="invite-Modal" tabindex="-1" role="dialog" aria-labelledby="new-doc-ModalLabel"
      aria-hidden="true">
@@ -238,7 +166,7 @@
 </div>
 
 <nav class="navbar navbar-inverse navbar-fixed-bottom">
-    <div id="div-bottom-navbar" class="navbar-collapse collapse">
+    <div id="navbar" class="navbar-collapse collapse">
         <ul class="nav navbar-nav navbar-right">
             <li><a href="#" class="nav-bottom-words">Terms</a></li>
             <li><a href="#" class="nav-bottom-words">Help</a></li>
@@ -261,10 +189,8 @@
 <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
 <script src="assets/js/ie10-viewport-bug-workaround.js"></script>
 
-<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"></script>
-
-<script type="text/javascript" src="js/globalStream.js"></script>
+<script type="text/javascript" src="js/history.js"></script>
+<script type="text/javascript" src="js/publicFunction.js"></script>
 
 </body>
 </html>
