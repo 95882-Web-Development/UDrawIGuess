@@ -50,7 +50,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="login.html" href="#">U Draw I Guess</a>
+            <a class="navbar-brand" href="globalStream.html">U Draw I Guess</a>
         </div>
         <div id="div-top-navbar" class="navbar-collapse collapse">
             <div class="nav navbar-right">
@@ -114,22 +114,32 @@
 
         <div class="follow-info">
             <div class="follow-label">
-                <label id="label-following">Follow</label>
-                <label id="label-follower">Follower</label>
+                <label id="label-following" class="status-title">Follow</label>
+                <label id="label-follower" class="status-title">Follower</label>
             </div>
             <div class="follow-num">
-                <a id="num-following" href="friendList.html">1</a>
-                <a id="num-follower" href="friendList.html">1</a>
+                <a id="num-following" href="friendList.html">0</a>
+                <a id="num-follower" href="friendList.html">0</a>
             </div>
         </div>
         <div class="fav-info">
             <div class="fav-label">
-                <label id="label-like">Likes</label>
-                <label id="label-bookmark">Bookmarks</label>
+                <label id="label-like" class="status-title">Liked By</label>
+                <label id="label-bookmark" class="status-title">Bookmarked By</label>
             </div>
             <div class="fav-num">
-                <label id="num-like">33</label>
-                <label id="num-bookmark">56</label>
+                <label id="num-like">0</label>
+                <label id="num-bookmark">0</label>
+            </div>
+        </div>
+        <div class="guess-info">
+            <div class="guess-label">
+                <label id="label-guess" class="status-title">Guess Attempt</label>
+                <label id="label-guess-correct" class="status-title">Correct Guess</label>
+            </div>
+            <div class="guess-num">
+                <label id="num-guess">0</label>
+                <label id="num-guess-correct">0</label>
             </div>
         </div>
         <div class="personal-info">
@@ -213,8 +223,8 @@
             <div class="modal-body">
                 <form action="" class="invite-form">
                     <div class="invite-form-input">
-                        Friend's Email: <input type="text" name="invite-input" class="invite-input-box">
-                        <input type="submit" value="Send" class="btn-invite-submit">
+                        Friend's Email: <input id="invite_input" type="text" name="invite-input" class="invite-input-box">
+                        <input onclick="inviteFriend(); return false;" type="submit" value="Send" class="btn-invite-submit">
                     </div>
                 </form>
             </div>

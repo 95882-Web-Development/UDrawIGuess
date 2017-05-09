@@ -22,6 +22,23 @@ function logout(e) {
     location.href = "http://localhost:4000/frontend/login.html";
 }
 
+function inviteFriend(e){
+    console.log("enter invite friend");
+
+    var email = $("#invite_input").val();
+    console.log(email)
+
+    var data = {"email": email};
+
+    fetch("http://localhost:4000/invite", {
+        method: "POST",
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(data),
+    }).then(function(response){
+        console.log("invitation submit: " + response);
+    });
+}
+
 function clickLike(e) {
 
     var btnLike = event.target;
@@ -119,6 +136,11 @@ function clickBookmark(e) {
             else{
                 $(btnBookmark).attr("value", "1");
                 $(btnBookmark).css('color', 'rgba(165, 28, 70, 0.57)');
+
+                var bookmarkNum = $(btnBookmark).next();
+                var bookmark_num = parseInt(bookmarkNum.text())+1;
+                console.log(bookmark_num);
+                $(bookmarkNum).text(bookmark_num);
             }
         });
     }
@@ -303,6 +325,8 @@ function init() {
 
         console.log(ranking_len)
         console.log(pictures_len)
+
+        localStorage.setItem("my_id", my_id);
 
         for (var i = 0; i < ranking_len; i++) {
             var user_id = ranking[i].user_id;

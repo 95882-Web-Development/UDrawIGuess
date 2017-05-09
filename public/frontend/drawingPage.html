@@ -77,8 +77,8 @@
                         </button>
                     </li>
                     <li>
-                        <button type="button" class="btn btn-default btn-md btn-icon-mid"><span
-                                class="glyphicon glyphicon-bell" aria-hidden="true"></span>
+                        <button id="btn_flag" type="button" class="btn btn-default btn-md btn-icon-mid"><span
+                                class="glyphicon glyphicon-flag" aria-hidden="true"></span>
                         </button>
                     </li>
                     <li>
@@ -149,6 +149,57 @@
     </div>
 </div>
 <br>
+
+<!-- modals -->
+<div class="modal fade" id="invite-Modal" tabindex="-1" role="dialog" aria-labelledby="new-doc-ModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title" id="invite-ModalLabel">Invite a friend!</h4>
+            </div>
+            <div class="modal-body">
+                <form action="" class="invite-form">
+                    <div class="invite-form-input">
+                        Friend's Email: <input id="invite_input" type="text" name="invite-input" class="invite-input-box">
+                        <input onclick="inviteFriend(); return false;" type="submit" value="Send" class="btn-invite-submit">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="flag-Modal" tabindex="-1" role="dialog" aria-labelledby="new-doc-ModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title" id="flag-ModalLabel">File a Report/Falgging:</h4>
+            </div>
+            <div class="modal-body">
+                <form action="" id="flag-form" class="flag-form">
+                    <div class="flag-form-input">
+                        <h5>Please state the person/picture you want to report. We will contact you soon.</h5>
+                        <textarea class="textarea-flag" name="flag" form="flag-form">Enter description here...</textarea>
+                        <input type="submit" value="Send" class="btn-flag-submit">
+                        <h5>Thanks for your help to this community!</h5>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
 
 <nav class="navbar navbar-inverse navbar-fixed-bottom" id="bottom-nav">
     <div id="div-bottom-navbar" class="navbar-collapse collapse">

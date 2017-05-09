@@ -2,38 +2,6 @@ $(document).ready(function () {
     init();
 })
 
-function clickBookmark(e) {
-    var btnBookmark = event.target;
-    var pic_id = $(btnBookmark).attr("id");
-    var bookmarkStatus = $(btnBookmark).attr("value");
-    console.log(bookmarkStatus);
-
-    if (bookmarkStatus == "0") {
-
-        var url = "http://localhost:4000/add_bookmarks/" + pic_id;
-
-        function fetchBookmark() {
-            return fetch(url).then(function (response) {
-                return response.json();
-            }).then(function (json) {
-                return json;
-            });
-        }
-
-        fetchBookmark().then(function (result) {
-            console.log(result);
-
-            if (result.code == "1"){
-                console.log("ERROR: like incomplete");
-            }
-            else{
-                $(btnBookmark).attr("value", "1");
-                $(btnBookmark).css('color', 'rgba(165, 28, 70, 0.57)');
-            }
-        });
-    }
-}
-
 function logout(e){
 
     var url = "http://localhost:4000/logout";
@@ -119,14 +87,25 @@ function init() {
     console.log("enter profile page init");
 
     var user_id = localStorage.getItem("profile_user_id");
+    var my_id = localStorage.getItem("my_id");
+
     console.log("profile page: " + user_id);
+    console.log("my id: " + my_id);
+
+    if (user_id == my_id){
+        console.log("redirect to my page");
+        location.href = "http://localhost:4000/frontend/myPage.html";
+    }
 
     var picture_item_template = $("#picture_item_template");
 
     var url = "http://localhost:4000/user/" + user_id;
 
+    console.log(url);
+
     function fetchProfile() {
         return fetch(url).then(function (response) {
+            console.log(response);
             return response.json();
         }).then(function (json) {
             return json;
@@ -142,8 +121,9 @@ function init() {
         var check_follow = data.check_follow;
         var following_num = data.following_num;
         var follower_num = data.follower_num;
-        var liked_by_num = data.liked_by_num;
-        var bookmark_by_num = data.bookmarked_by_num;
+
+        var liked_by_num = 0;
+        var bookmarked_by_num = 0;
 
         var pictures = [];
         pictures = pictures.concat(data.pictures);
@@ -152,8 +132,6 @@ function init() {
         $("#label_username").text(username);
         $("#num-following").text(following_num);
         $("#num-follower").text(follower_num);
-        $("#num-like").text(liked_by_num);
-        $("#num-bookmark").text(bookmark_by_num);
 
         //check if has followed
         if (check_follow == "0"){
@@ -183,6 +161,9 @@ function init() {
             var has_like = pictures[j].has_like;
             var has_bookmark = pictures[j].has_bookmark;
 
+            liked_by_num = liked_by_num + parseInt(like_num);
+            bookmarked_by_num = bookmarked_by_num + parseInt(bookmark_num);
+
             var new_item = picture_item_template.clone();
 
             new_item.attr("id", pic_id);
@@ -205,26 +186,32 @@ function init() {
             new_item.find("#owner_name").attr("id", user_id);
 
             if (has_like == "0") {
-                new_item.find("#like_picture").css('color', 'gray');
-                new_item.find("#like_picture").attr("value", "0");
+                new_item.find(".btn-like").css("color", "gray");
+                new_item.find(".btn-like").attr("value", "0");
             }
             else {
-                new_item.find("#like_picture").css('color', 'rgba(165, 28, 70, 0.57)');
-                new_item.find("#like_picture").attr("value", "1");
+                new_item.find(".btn-like").css("color", "rgba(165, 28, 70, 0.57)");
+                new_item.find(".btn-like").attr("value", "1");
             }
 
             if (has_bookmark == "0") {
-                new_item.find("#bookmark_picture").css('color', 'gray');
-                new_item.find("#bookmark_picture").attr("value", "0");
+                new_item.find(".btn-bookmark").css("color", 'gray');
+                new_item.find(".btn-bookmark").attr("value", "0");
             }
             else {
-                new_item.find("#bookmark_picture").css('color', 'rgba(165, 28, 70, 0.57)');
-                new_item.find("#bookmark_picture").attr("value", "1");
+                new_item.find(".btn-bookmark").css('color', 'rgba(165, 28, 70, 0.57)');
+                new_item.find(".btn-bookmark").attr("value", "1");
             }
 
             var picture_list = $("#picture_list");
             picture_list.append(new_item);
         }
+
+        console.log(liked_by_num)
+        console.log(bookmarked_by_num)
+
+        $("#num-like").text(liked_by_num);
+        $("#num-bookmark").text(bookmarked_by_num);
 
     });
 }

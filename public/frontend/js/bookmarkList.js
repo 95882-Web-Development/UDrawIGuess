@@ -5,9 +5,9 @@ $(document).ready(function () {
 function init() {
     var picture_item_template = $("#picture_item_template");
 
-    console.log("enter mypage.init");
+    console.log("enter bookmarklist.init");
 
-    var url = "http://localhost:4000/me";
+    var url = "http://localhost:4000/show_bookmarks";
 
     function fetchMe() {
         return fetch(url).then(function (response) {
@@ -21,39 +21,18 @@ function init() {
         console.log(result);
         var data = result;
 
-        var user_id = data.user_id;
-        var username = data.username;
-        var following_num = data.following_num;
-        var follower_num = data.follower_num;
-        var guess_num = data.guess_num;
-        var guess_correct_num = data.guess_correct_num;
-
-        var liked_by_num = 0;
-        var bookmarked_by_num = 0;
-
         var pictures = [];
         pictures = pictures.concat(data.pictures);
         var pictures_len = pictures.length;
 
-        $("#label_username").text(username);
-        $("#num-following").text(following_num);
-        $("#num-follower").text(follower_num);
-        $("#num-guess").text(guess_num);
-        $("#num-guess-correct").text(guess_correct_num);
-
         for (var j = 0; j < pictures_len; j++) {
 
-            var user_id = pictures[j].user_id;
-            var username = pictures[j].username;
             var pic_id = pictures[j].picture_id;
             var like_num = pictures[j].like_num;
             var bookmark_num = pictures[j].bookmark_num;
             var tag = pictures[j].tag;
             var des = pictures[j].description;
             var picture_src = pictures[j].picture;
-
-            liked_by_num = liked_by_num + parseInt(like_num);
-            bookmarked_by_num = bookmarked_by_num + parseInt(bookmark_num);
 
             var new_item = picture_item_template.clone();
 
@@ -86,13 +65,5 @@ function init() {
             picture_list.append(new_item);
         }
 
-        $("#num-like").text(liked_by_num);
-        $("#num-bookmark").text(bookmarked_by_num);
-
     });
 }
-
-
-
-
-

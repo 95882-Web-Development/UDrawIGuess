@@ -62,6 +62,10 @@ span:hover {
   transform:translate(-50%,0); 
 }
 
+.status-title{
+  color: #660000;
+}
+
 .follow-label{
 
 }
@@ -79,12 +83,11 @@ span:hover {
 }
 
 .fav-info{
-  left: 50%;
+  left: 25%;
   top: 310px;
   height: 50px;
   position:absolute;
   z-index:1;
-  transform:translate(-50%,0);
 }
 
 .like-label{
@@ -92,15 +95,35 @@ span:hover {
 }
 
 #label-bookmark{
-  margin-left: 40px;
+  margin-left: 32px;
 }
 
 .fav-num{
-  padding-left: 15px;
+  padding-left: 25px;
 }
 
 #num-bookmark{
-  margin-left: 78px;
+  margin-left: 80px;
+}
+
+.guess-info{
+  left: 20%;
+  top: 370px;
+  height: 50px;
+  position:absolute;
+  z-index:1;
+}
+
+#label-guess-correct{
+  margin-left: 10px;
+}
+
+.guess-num{
+  padding-left: 42px;
+}
+
+#num-guess-correct{
+  margin-left: 80px;
 }
 
 #tag{
@@ -110,7 +133,7 @@ span:hover {
 .personal-info{
   position:absolute; 
   z-index:1; 
-  top:380px;
+  top:450px;
   left:50%; 
   transform:translate(-50%,0); 
 }

@@ -102,12 +102,12 @@
         <h4>Ranking</h4>
         <br>
         <ol id="ranking_list" class="ranking_list">
-            <li class="ranking_item">
-                <a href="" class="ranking_username">The Fin</a>
-            </li>
-            <li class="ranking_item">
-                <a href="" class="ranking_username">Bruno Mars</a>
-            </li>
+            <!--<li class="ranking_item">-->
+                <!--<a href="" class="ranking_username">The Fin</a>-->
+            <!--</li>-->
+            <!--<li class="ranking_item">-->
+                <!--<a href="" class="ranking_username">Bruno Mars</a>-->
+            <!--</li>-->
         </ol>
     </div>
 
@@ -201,8 +201,8 @@
             <div class="modal-body">
                 <form action="" class="invite-form">
                     <div class="invite-form-input">
-                        Friend's Email: <input type="text" name="invite-input" class="invite-input-box">
-                        <input type="submit" value="Send" class="btn-invite-submit">
+                        Friend's Email: <input id="invite_input" type="text" name="invite-input" class="invite-input-box">
+                        <input onclick="inviteFriend(); return false;" type="submit" value="Send" class="btn-invite-submit">
                     </div>
                 </form>
             </div>

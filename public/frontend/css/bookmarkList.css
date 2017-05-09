@@ -1,0 +1,286 @@
+body {
+    padding-top: 40px;
+    padding-bottom: 40px;
+    background-color: #eee;
+    /*background-image:url(../images/background.jpg); */
+    background-size: cover;
+    height:auto;
+    opacity:0.92;
+}
+
+.navbar-nav > li > a {padding-top:5px !important; padding-bottom:5px !important;}
+.navbar {min-height:20px !important}
+
+.img-circle{
+    margin-top:10%;
+    margin-right:10px;
+}
+
+.btn-icon-left{
+    background-color:transparent;
+    border:none;
+    outline:none;
+    margin-top:10%;
+    margin-right:2px;
+}
+
+.btn-icon-mid{
+    background-color:transparent;
+    border:none;
+    outline:none;
+    margin-top:10%;
+    margin-right:6px;
+}
+
+.btn-icon-right{
+    background-color:transparent;
+    border:none;
+    outline:none;
+    margin-top:6%;
+    margin-right:30px;
+}
+
+.nav-glyphicon{
+    color:white;
+    font-size:2em;
+}
+
+.btn-invite-submit{
+    margin-left: 20px;
+    background: #a94442;
+    border: #B13B3B;
+    border-radius: 2px;
+    color: white;
+}
+
+.btn-flag-submit{
+    margin-left: 10px;
+    background: #a94442;
+    border: #B13B3B;
+    border-radius: 2px;
+    color: white;
+}
+
+.guess-form{
+    display: block;
+    margin: 0 auto;
+}
+
+.textarea-flag{
+    width: 450px;
+    height: 100px ;
+}
+
+body {
+    padding-top: 40px;
+    padding-bottom: 40px;
+    background-color: #eee;
+    /*background-image:url(../images/background.jpg); */
+    background-size: cover;
+    height:auto;
+    opacity:0.92;
+}
+
+button:hover {
+    background-color:#bdbdc1;
+    cursor: pointer;
+}
+
+span:hover {
+    color: #88aae2;
+    cursor: pointer;
+}
+
+.btn-to-draw{
+    position: fixed;
+    border-color: white;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    bottom: 80px;
+    right: 50px;
+    z-index: 100;
+    text-align: center;
+    background-color: #e3e5e8;
+}
+
+.icon-draw{
+    color: #990000;
+    font-size: 2em;
+    margin-top: 14px;
+    margin-left: 2px;
+}
+
+.navbar-nav > li > a {padding-top:5px !important; padding-bottom:5px !important;}
+.navbar {min-height:20px !important}
+
+.name-label{
+    position:absolute;
+    z-index:1;
+    top:218px;
+    left:50%;
+    transform:translate(-50%,0);
+}
+
+.profile-container{
+    opacity:0.95;
+}
+
+.follow-info{
+    left: 50%;
+    top: 250px;
+    height: 50px;
+    position:absolute;
+    z-index:1;
+    transform:translate(-50%,0);
+}
+
+.follow-label{
+
+}
+
+#label-follower{
+    margin-left: 40px;
+}
+
+.follow-num{
+    padding-left: 15px;
+}
+
+#num-follower{
+    margin-left: 78px;
+}
+
+.fav-info{
+    left: 27%;
+    top: 310px;
+    height: 50px;
+    position:absolute;
+    z-index:1;
+}
+
+.like-label{
+
+}
+
+#label-bookmark{
+    margin-left: 40px;
+}
+
+.fav-num{
+    padding-left: 20px;
+}
+
+#num-bookmark{
+    margin-left: 80px;
+}
+
+#tag{
+    font-weight: bold;
+}
+
+.personal-info{
+    position:absolute;
+    z-index:1;
+    top:380px;
+    left:50%;
+    transform:translate(-50%,0);
+}
+
+.btn-like{
+    margin-left: 10px;
+    background-color:transparent;
+    border:none;
+    outline:none;
+    color:rgba(165, 28, 70, 0.57);
+    font-size: 1.25em;
+}
+
+.btn-bookmark{
+    margin-left: 80px;
+    background-color:transparent;
+    border:none;
+    outline:none;
+    color:rgba(165, 28, 70, 0.57);
+    font-size: 1.25em;
+}
+
+.img-circle{
+    margin-top:10%;
+    margin-right:10px;
+}
+
+.btn-icon-left{
+    background-color:transparent;
+    border:none;
+    outline:none;
+    margin-top:10%;
+    margin-right:2px;
+}
+
+.btn-icon-mid{
+    background-color:transparent;
+    border:none;
+    outline:none;
+    margin-top:10%;
+    margin-right:6px;
+}
+
+.btn-icon-right{
+    background-color:transparent;
+    border:none;
+    outline:none;
+    margin-top:6%;
+    margin-right:30px;
+}
+
+.nav-glyphicon{
+    color:white;
+    font-size:2em;
+}
+
+.posts-container {
+    margin-left: 5%;
+    margin-right: 0px !important;
+    margin-top: 20px;
+}
+
+.btn-invite-submit{
+    margin-left: 20px;
+    background: #a94442;
+    border: #B13B3B;
+    border-radius: 2px;
+    color: white;
+}
+
+.btn-flag-submit{
+    margin-left: 10px;
+    background: #a94442;
+    border: #B13B3B;
+    border-radius: 2px;
+    color: white;
+}
+
+.guess-form{
+    display: block;
+    margin: 0 auto;
+}
+
+.textarea-flag{
+    width: 450px;
+    height: 100px ;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -47,7 +47,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a href="login.html" class="navbar-brand" href="#">U Draw I Guess</a>
+          <a href="noSignUpGlobalStream.html" class="navbar-brand">U Draw I Guess</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <div class="nav navbar-right">
@@ -101,14 +101,11 @@
 
 
     <!-- templates-->
-    <li id="ranking_item_template" class="hide">
-        <a href="" class="ranking_username">Default title</a>
-    </li>
 
     <div id="picture_item_template" class="hide">
         <img id="img_picture" src="images/empty_img.jpg" alt="Card image cap" width="200" height="200">
         <a id="owner_name" class="card-text">By: XXX</a>
-        <button id="guessbtn_picture" class="btn-guess" data-toggle="modal" data-target="#guess-Modal">Guess it!</button>
+        <button id="guessbtn_picture" onClick="clickNoSignUpGuess(); return false;" class="btn-guess" data-toggle="modal" data-target="#guess-Modal">Guess it!</button>
         <button id="like_picture" class="btn-like"><span class="glyphicon glyphicon-heart" aria-hidden="true"></span></button>
         <label id="like_num" class="like-num"></label>
         <button id="bookmark_picture" class="btn-bookmark"><span class="glyphicon glyphicon-pushpin" aria-hidden="true"></span></button>
@@ -116,32 +113,41 @@
     <!-- END templates-->
 
     <!-- Modal NEW document-->
-    <div class="modal fade" id="guess-Modal" tabindex="-1" role="dialog" aria-labelledby="new-doc-ModalLabel" aria-hidden="true">
+    <div class="modal fade" id="guess-Modal" tabindex="-1" role="dialog" aria-labelledby="new-doc-ModalLabel"
+         aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
-                    <h4 class="modal-title" id="new-doc-ModalLabel">Make a wild guess!</h4>
+                    <h4 class="modal-title" id="guess-ModalLabel">Make a wild guess!</h4>
                 </div>
-                <div class="modal-body">
-                    <img src="images/empty_img.jpg" class="img-modal" alt="Card image cap">
+                <div id="guess_madal_normal_body" class="modal-body">
+                    <img id="modal_guess_img" src="images/empty_img.jpg" class="img-modal" alt="Card image cap">
                     <br>
-                    <form action="/action_page.php" class="guess-form">
-                      <div class="guess-form-input">
-                        Guess Answer: <input type="text" name="guess-input" class="guess-input-box">
-                        <input type="submit" value="Submit" class="btn-guess-submit">
-                      </div>
-                      <a class="guess-tips">Tips: This is empty.</a>
-                    </form>
+                    <div id="div_guess_modal_form">
+                        <form action="/action_page.php" class="guess-form">
+                            <div class="guess-form-input">
+                                Guess Answer: <input id="guess_modal_input" type="text" name="guess-input" class="guess-input-box">
+                                <input id="guess_modal_submit" onClick="checkNoSignUpAnswer(); return false;" type="submit" value="Submit" class="btn-guess-submit">
+                            </div>
+                            <label id="modal_guess_tip" class="guess-tips">Tips: One word.</label>
+                            <label id="modal_guess_err_msg"></label>
+                        </form>
+                    </div>
+                </div>
+                <div id="guess_madal_answer_body" class="hide">
+                    <h5>Answer is:</h5>
+                    <h4 id="guess_madal_show_answer"></h4>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" id="btn-form-new-doc" class="btn btn-primary">Check the statistics behind</button>
+                    <button id="guess_modal_check_ans" onClick="getNoSignUpAnswer(); return false;" type="button" class="btn btn-primary guess-modal-check-ans">Check the answer</button>
                 </div>
             </div>
         </div>
     </div>
+
 
     <nav class="navbar navbar-inverse navbar-fixed-bottom">
       <div id="div-bottom-navbar" class="navbar-collapse collapse">
