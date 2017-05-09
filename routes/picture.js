@@ -3,6 +3,7 @@ var Picture= require('../controller/picture');
 // API Server Endpoints
 module.exports = function(router){
 	router.get('/global',Picture.get_global),
+		router.get('/nosignup_global', Picture.get_no_signup_global),
 		router.get('/me',Picture.get_mine),
 		router.post('/picture_submit', Picture.picture_submit),
 		router.get('/get_keyword', Picture.get_keyword),

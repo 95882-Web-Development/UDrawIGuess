@@ -56,6 +56,7 @@ PictureSchema.statics = {
     create: function(data, callback) {
         var picture = new this(data);
         picture.picture_id = picture._id;
+        console.log("picture_id: " + picture.picture_id);
         picture.save(callback);
     }
 };

@@ -5,6 +5,7 @@ var Picture = require('../model/picture').Picture;
 var path    = require("path");
 var globals = require('../model/global'); //<< globals.js path
 var nodemailer = require('nodemailer');
+var History = require('../model/history').History;
 /** create function to create Company. */
 
 exports.signup = function (req, res) {
@@ -37,11 +38,17 @@ exports.signup = function (req, res) {
 };
 
 exports.login = function (req, res) {
-    User.get({username: req.body.username}, function(err, result){
+    User.get({$or:[{username: req.body.username},{email:req.body.username}]}, function(err, result){
         if(!err){
             if(result !== null){
                 // req.session.user = result;
                 globals.user = result;
+
+                var history = new Object();
+                history.record = Date() + " User: " + globals.user.username + "-- Log in";
+                history.user_id = globals.user._id;
+                History.create(history, function(){
+                });
                 //return res.render({code:0, message: 'success',user_id:result._id}); // 500 error
                 return res.redirect('/frontend/globalStream.html');
             }else{
@@ -54,6 +61,11 @@ exports.login = function (req, res) {
 }
 
 exports.logout = function (req, res){
+    var history = new Object();
+    history.record = Date() + "User: " + globals.user + "-- log out" ;
+    history.user_id = globals.user._id;
+    History.create(history, function(){
+    });
     globals.user = undefined;
     return res.json({code:0, message:"success"});
 }
@@ -65,6 +77,15 @@ exports.get_user = function (req, res) {
             if(result == null){
                 return res.json({message:"user is not found"});
             }
+            if(req.params.user_id == globals.user._id) {
+                return res.json({code: 1, message: "this is me"});
+            }
+            var history = new Object();
+            history.record = Date() + "User: " + globals.user.username + "-- go to user: " + result +"'s page" ;
+            history.user_id = globals.user._id;
+            History.create(history, function(){
+            });
+
             var data = new Object();
             data.user_id = result._id;
             data.username = result.username;
@@ -113,6 +134,12 @@ exports.getAll = function (req, res){
 exports.do_follow = function(req, res){
     User.get({_id:req.params.user_id}, function(err, result) {
         if(!err){
+            var history = new Object();
+            history.record = Date() + "User: " + globals.user.username + "-- follow user: " + result ;
+            history.user_id = globals.user._id;
+            History.create(history, function(){
+            });
+
             result.follower.push(globals.user._id);
             User.updateById(req.params.user_id,result,function(err, result){
                 if(!err) {
@@ -141,6 +168,12 @@ exports.do_unfollow = function(req, res){
     User.get({_id:req.params.user_id}, function(err, result) {
         var flag = 0;
         if(!err){
+            var history = new Object();
+            history.record = Date() + "User: " + globals.user.username + "-- unfollow user: " + result ;
+            history.user_id = globals.user._id;
+            History.create(history, function(){
+            });
+
             for(var i = 0; i < result.follower.length; i++){
                 if(result.follower[i]  == globals.user._id){
                    result.follower.splice(i,1);
@@ -181,6 +214,11 @@ exports.do_unfollow = function(req, res){
 };
 
 exports.show_followlist = function(req, res) {
+    var history = new Object();
+    history.record = Date() + "User: " + globals.user.username + "show follow list" ;
+    history.user_id = globals.user._id;
+    History.create(history, function(){
+    });
     User.get({_id: globals.user.id}, function (err, result) {
         if (!err) {
             var count = 0;
@@ -217,8 +255,17 @@ exports.show_followlist = function(req, res) {
 }
 
 exports.do_like = function(req, res){
+
     Picture.get({_id:req.params.picture_id}, function(err, result) {
         if(!err && result != null){
+
+            var history = new Object();
+            history.record = Date() + "User: " + globals.user.username + "-- like picture: " + result ;
+            history.user_id = globals.user._id;
+            History.create(history, function(){
+            });
+
+
             result.like_users.push(globals.user._id);
             result.like_num ++;
             Picture.updateById(req.params.picture_id,result,function(err, result){
@@ -236,6 +283,12 @@ exports.do_like = function(req, res){
 exports.do_dislike = function(req, res){
     Picture.get({_id:req.params.picture_id}, function(err, result) {
         if(!err){
+            var history = new Object();
+            history.record = Date() + "User: " + globals.user.username + "-- unlike picture: " + result ;
+            history.user_id = globals.user._id;
+            History.create(history, function(){
+            });
+
             for(var i = 0; i < result.like_users.length; i++)
             {
                 if(result.like_users[i] == globals.user._id){
@@ -260,10 +313,19 @@ exports.do_dislike = function(req, res){
 exports.add_bookmarks = function(req, res){
     User.get({_id:globals.user._id}, function(err, result) {
         if(!err){
-            result.pictures_mark.push(req.params.picture_id);
-            result.bookmarked_by_num++;
-            User.updateById(globals.user._id,result,function(err, result){
+            var history = new Object();
+            history.record = Date() + "User: " + globals.user.username + "-- add a bookmark: " ;
+            history.user_id = globals.user._id;
+            History.create(history, function(){
+            });
+
+            var user = result;
+            user.pictures_mark.push(req.params.picture_id);
+            user.bookmarked_by_num++;
+            User.updateById(globals.user._id,user,function(err, result){
                 if(!err) {
+                    console.log("global user" + user);
+                    globals.user = user;
                     Picture.get({_id:req.params.picture_id}, function(err, result){
                         result.bookmark_num++;
                         Picture.updateById(req.params.picture_id, result, function(err, result){
@@ -284,6 +346,12 @@ exports.add_bookmarks = function(req, res){
 }
 
 exports.show_bookmarks = function(req, res){
+    var history = new Object();
+    history.record = Date() + "User: " + globals.user.username + "-- show bookmark list: " ;
+    history.user_id = globals.user._id;
+    History.create(history, function(){
+    });
+
     User.get({_id: globals.user.id}, function (err, result) {
         if (!err) {
             var data = new Object();
@@ -309,6 +377,12 @@ exports.show_bookmarks = function(req, res){
 };
 
 exports.invite = function(req, res){
+    var history = new Object();
+    history.record = Date() + "User: " + globals.user.username + "-- send a invitation: " ;
+    history.user_id = globals.user._id;
+    History.create(history, function(){
+    });
+
     var email = req.body.email;
     var transporter = nodemailer.createTransport({
         service: 'Gmail',
@@ -320,7 +394,7 @@ exports.invite = function(req, res){
     var text = 'UDrawIGuess Invitaion from \n\n' + globals.user.username;
     var mailOptions = {
         from: 'jasoncmu2016@gmail.com', // sender address
-        to: 'jasonvivi.chen@gmail.com', // list of receivers
+        to: email, // list of receivers
         subject: text, // Subject line
         text: text //, // plaintext body
         // html: '<b>Hello world ✔</b>' // You can choose to send an HTML body instead
@@ -336,6 +410,40 @@ exports.invite = function(req, res){
     });
 }
 
+exports.search = function(req, res){
+    var history = new Object();
+    history.record = Date() + "User: " + globals.user.username + "-- search: " + req.body.input;
+    history.user_id = globals.user._id;
+    History.create(history, function(){
+    });
+    var input = req.body.input;
+    var inputs = input.split(' ');
+    var code = 0;
+    for(var i = 0; i < inputs.length; i++){
+        if(inputs[i].indexOf("'") != -1){
+            code = 11;
+            var name = inputs[i].substring(0,inputs[i].indexOf("'"));
+            console.log("name: "+ name);
+            User.get({username:name},function(err, result){
+                if(!err && result != null){
+                    return res.json({code:code, user_id: result.user_id});
+                }
+            });
+        }else if(inputs[i] == 'friend'){
+            return res.json({code : 12});
+        }else if(inputs[i] == 'bookmark'){
+            return res.json({code:13});
+        }
+    }
+}
+
+exports.show_history = function(req, res){
+    History.getAll({user_id:globals.user._id},function(err, result) {
+        if(!err){
+            return res.json(result);
+        }
+    })
+}
 /** updateCompany function to get Company by id. */
 exports.update = function (req, res) {
     console.log(req.params.id);

@@ -3,9 +3,14 @@
 var Picture = require('../model/picture').Picture;
 var User = require('../model/user').User;
 var globals = require('../model/global'); //<< globals.js path
-
+var History = require('../model/history').History;
 
 exports.get_global = function (req, res){
+    var history = new Object();
+    history.record = Date() + "-- User: " + globals.user.username + "-- get Global Stream page";
+    history.user_id = globals.user._id;
+    History.create(history, function(){
+    });
     Picture.getAll({},function(err,result){
         var pictures = result;
         if(!err){
@@ -23,8 +28,7 @@ exports.get_global = function (req, res){
                             pictures[i].has_like = 1;
                         }
                     }
-                }
-                for(var i = 0; i < pictures.length; i++){
+                    console.log(globals.user._id);
                     for(var j = 0; j < globals.user.pictures_mark.length; j++){
                         if(pictures[i]._id == globals.user.pictures_mark[j]){
                             pictures[i].has_bookmark = 1;
@@ -41,7 +45,30 @@ exports.get_global = function (req, res){
     })
 }
 
+exports.get_no_signup_global = function(req, res){
+    Picture.getAll({},function(err,result){
+        var pictures = result;
+        if(!err){
+            var data = new Object();
+            data.ranking = [];
+            result.forEach(function(item, index){
+                data.ranking.push({user_id:item._id,username:item.username})
+            });
+            var index = pictures.length < 20? pictures.length:20;
+            var number = pictures.length < index? 0:pictures.length-index;
+            pictures.splice(index,number);
+            data.pictures = pictures;
+            return res.json(data);
+        }
+    })
+}
+
 exports.get_mine = function (req, res){
+    var history = new Object();
+    history.record = Date() + "User: " + globals.user.username + "-- get my page";
+    history.user_id = globals.user._id;
+    History.create(history, function(){
+    });
     Picture.getAll({user_id:globals.user._id},function(err,result){
         if(!err){
             var data = new Object();
@@ -75,6 +102,12 @@ exports.get_mine = function (req, res){
 
 /** create function to create Company. */
 exports.picture_submit = function (req, res) {
+    var history = new Object();
+    history.record = Date() + "-- User: " + globals.user.username + "-- submit a picture";
+    history.user_id = globals.user._id;
+    History.create(history, function(){
+    });
+
     console.log("request: " + req.body.tag);
     console.log("userid  "+globals.user._id);
     var data = req.body;
@@ -102,7 +135,15 @@ exports.picture_submit = function (req, res) {
 };
 
 exports.get_keyword = function(req, res){
-    var words = ["Apple", "Umbrella", "Banana", "Computer","Watermelon","Ice cream","T-shirt"]
+    if(globals.user!=undefined){
+        var history = new Object();
+        history.record = Date() + "-- User: " + globals.user.username + "-- get a key word";
+        history.user_id = globals.user._id;
+        History.create(history, function(){
+        });
+
+    }
+    var words = ["apple", "umbrella", "banana", "computer","watermelon","ice cream","T-shirt"]
     var min = 0;
     var max = words.length;
     var index = Math.floor(Math.random() * (max - min)) + min;
@@ -111,9 +152,26 @@ exports.get_keyword = function(req, res){
 }
 
 exports.check_answer = function(req, res){
+    if(globals.user!=undefined){
+        var history = new Object();
+        history.record = Date() + "-- User: " + globals.user.username + "-- check answer";
+        history.user_id = globals.user._id;
+        History.create(history, function(){
+        });
+    }
+
+    var guess_word = req.body.guess_word;
+    guess_word = guess_word+"";
+    guess_word = guess_word.replace(/\s/g, '');
+    guess_word = guess_word.toLowerCase();
     Picture.get({_id:req.body.picture_id}, function(err, result){
         var code = 1;
         if(!err && result != null){
+            if(result.keyword == "T-shirt"){
+                if(guess_word == 't-shirt' || guess_word == 'tshirt'){
+                    code = 0;
+                }
+            }
             if(result.keyword == req.body.guess_word){
                 code = 0;
             }
@@ -127,12 +185,19 @@ exports.get_picture = function (req, res) {
     console.log(req.params.picture_id);
     Picture.get({_id: req.params.picture_id}, function(err, result) {
         if (!err) {
+            var history = new Object();
+            history.record = Date() + "-- User: " + globals.user.username + "-- get a picture: " + result;
+            history.user_id = globals.user._id;
+            History.create(history, function(){
+            });
             return res.json(result);
         } else {
             return res.send(err); // 500 error
         }
     });
 };
+
+
 
 /** getCompany function to get Company by id. */
 exports.get = function (req, res) {

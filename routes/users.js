@@ -15,5 +15,8 @@ module.exports = function(router){
           router.get('/add_bookmarks/:picture_id',User.add_bookmarks),
           router.post('/user_update/:user_id', User.update),
       router.get('/user_logout', User.logout),
-          router.post('/invite', User.invite)
+          router.post('/invite', User.invite),
+          router.post('/search', User.search), // input
+          router.get('/show_history', User.show_history)
+
 };
